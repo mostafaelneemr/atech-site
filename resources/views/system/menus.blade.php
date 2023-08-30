@@ -6,6 +6,29 @@
         'text'=>__('Dashboard'),
     ];
 
+    $menu['Home']= [
+        'permission'=>[ 'home-slider.index' , 'testimonials.index', 'brands.index' ],
+        'icon'=>'<i class="fa fa-users"></i>',
+        'text'=> __('Home'),
+          'sub'=>[
+                [
+                    'permission'=> 'home-slider.index',
+                    'url'=> route('home-slider.index'),
+                    'text'=> __('home-slider')
+                ],
+                [
+                    'permission'=> 'testimonials.index',
+                    'url'=> route('testimonials.index'),
+                    'text'=> __('testimonials')
+                ],
+                [
+                    'permission'=> 'brands.index',
+                    'url'=> route('brands.index'),
+                    'text'=> __('brands')
+                ]
+            ]
+    ];
+
 
     $menu['Staff']= [
         'permission'=>[ 'system.staff.index' , 'system.staff.show', 'system.staff.create' ],

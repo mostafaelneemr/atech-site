@@ -15,6 +15,25 @@ return [
     ],
 
     [
+        'name' => __('Home'),
+        'description' => __('Home Page Permissions'),
+        'permissions' => [
+            'view-all-slider' =>['home-slider.index'],
+            'create-slider' =>['home-slider.create', 'home-slider.store'],
+            'Update-and-Delete-slider'  =>['home-slider.edit','home-slider.update', 'home-slider.destroy'],
+
+            'view-all-testimonial' =>['testimonials.index'],
+            'create-testimonial' =>['testimonials.create', 'testimonials.store'],
+            'Update-and-Delete-testimonial' =>['testimonials.edit','testimonials.update', 'testimonials.destroy'],
+
+            'view-all-brands' =>['brands.index'],
+            'create-brands' =>['brands.create', 'brands.store'],
+            'Update-and-Delete-brands' =>['brands.edit','brands.update', 'brands.destroy'],
+
+        ]
+    ],
+
+    [
         'name' => __('Permission Group'),
         'description' => __('Permission Group Permissions'),
         'permissions' => [
@@ -29,20 +48,18 @@ return [
     [
         'name' => __('Setting'),
         'description' => __('Setting Permissions'),
-        'permissions' => [
-            'manage-setting'    =>['system.setting.index','system.setting.update']
-        ]
+        'permissions' => [ 'manage-setting'  =>['system.setting.index','system.setting.update'] ]
     ],
 
 
-    [
-        'name' => __('Activity Log'),
-        'description' => __('Activity Log'),
-        'permissions' => [
-            'view-activity-log'=>['system.activity-log.index'],
-            'view-one-activity-log'=>['system.activity-log.show'],
-        ]
-    ],
+    // [
+    //     'name' => __('Activity Log'),
+    //     'description' => __('Activity Log'),
+    //     'permissions' => [
+    //         'view-activity-log'=>['system.activity-log.index'],
+    //         'view-one-activity-log'=>['system.activity-log.show'],
+    //     ]
+    // ],
 
     // [
     //     'name' => __('Auth Sessions'),

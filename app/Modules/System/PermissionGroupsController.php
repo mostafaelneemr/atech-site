@@ -30,7 +30,6 @@ class PermissionGroupsController extends SystemController
     public function index(Request $request){
 
         if($request->isDataTable){
-
             $eloquentData = PermissionGroup::select([
                 'permission_groups.id',
                 'permission_groups.name',
@@ -94,7 +93,7 @@ class PermissionGroupsController extends SystemController
             }else{
                 $this->viewData['pageTitle'] = __('Staff Permission');
             }
-
+            // dd($this->viewData);
             return $this->view('permission-group.index',$this->viewData);
         }
     }

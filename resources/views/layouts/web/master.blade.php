@@ -33,7 +33,7 @@
                             <!-- Header Left -->
                             <div class="header-left">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="{{ route('home') }}">
                                         <img src="{{setting('site_logo')}}" alt="Brook Images">
                                     </a>
                                 </div>
@@ -45,6 +45,7 @@
 
                                         <li class="lavel-1"><a href="{{ route('home') }}"><span>Home</span></a></li>
                                         <li class="lavel-1"><a href="{{ route('about') }}"><span>About</span></a></li>
+                                        <li class="lavel-1"><a href="{{ route('service') }}"><span>Service</span></a></li>
                                         {{-- <li class="lavel-1 with--drop slide-dropdown"><a href="#"><span>Pages</span></a> --}}
                                             <!-- Start Dropdown Menu -->
                                             {{-- <ul class="dropdown__menu">
@@ -77,13 +78,13 @@
                                 </nav>
                             </div>
                             <!-- Header Right -->
-                            {{-- <div class="header-right">
+                            <div class="header-right">
                                 <!-- Start Popup Search Wrap -->
-                                <div class="popup-search-wrap">
+                                {{-- <div class="popup-search-wrap">
                                     <a class="btn-search-click" href="#">
                                         <i class="fa fa-search"></i>
                                     </a>
-                                </div>
+                                </div> --}}
                                 <!-- End Popup Search Wrap -->
                                 <!-- Start Hamberger -->
                                 <div class="manu-hamber popup-mobile-click d-block d-lg-none light-version d-block d-xl-none pl_md--10 pl_sm--10">
@@ -92,7 +93,7 @@
                                     </div>
                                 </div>
                                 <!-- End Hamberger -->
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,7 +106,7 @@
             <div class="inner">
                 <div class="mobileheader">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{ route('home') }}">
                             <img src="{{ setting('site_logo') }}" alt="Multipurpose">
                         </a>
                     </div>
@@ -113,35 +114,36 @@
                 </div>
                 <div class="menu-content">
                     <ul class="menulist object-custom-menu">
-                        <li><a href="index-education.html"><span>Home</span></a></li>
-                        <li><a href="inner-page/education/about.html"><span>About</span></a></li>
+                        <li><a href="{{ route('home') }}"><span>Home</span></a></li>
+                        <li><a href="{{ route('about') }}"><span>About</span></a></li>
+                        <li><a href="{{ route('service') }}"><span>Service</span></a></li>
 
-                        <li class="has-mega-menu"><a href="#"><span>Pages</span></a>
+                        {{-- <li class="has-mega-menu"><a href="#"><span>Pages</span></a>
                             <!-- Start Dropdown Menu -->
                             <ul class="object-submenu">
                                 <li><a href="inner-page/education/service.html"><span>Service</span></a></li>
                                 <li><a href="inner-page/education/team.html"><span>Team</span></a></li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="has-mega-menu"><a href="#"><span>Portfolio</span></a>
+                        {{-- <li class="has-mega-menu"><a href="#"><span>Portfolio</span></a>
 
                                 <!-- Start Dropdown Menu -->
                                 <ul class="object-submenu">
                                 <li><a href="inner-page/education/portfolio.html"><span>Portfolio</span></a></li>
                                 <li><a href="inner-page/education/portfolio-details.html"><span>Portfolio Details</span></a></li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="has-mega-menu"><a href="#"><span>Blog</span></a>
+                        {{-- <li class="has-mega-menu"><a href="#"><span>Blog</span></a>
                             <!-- Start Dropdown Menu -->
                             <ul class="object-submenu">
                                 <li><a href="inner-page/education/blog.html"><span>Blog</span></a></li>
                                 <li><a href="inner-page/education/blog-details.html"><span>Blog Details</span></a></li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class=""><a href="inner-page/education/contact.html"><span>Contact</span></a></li>
+                        <li><a href="{{ route('contact') }}"><span>Contact</span></a></li>
                     </ul>
                 </div>
             </div>

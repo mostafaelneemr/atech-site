@@ -1,8 +1,8 @@
 @extends('layouts.web.master')
 
 @section('slider')
-        <!-- Start Breadcaump Area -->
-        @foreach($sliders as $slider)
+    <!-- Start Breadcaump Area -->
+    @foreach($sliders as $slider)
     <div class="brook-breadcaump-area fullscreen breadcaump-title-bar breadcaump-title-white d-flex align-items-center pt_md--70 pt_sm--100 pb_sm--50"
         data-black-overlay="6" style="background-image: url('{{ $slider->image }}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
 
@@ -221,6 +221,72 @@
     </div>
     <!-- End Testimonial Area -->
 
+
+                <!-- Start Portfolio Area -->
+                <div class="brook-portfolio-area ptb--100 ptb-md--80 ptb-sm--60 bg_color--1 basic-thine-line">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 mb--30">
+                                <div class="brook-section-title text-center">
+                                    <h3 class="heading heading-h3">Some of our Certificates </h3>
+                                </div>
+                            </div>
+    
+                            @foreach($certificates as $certificate)
+                            <div class="col-lg-4 col-sm-6 col-12 move-up wow">
+                                <div class="portfolio portfolio_style--1 mt--30">
+                                    <div class="thumb">
+                                        <img src="{{ $certificate->image }}" alt="Portfolio Images">
+                                    </div>
+                                    {{-- <div class="port-overlay-info">
+                                        <div class="hover-action">
+                                            <h3 class="post-overlay-title"><a href="portfolio-details.html">B-sharp High-end Audio</a></h3>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                            </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End Portfolio Area -->
+
+
+    <!-- Start Brand Area -->
+    <div class="bk-brand-area bg_color--1 ptb--80 ptb-md--80 ptb-sm--60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="brand-wrapper">
+                        <div class="brand__list brand-default brand-style--1">
+                            <div class="brook-element-carousel" data-slick-options='{
+                                "spaceBetween": 15, 
+                                "slidesToShow": 5, 
+                                "slidesToScroll": 1, 
+                                "arrows": false, 
+                                "infinite": true
+                            }'
+                                data-slick-responsive='[
+                                {"breakpoint":768, "settings": {"slidesToShow": 3}},
+                                {"breakpoint":577, "settings": {"slidesToShow": 3}},
+                                {"breakpoint":481, "settings": {"slidesToShow": 2}}
+                            ]'>
+    
+                            @foreach($brands as $brand)
+                                <div class=""><a href="#"><img src="{{ $brand->image }}"
+                                    alt="logo image"></a>
+                                </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Brand Area -->
 
     @include('web.call')
 @endsection

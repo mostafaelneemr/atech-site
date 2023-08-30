@@ -1,6 +1,6 @@
 @extends('system.layout')
 
-@section('header')
+@section('style')
     <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle'.direction().'.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
@@ -115,14 +115,12 @@
 </div>
 <!-- end:: Content -->
 @endsection
-@section('footer')
+@section('script')
     <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
     <script src="{{asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
 
         $(function() {
-
-
 
             $datatable =   $('#datatable-main').DataTable({
             processing: true,

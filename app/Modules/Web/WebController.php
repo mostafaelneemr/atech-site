@@ -5,6 +5,8 @@ namespace App\Modules\Web;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Slider;
 use App\Models\admin\Testimonial;
+use App\Models\Brand;
+use App\Models\Certificate;
 
 class WebController extends Controller{
 
@@ -28,6 +30,8 @@ class WebController extends Controller{
     public function index(){
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         $this->viewData['testimonials'] = Testimonial::get(); 
+        $this->viewData['brands'] = Brand::get(); 
+        $this->viewData['certificates'] = Certificate::get(); 
         return $this->view('index', $this->viewData);
     }
 

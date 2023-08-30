@@ -23,10 +23,10 @@ Auth::routes(['register' => false]);
 Route::get('/', 'SystemController@dashboard')->name('system.dashboard');
 
 
-Route::resource('home-slider', HomeSliderController::class);
-Route::resource('testimonials', TestimonialController::class);
-
-
+Route::resource('/home-slider', HomeSliderController::class);
+Route::resource('/testimonials', TestimonialController::class);
+Route::resource('/brands', BrandController::class);
+Route::resource('/certificates', CertificateController::class);
 
 
 

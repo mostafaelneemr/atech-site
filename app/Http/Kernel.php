@@ -50,8 +50,8 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\Language::class,
             \App\Http\Middleware\Permission::class,
             //\App\Http\Middleware\ActivityLog::class,
-            \App\Http\Middleware\ArabicNumbers::class,
-                   \App\Http\Middleware\HttpsProtocolMiddleware::class,
+            // \App\Http\Middleware\ArabicNumbers::class,
+            \App\Http\Middleware\HttpsProtocolMiddleware::class,
 
         ],
 
