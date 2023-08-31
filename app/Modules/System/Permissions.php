@@ -30,6 +30,10 @@ return [
             'create-brands' =>['brands.create', 'brands.store'],
             'Update-and-Delete-brands' =>['brands.edit','brands.update', 'brands.destroy'],
 
+            'view-all-blogs' =>['blogs.index'],
+            'create-blogs' =>['blogs.create', 'blogs.store'],
+            'Update-and-Delete-blogs' =>['blogs.edit','blogs.update', 'blogs.destroy'],
+
         ]
     ],
 

@@ -222,35 +222,89 @@
     <!-- End Testimonial Area -->
 
 
-                <!-- Start Portfolio Area -->
-                <div class="brook-portfolio-area ptb--100 ptb-md--80 ptb-sm--60 bg_color--1 basic-thine-line">
+    <!-- Start Portfolio Area -->
+    <div class="brook-portfolio-area ptb--100 ptb-md--80 ptb-sm--60 bg_color--1 basic-thine-line">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb--30">
+                    <div class="brook-section-title text-center">
+                        <h3 class="heading heading-h3">Some of our Certificates </h3>
+                    </div>
+                </div>
+    
+                @foreach($certificates as $certificate)
+                <div class="col-lg-4 col-sm-6 col-12 move-up wow">
+                    <div class="portfolio portfolio_style--1 mt--30">
+                        <div class="thumb">
+                            <img src="{{ $certificate->image }}" alt="Portfolio Images">
+                        </div>
+                        {{-- <div class="port-overlay-info">
+                            <div class="hover-action">
+                                <h3 class="post-overlay-title"><a href="portfolio-details.html">B-sharp High-end Audio</a></h3>
+                            </div>
+                        </div> --}}
+                    </div>
+                </div>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+    <!-- End Portfolio Area -->
+
+
+
+                <!-- Start Blog Grid Area -->
+                <div class="bk-blog-grid-area ptb--130 ptb-md--80 ptb-sm--60 bg_color--5">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 mb--30">
-                                <div class="brook-section-title text-center">
-                                    <h3 class="heading heading-h3">Some of our Certificates </h3>
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 col-xl-6 col-sm-12 col-12">
+                                <div class="brook-section-title">
+                                    <h2 class="heading heading-h2">Blog Updates</h2>
                                 </div>
                             </div>
-    
-                            @foreach($certificates as $certificate)
-                            <div class="col-lg-4 col-sm-6 col-12 move-up wow">
-                                <div class="portfolio portfolio_style--1 mt--30">
-                                    <div class="thumb">
-                                        <img src="{{ $certificate->image }}" alt="Portfolio Images">
+                            <div class="col-lg-7 col-xl-6 col-sm-12 col-12">
+                                <div class="blog-btn text-md-end text-start view-more-btn heding-color font-700 mt_sm--30">
+                                    <a href="#"><span>View all posts</span><span class="btn-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Start Single Blog -->
+                            @foreach($blogs as $blog)
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt--70">
+                                <div class="blog-grid blog-grid--modern blog-standard blog-yellow-color">
+                                    <div class="post-thumb">
+                                        <a href="{{url('blog/' . $blog->slug)}}">
+                                            <img src="{{ $blog->thumbnail }}" alt="Multipurpose template">
+                                        </a>
                                     </div>
-                                    {{-- <div class="port-overlay-info">
-                                        <div class="hover-action">
-                                            <h3 class="post-overlay-title"><a href="portfolio-details.html">B-sharp High-end Audio</a></h3>
+                                    <div class="post-content text-center">
+                                        <div class="post-inner">
+                                            <div class="post-meta mb--10">
+                                                <div class="post-date">{{ $blog->created_at }}</div>
+                                                <div class="post-category"><a href="#">Life Style</a></div>
+                                            </div>
+                                            <h5 class="heading heading-h5 line-height-1-39"><a href="{{url('blog/' . $blog->slug)}}">{{ $blog->title }}</a></h5>
+                                            <a href="{{url('blog/' . $blog->slug)}}" class="post-read-more"></a>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
                             @endforeach
+                            <!-- End Single Blog -->
 
+
+                          
+
+                          
+    
+    
                         </div>
                     </div>
                 </div>
-                <!-- End Portfolio Area -->
+                <!-- End Blog Grid Area -->
+
 
 
     <!-- Start Brand Area -->

@@ -5,6 +5,7 @@ namespace App\Modules\Web;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Slider;
 use App\Models\admin\Testimonial;
+use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\Certificate;
 
@@ -32,7 +33,14 @@ class WebController extends Controller{
         $this->viewData['testimonials'] = Testimonial::get(); 
         $this->viewData['brands'] = Brand::get(); 
         $this->viewData['certificates'] = Certificate::get(); 
+        $this->viewData['blogs'] = Blog::get(); 
         return $this->view('index', $this->viewData);
+    }
+
+    public function blog($slug)
+    {
+        $blogs = Blog::where('slug', $slug)->first();
+        echo $blogs;
     }
 
     public function about()
