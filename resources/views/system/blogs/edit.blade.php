@@ -1,42 +1,25 @@
 @extends('system.layout')
 
-@section('title')
-    Edit testimonial
-@endsection
-
 @section('content')
-    <div class="page-title">
-        <div class="row">
-            <div class="col-sm-6">
-                <h4 class="mb-0">edit testimonial {{ $testimonails->name }}</h4>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                    <li class="breadcrumb-item"><a href="{{route('system.dashboard')}}" class="default-color">dashboard</a></li>
-                    <li class="breadcrumb-item active">edit testimonial section</li>
-                </ol>
-            </div>
-        </div>
-    </div>
 
-       {{-- @include('admin.message') --}}
+       @include('system.message')
 
     <!-- main body -->
     <div class="row">
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    <form class="form" action="{{route('testimonials.update', $testimonails->id)}}" method="POST" enctype="multipart/form-data">
+                    <form class="form" action="{{route('testimonials.update', $blogs->id)}}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
 
-                        <input type="hidden" name="id" value="{{ $testimonails->id }}">
-                        <input type="hidden" name="old_image" value="{{ $testimonails->image }}">
+                        <input type="hidden" name="id" value="{{ $blogs->id }}">
+                        <input type="hidden" name="old_image" value="{{ $blogs->image }}">
 
                         <div class="form-group">
                             <div class="text-center">
-                                <img src="{{asset($testimonails->image)}}"
-                                     class="rounded-circle  h-60 w-60" alt="image slider">
+                                <img src="{{asset($blogs->image)}}"
+                                     class="rounded-circle  h-25 w-25" alt="image slider">
                             </div>
                         </div>
 
@@ -51,25 +34,23 @@
 
                         <div class="form-body">
                             <div class="form-row">
-
-                                <div class="form-group col-md-6">
-                                    <label>Name</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $testimonails->name }}" required>
-                                    @error('name') <div class="alert alert-danger">{{ $message }}</div> @enderror
-                                </div>
-
                                 <div class="form-group col-md-6">
                                     <label>Title </label>
-                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $testimonails->title }}" required>
+                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ $blogs->title }}" required>
                                     @error('title') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
 
+                                <div class="form-group col-md-6">
+                                    <label>Name</label>
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $blogs->name }}" required>
+                                    @error('name') <div class="alert alert-danger">{{ $message }}</div> @enderror
+                                </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label>Description</label>
-                                    <textarea name="desc" class="form-control" id="desc" rows="5">{!! $testimonails->desc !!}</textarea>
+                                    <textarea name="desc" class="form-control" id="desc" rows="5">{!! $blogs->desc !!}</textarea>
                                     @error('desc') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
                             </div>

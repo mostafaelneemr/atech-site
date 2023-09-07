@@ -2,22 +2,46 @@
 
 namespace App\Modules\System;
 
-use App\Models\Brand;
-use App\Models\Certificate;
+use App\Models\admin\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-
+use Yajra\DataTables\DataTables;
 
 class CertificateController extends SystemController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $this->viewData['certificates'] = Certificate::all();
-        $this->viewData['pageTitle'] = __('Certificates');
+        if ($request->datatable) {
+            $data =  Certificate::all();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('image', function ($data) {
+                    $imagePath = asset($data->image); 
+                    return '<img src="' . $imagePath . '" alt="Slider Image" width="100" height="100">'; 
+                })
+                ->addColumn('action', function ($data) {
+                    return '<span class="dropdown">
+                            <a href="#" class="btn btn-md btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">
+                              <i class="la la-gear"></i>
+                            </a>
+                            <div class="dropdown-menu '.( (\App::getLocale() == 'ar') ? 'dropdown-menu-left' : 'dropdown-menu-right').'" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="deleteCertificate(\'' . route( 'certificates.destroy', $data->id ) . '\')"><i class="la la-trash"></i> '.__('Delete').'</a>
+                            </div>
+                        </span>';
+                })
+                ->rawColumns(['image','action'])
+                ->make('true');
+        }
+
+        if($request->withTrashed){
+            $this->viewData['pageTitle'] = __('Deleted Certificate');
+        }else{
+            $this->viewData['pageTitle'] = __('Certificates');
+        }
         $this->viewData['breadcrumb'][] = [ 'text'=> __('Certificate') ];
-        
+    
         return $this->view('certificate.index', $this->viewData);
     }
 
@@ -29,7 +53,7 @@ class CertificateController extends SystemController
 
     public function store(Request $request)
     {
-    //    try{
+       try{
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
@@ -41,9 +65,9 @@ class CertificateController extends SystemController
             'alert-type' => 'success',
         );
         return redirect::route('certificates.index')->with($notification);
-    //    }catch (\Exception $e) {
-    //        return redirect::back()->withErrors(['errors' => $e->getMessage()]);
-    //    }
+       }catch (\Exception $e) {
+           return redirect::back()->withErrors(['errors' => $e->getMessage()]);
+       }
     }
 
 
@@ -67,32 +91,32 @@ class CertificateController extends SystemController
 
     public function destroy($id)
     {
-        $testimonial = Brand::findOrFail($id);
+        $testimonial = Certificate::findOrFail($id);
         $image = Str::after($testimonial->image, 'upload/about/');
         $image = public_path('upload/about/' . $image);
         unlink($image);
         $testimonial->delete();
 
-        $message = __( 'Team deleted successfully' );
+        $message = __( 'Certificate is deleted successfully' );
         return $this->response(true, 200, $message );
     }
 
-    public function inActiveTestimonial($id)
+    public function inActiveCertificate($id)
     {
-        Brand::findOrFail($id)->update(['is_publish' => 'in-active']);
+        Certificate::findOrFail($id)->update(['is_publish' => 'in-active']);
         $notification = array(
-            'message' => 'Testimonial is Inactive',
+            'message' => 'Certificate is Inactive',
             'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
     }
 
-    public function ActiveTestimonial($id)
+    public function ActiveCertificate($id)
     {
-        Brand::findOrFail($id)->update(['is_publish' => 'active']);
+        Certificate::findOrFail($id)->update(['is_publish' => 'active']);
         $notification = array(
-            'message' => 'Testimonial is Active',
+            'message' => 'Certificate is Active',
             'alert-type' => 'success',
         );
 

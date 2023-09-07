@@ -22,11 +22,7 @@ class PermissionGroupsController extends SystemController
         return $permission ? isset($permissions[$permission]) ? $permissions[$permission] : false : $permissions;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request){
 
         if($request->isDataTable){
@@ -93,7 +89,6 @@ class PermissionGroupsController extends SystemController
             }else{
                 $this->viewData['pageTitle'] = __('Staff Permission');
             }
-            // dd($this->viewData);
             return $this->view('permission-group.index',$this->viewData);
         }
     }

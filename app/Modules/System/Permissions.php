@@ -34,6 +34,14 @@ return [
             'create-blogs' =>['blogs.create', 'blogs.store'],
             'Update-and-Delete-blogs' =>['blogs.edit','blogs.update', 'blogs.destroy'],
 
+            'view-all-certificates' =>['certificates.index'],
+            'create-certificates' =>['certificates.create', 'certificates.store'],
+            'Update-and-Delete-certificates' =>['certificates.edit','certificates.update', 'certificates.destroy'],
+
+            'view-all-clients' =>['clients.index'],
+            'create-clients' =>['clients.create', 'clients.store'],
+            'Update-and-Delete-clients' =>['clients.edit','clients.update', 'clients.destroy'],
+
         ]
     ],
 

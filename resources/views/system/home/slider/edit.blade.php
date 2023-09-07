@@ -1,25 +1,12 @@
-@extends('layouts.admin.master')
+@extends('system.layout')
 
 @section('title')
     edit slider
 @endsection
 
 @section('content')
-    <div class="page-title">
-        <div class="row">
-            <div class="col-sm-6">
-                <h4 class="mb-0">Edit slider {{ $sliders->title }}</h4>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="default-color">dashboard</a></li>
-                    <li class="breadcrumb-item active">create slider section</li>
-                </ol>
-            </div>
-        </div>
-    </div>
 
-       @include('admin.message')
+       @include('system.message')
 
     <!-- main body -->
     <div class="row">
@@ -65,13 +52,13 @@
 
                             </div>
 
-                            <div class="form-row">
+                            {{-- <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label>description </label>
                                     <input type="text" name="desc" class="form-control @error('desc') is-invalid @enderror" value="{{ $sliders->desc }}">
                                     @error('desc') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
 

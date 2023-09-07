@@ -1,19 +1,37 @@
 @extends('layouts.web.master')
 
-@section('slider')
-
-    <!--Google Map Area Start-->
-    <div class="google-map-area bg_color--1 section text-center">
-       <div class="ht-gmap3" id="htmap2" data-height="500" data-width="100%" data-zoom_enable="" data-zoom="10"
-           data-map_type="roadmap" data-map_style="style11">
-       </div>
-    </div>
-    <!--Google Map Area Start-->
-
+@section('title')
+    Contact - Atech
 @endsection
 
 
+
 @section('content')
+
+
+    @foreach($sliders as $slider)
+    <div class="breadcaump-area pt--400 pt_lg--300 pt_md--250 pt_sm--200 pb--100 breadcaump-title-bar breadcaump-title-white" style="background-image: url('{{ asset($slider->image) }}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcaump-inner text-center">
+                        <h2 class="heading">C O N T A C T - U S</h2>
+                        <div class="breadcrumb-insite">
+                            {{-- <ul class="core-breadcaump">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="elements.html">Elements</a></li>
+                                <li class="current">Grid Classic</li>
+                            </ul> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
 
     <!-- Start Contact Area -->
     <div class="contact-us-area">
@@ -84,22 +102,28 @@
     </div>
     <!-- End Contact Area -->
 
+
+       <!--Google Map Area Start-->
+       <div class="google-map-area bg_color--1 section text-center">
+        <div class="ht-gmap3" id="htmap2" data-height="500" data-width="100%" data-zoom_enable="" data-zoom="10"
+            data-map_type="roadmap" data-map_style="style11">
+        </div>
+     </div>
+     <!--Google Map Area Start-->
 @endsection
 
 @section('script')
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGM-62ap9R-huo50hJDn05j3x-mU9151Y"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGM-62ap9R-huo50hJDn05j3x-mU9151Y"></script>
+
 <!--Google Map Active-->
 
 <script>
     // Start Map 02
     jQuery(document).ready(function ($) {
-
         var gmMapDiv = $("#htmap2");
-
         (
             function ($) {
-
                 if (gmMapDiv.length) {
 
                     var gmHeight = gmMapDiv.attr("data-height");
@@ -111,7 +135,7 @@
                         action: "init",
                         marker: {
                             values: [{
-                                address: "40.518844, -74.377268",
+                                address: "30.06267207678815, 31.34459964458411",
                                 data: "<div class=\"gmap-marker-wrap\"><h5 class=\"gmap-marker-title\">New Jersey Office<\/h5><div class=\"gmap-marker-content\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\"><\/i> 799-701 Ballantyne Rd<br \/>\nSyracuse, NY 13207<\/div><\/div>",
                                 options: {
                                     icon: "",
@@ -148,7 +172,7 @@
                         },
                         overlay: {
                             values: [{
-                                address: "40.518844, -74.377268",
+                                address: "30.06267207678815, 31.34459964458411",
                                 data: "<div class=\"gmap-marker-wrap\"><h5 class=\"gmap-marker-title\">New Jersey Office<\/h5><div class=\"gmap-marker-content\"><i class=\"fa fa-map-marker\" aria-hidden=\"true\"><\/i> 799-701 Ballantyne Rd<br \/>\nSyracuse, NY 13207<\/div><\/div>",
                                 options: {
                                     content: '<div><div class="animated-dot">' +
@@ -363,6 +387,21 @@
             }
         )(jQuery);
     });
+
+
+    function showMap(lat, long){
+        var coord = {lat:lat, lng:long };
+
+        new google.maps.map(document.getElementById("map"), 
+            {
+                zoom:10,
+                center:coord,
+
+            }
+        );
+
+        showMap(0,0);
+    }
 </script>
 
 @endsection

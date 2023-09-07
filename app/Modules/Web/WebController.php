@@ -5,9 +5,9 @@ namespace App\Modules\Web;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Slider;
 use App\Models\admin\Testimonial;
-use App\Models\Blog;
-use App\Models\Brand;
-use App\Models\Certificate;
+use App\Models\admin\Blog;
+use App\Models\admin\Brand;
+use App\Models\admin\Certificate;
 
 class WebController extends Controller{
 
@@ -26,7 +26,6 @@ class WebController extends Controller{
         ];
     }
 
-
     
     public function index(){
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
@@ -39,18 +38,34 @@ class WebController extends Controller{
 
     public function blog($slug)
     {
-        $blogs = Blog::where('slug', $slug)->first();
-        echo $blogs;
+        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
+        $this->viewData['blogs'] = Blog::where('slug', $slug)->get();
+        return $this->view('slug', $this->viewData);
+    }
+
+    public function Blogs()
+    {
+        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
+        $this->viewData['blogs'] = Blog::all();
+        return $this->view('blogs', $this->viewData);
     }
 
     public function about()
     {
-        return $this->view('about');
+        $this->viewData['testimonials'] = Testimonial::get(); 
+        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
+
+        return $this->view('about', $this->viewData);
+    }
+
+    public function service()
+    {
+        return $this->view('service');
     }
 
     public function contact(){
-        // $this->viewData['testimonials'] = Testimonial::get(); 
-        return $this->view('contact');
+        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
+        return $this->view('contact', $this->viewData);
     }
 
 }

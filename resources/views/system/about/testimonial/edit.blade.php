@@ -1,25 +1,8 @@
 @extends('system.layout')
 
-@section('title')
-    Edit testimonial
-@endsection
-
 @section('content')
-    <div class="page-title">
-        <div class="row">
-            <div class="col-sm-6">
-                <h4 class="mb-0">edit testimonial {{ $testimonails->name }}</h4>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                    <li class="breadcrumb-item"><a href="{{route('system.dashboard')}}" class="default-color">dashboard</a></li>
-                    <li class="breadcrumb-item active">edit testimonial section</li>
-                </ol>
-            </div>
-        </div>
-    </div>
 
-       {{-- @include('admin.message') --}}
+       @include('system.message')
 
     <!-- main body -->
     <div class="row">

@@ -2,21 +2,47 @@
 
 namespace App\Modules\System;
 
-use App\Models\Brand;
+use App\Models\admin\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Yajra\DataTables\DataTables;
 
 
 class BrandController extends SystemController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $this->viewData['brands'] = Brand::all();
-        $this->viewData['pageTitle'] = __('Brands');
-        $this->viewData['breadcrumb'][] = [ 'text'=> __('Brand') ];
-        
+        if ($request->datatable) {
+            $data =  Brand::all();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('image', function ($data) {
+                    $imagePath = asset($data->image); 
+                    return '<img src="' . $imagePath . '" alt="Slider Image" width="100" height="100">'; 
+                })
+                ->addColumn('action', function ($data) {
+                    return '<span class="dropdown">
+                            <a href="#" class="btn btn-md btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">
+                              <i class="la la-gear"></i>
+                            </a>
+                            <div class="dropdown-menu '.( (\App::getLocale() == 'ar') ? 'dropdown-menu-left' : 'dropdown-menu-right').'" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="deleteBrand(\'' . route( 'brands.destroy', $data->id ) . '\')"><i class="la la-trash"></i> '.__('Delete').'</a>
+                            </div>
+                        </span>';
+                })
+                ->rawColumns(['image','action'])
+                ->make('true');
+        }
+
+        if($request->withTrashed){
+            $this->viewData['pageTitle'] = __('Deleted Brand');
+        }else{
+            $this->viewData['pageTitle'] = __('Brands');
+        }
+        $this->viewData['breadcrumb'][] = [ 'text'=> __('brand') ];
+    
         return $this->view('brands.index', $this->viewData);
     }
 
@@ -36,7 +62,7 @@ class BrandController extends SystemController
         Brand::create(['image' => $save_url]);
 
         $notification = array(
-            'message' => 'Testimonial Inserted Successfully',
+            'message' => 'Brand Inserted Successfully',
             'alert-type' => 'success',
         );
         return redirect::route('brands.index')->with($notification);
@@ -72,26 +98,26 @@ class BrandController extends SystemController
         unlink($image);
         $testimonial->delete();
 
-        $message = __( 'Team deleted successfully' );
+        $message = __( 'brand is deleted successfully' );
         return $this->response(true, 200, $message );
     }
 
-    public function inActiveTestimonial($id)
+    public function inActiveBrand($id)
     {
         Brand::findOrFail($id)->update(['is_publish' => 'in-active']);
         $notification = array(
-            'message' => 'Testimonial is Inactive',
+            'message' => 'Brand is Inactive',
             'alert-type' => 'success',
         );
 
         return redirect()->back()->with($notification);
     }
 
-    public function ActiveTestimonial($id)
+    public function ActiveBrand($id)
     {
         Brand::findOrFail($id)->update(['is_publish' => 'active']);
         $notification = array(
-            'message' => 'Testimonial is Active',
+            'message' => 'Brand is Active',
             'alert-type' => 'success',
         );
 

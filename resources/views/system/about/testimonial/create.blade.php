@@ -1,25 +1,8 @@
 @extends('system.layout')
 
-@section('title')
-    Add testimonial
-@endsection
-
 @section('content')
-    <div class="page-title">
-        <div class="row">
-            <div class="col-sm-6">
-                <h4 class="mb-0">Create testimonials</h4>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                    <li class="breadcrumb-item"><a href="{{route('system.dashboard')}}" class="default-color">dashboard</a></li>
-                    <li class="breadcrumb-item active">create testimonials section</li>
-                </ol>
-            </div>
-        </div>
-    </div>
 
-       {{-- @include('admin.message') --}}
+       @include('system.message')
 
     <!-- main body -->
     <div class="row">
@@ -31,11 +14,12 @@
 
                         <div class="form-group">
                             <label>Image</label>
-                            <label id="projectinput7" class="file center-block">
-                                <input type="file" id="file" name="image" required>
+                            <label id="projectinput5" class="file center-block">
+                                <input type="file" id="file" name="image" onChange="imageUrl(this)" required>
                                 <span class="file-custom"></span>
                             </label>
                             @error('image') <span class="text-danger">{{$message}}</span> @enderror
+                            <img src="" id="image" >
                         </div>
 
                         <div class="form-body">
@@ -85,5 +69,17 @@
             CKEDITOR.replace('desc');
         });
     </script>
+
+<script type="text/javascript">
+    function imageUrl(input) {
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e){
+                $('#image').attr('src',e.target.result).width(100).height(80);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 @endsection

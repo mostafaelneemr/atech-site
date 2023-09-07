@@ -1,5 +1,9 @@
 @extends('layouts.web.master')
 
+@section('title')
+    Atech
+@endsection
+
 @section('slider')
     <!-- Start Breadcaump Area -->
     @foreach($sliders as $slider)
@@ -27,6 +31,72 @@
 
 @section('content')
 
+    <!-- Start Brand Area -->
+    <div class="bk-brand-area bg_color--1 ptb--80 ptb-md--80 ptb-sm--60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="brand-wrapper">
+                        <div class="brand__list brand-default brand-style--1">
+                            <div class="brook-element-carousel" data-slick-options='{
+                                "spaceBetween": 15, 
+                                "slidesToShow": 5, 
+                                "slidesToScroll": 1, 
+                                "arrows": false, 
+                                "infinite": true
+                            }'
+                                data-slick-responsive='[
+                                {"breakpoint":768, "settings": {"slidesToShow": 3}},
+                                {"breakpoint":577, "settings": {"slidesToShow": 3}},
+                                {"breakpoint":481, "settings": {"slidesToShow": 2}}
+                            ]'>
+    
+                            @foreach($brands as $brand)
+                                <div class=""><a href="#"><img src="{{ $brand->image }}"
+                                    alt="brand image"></a>
+                                </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Brand Area -->
+
+    <!-- Start Video Popup Area -->
+    <div class="brook-video-area bg_color--1 pb--130 pb_md--80 pb_sm--60 mt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="video-with-thumb text-center move-up wow">
+                        <div class="thumb">
+                            <img src="{{ setting('video_image') }}" alt="video images">
+                        </div>
+                        <!-- Start Single Popup -->
+                        <div class="video-btn position--center">
+                            <a class="play__btn" href="{{ setting('video_link') }}">
+                                <div class="video-icon second-icon"></div>
+                            </a>
+                        </div>
+                        <!-- End Single Popup -->
+                    </div>
+                </div>
+                <div class="col-lg-5 mt_sm--30 mt_md--30">
+                    <div class="video-content move-up wow">
+                        <h3 class="heading heading-h3">{{ setting('title_video') }}</h3>
+                        <div class="bkseparator--25"></div>
+                        <p class="bk_pra">{{ setting('desc_video') }}</p>
+                        <div class="bkseparator--40"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Video Popup Area -->
+    
     <!-- Start Portfolio Caption -->
     <div class="bk-portfolio-with-caption-area pt--120 pt_md--80 pt_sm--60 pb--50 pb_md--30 pb_sm--20 bg_color--1 poss_relative bk-masonary-wrapper">
         <div class="container">
@@ -169,6 +239,35 @@
       </div>
     <!-- End Portfolio Caption -->
 
+    <!-- Start Portfolio Area -->
+    <div class="brook-portfolio-area ptb--100 ptb-md--80 ptb-sm--60 bg_color--1 basic-thine-line">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mb--30">
+                    <div class="brook-section-title text-center">
+                        <h3 class="heading heading-h3">Some of our Certificates </h3>
+                    </div>
+                </div>
+    
+                @foreach($certificates as $certificate)
+                <div class="col-lg-4 col-sm-6 col-12 move-up wow">
+                    <div class="portfolio portfolio_style--1 mt--30">
+                        <div class="thumb">
+                            <img src="{{ $certificate->image }}" alt="Portfolio Images">
+                        </div>
+                        {{-- <div class="port-overlay-info">
+                            <div class="hover-action">
+                                <h3 class="post-overlay-title"><a href="portfolio-details.html">B-sharp High-end Audio</a></h3>
+                            </div>
+                        </div> --}}
+                    </div>
+                </div>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+    <!-- End Portfolio Area -->
 
     <!-- Start Testimonial Area -->
     <div class="brook-testimonial-area ptb--120 ptb-md--80 ptb-sm--60 bg_color--5 slick-arrow-hover">
@@ -221,126 +320,94 @@
     </div>
     <!-- End Testimonial Area -->
 
-
-    <!-- Start Portfolio Area -->
-    <div class="brook-portfolio-area ptb--100 ptb-md--80 ptb-sm--60 bg_color--1 basic-thine-line">
+    <!-- Start Blog Grid Area -->
+    <div class="bk-blog-grid-area ptb--130 ptb-md--80 ptb-sm--60 bg_color--5">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 mb--30">
-                    <div class="brook-section-title text-center">
-                        <h3 class="heading heading-h3">Some of our Certificates </h3>
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-xl-6 col-sm-12 col-12">
+                    <div class="brook-section-title">
+                        <h2 class="heading heading-h2">Blogs</h2>
                     </div>
                 </div>
-    
-                @foreach($certificates as $certificate)
-                <div class="col-lg-4 col-sm-6 col-12 move-up wow">
-                    <div class="portfolio portfolio_style--1 mt--30">
-                        <div class="thumb">
-                            <img src="{{ $certificate->image }}" alt="Portfolio Images">
+                <div class="col-lg-7 col-xl-6 col-sm-12 col-12">
+                    <div class="blog-btn text-md-end text-start view-more-btn heding-color font-700 mt_sm--30">
+                        <a href="{{ route('blogs') }}"><span>View all posts</span><span class="btn-arrow"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Start Single Blog -->
+                @foreach($blogs as $blog)
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt--70">
+                    <div class="blog-grid blog-grid--modern blog-standard blog-yellow-color">
+                        <div class="post-thumb">
+                            <a href="{{url('blog/' . $blog->slug)}}">
+                                <img src="{{ $blog->thumbnail }}" alt="Multipurpose template">
+                            </a>
                         </div>
-                        {{-- <div class="port-overlay-info">
-                            <div class="hover-action">
-                                <h3 class="post-overlay-title"><a href="portfolio-details.html">B-sharp High-end Audio</a></h3>
+                        <div class="post-content text-center">
+                            <div class="post-inner">
+                                <div class="post-meta mb--10">
+                                    <div class="post-date">{{ date('d-m-Y', strtotime($blog->created_at)) }}</div>
+                                    <div class="post-category"><a href="#">Life Style</a></div>
+                                </div>
+                                <h5 class="heading heading-h5 line-height-1-39"><a href="{{url('blog/' . $blog->slug)}}">{{ $blog->title }}</a></h5>
+                                <a href="{{url('blog/' . $blog->slug)}}" class="post-read-more"></a>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
                 @endforeach
-
+                <!-- End Single Blog -->
+    
             </div>
         </div>
     </div>
-    <!-- End Portfolio Area -->
+    <!-- End Blog Grid Area -->
 
-
-
-                <!-- Start Blog Grid Area -->
-                <div class="bk-blog-grid-area ptb--130 ptb-md--80 ptb-sm--60 bg_color--5">
+    <section class="height-auto pb_sm--0 mt-4" data-skin="black">
+        <div class="presentation-slider-wrapper">
+            <div class="presentation-inner">
+                <div class="inner brand-inner w-100">
                     <div class="container">
                         <div class="row align-items-center">
-                            <div class="col-lg-5 col-xl-6 col-sm-12 col-12">
-                                <div class="brook-section-title">
-                                    <h2 class="heading heading-h2">Blog Updates</h2>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 col-xl-6 col-sm-12 col-12">
-                                <div class="blog-btn text-md-end text-start view-more-btn heding-color font-700 mt_sm--30">
-                                    <a href="#"><span>View all posts</span><span class="btn-arrow"></span></a>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="bk-title--default text-start brook-section-title-business">
+                                    <h5>Trusted Clients</h5>
+                                    <h3 class="fw-200">We are pleased to have many <br> trusted partners.</h3>
+                                    <div class="separator"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <!-- Start Single Blog -->
-                            @foreach($blogs as $blog)
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt--70">
-                                <div class="blog-grid blog-grid--modern blog-standard blog-yellow-color">
-                                    <div class="post-thumb">
-                                        <a href="{{url('blog/' . $blog->slug)}}">
-                                            <img src="{{ $blog->thumbnail }}" alt="Multipurpose template">
-                                        </a>
-                                    </div>
-                                    <div class="post-content text-center">
-                                        <div class="post-inner">
-                                            <div class="post-meta mb--10">
-                                                <div class="post-date">{{ $blog->created_at }}</div>
-                                                <div class="post-category"><a href="#">Life Style</a></div>
-                                            </div>
-                                            <h5 class="heading heading-h5 line-height-1-39"><a href="{{url('blog/' . $blog->slug)}}">{{ $blog->title }}</a></h5>
-                                            <a href="{{url('blog/' . $blog->slug)}}" class="post-read-more"></a>
-                                        </div>
+                        <div class="row mt--60 mt_md--50 mt_sm--30">
+                            <div class="col-lg-12">
+                                <div class="brand-wrapper">
+                                    <div class="brand__list brand-default brand-style--2 brand-business">
+                                        <div class="brand"><a href="#"><img src="img/business-2/brand/client-logo-01.png"
+                                                    alt="logo image"></a> </div>
+                                        <div class="brand" data-wow-delay=".13s"><a href="#"><img src="img/business-2/brand/client-logo-02.png"
+                                                    alt="logo image"></a> </div>
+                                        <div class="brand" data-wow-delay="0.16s"><a href="#"><img src="img/business-2/brand/client-logo-03.png"
+                                                    alt="logo image"></a> </div>
+                                        <div class="brand" data-wow-delay="0.19s"><a href="#"><img src="img/business-2/brand/client-logo-04.png"
+                                                    alt="logo image"></a> </div>
+                                        <div class="brand" data-wow-delay="0.22s"><a href="#"><img src="img/business-2/brand/client-logo-05.png"
+                                                    alt="logo image"></a> </div>
+                                        <div class="brand" data-wow-delay="0.25s"><a href="#"><img src="img/business-2/brand/client-logo-06.png"
+                                                    alt="logo image"></a> </div>
+                                        <div class="brand" data-wow-delay="0.25s"><a href="#"><img src="img/business-2/brand/client-logo-07.png"
+                                                    alt="logo image"></a> </div>
+                                        <div class="brand" data-wow-delay="0.25s"><a href="#"><img src="img/business-2/brand/client-logo-08.png"
+                                                    alt="logo image"></a> </div>
                                     </div>
                                 </div>
-                            </div>
-                            @endforeach
-                            <!-- End Single Blog -->
-
-
-                          
-
-                          
-    
-    
-                        </div>
-                    </div>
-                </div>
-                <!-- End Blog Grid Area -->
-
-
-
-    <!-- Start Brand Area -->
-    <div class="bk-brand-area bg_color--1 ptb--80 ptb-md--80 ptb-sm--60">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="brand-wrapper">
-                        <div class="brand__list brand-default brand-style--1">
-                            <div class="brook-element-carousel" data-slick-options='{
-                                "spaceBetween": 15, 
-                                "slidesToShow": 5, 
-                                "slidesToScroll": 1, 
-                                "arrows": false, 
-                                "infinite": true
-                            }'
-                                data-slick-responsive='[
-                                {"breakpoint":768, "settings": {"slidesToShow": 3}},
-                                {"breakpoint":577, "settings": {"slidesToShow": 3}},
-                                {"breakpoint":481, "settings": {"slidesToShow": 2}}
-                            ]'>
-    
-                            @foreach($brands as $brand)
-                                <div class=""><a href="#"><img src="{{ $brand->image }}"
-                                    alt="logo image"></a>
-                                </div>
-                                @endforeach
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Brand Area -->
+    </section>
 
     @include('web.call')
 @endsection

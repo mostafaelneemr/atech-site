@@ -8,21 +8,55 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-
+use Yajra\DataTables\DataTables;
 
 class HomeSliderController extends SystemController
 {
     CONST SLIDER_TYPE = 'home';
 
-    public function index()
+    public function index(Request $request)
     {
-        $sliders = Slider::where('slider_type', self::SLIDER_TYPE)->get();
-        return $this->view('home.slider.index', compact('sliders'));
+        if ($request->datatable) {
+            $data =  Slider::where('slider_type', self::SLIDER_TYPE)->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('image', function ($data) {
+                    $imagePath = asset($data->image); 
+                    return '<img src="' . $imagePath . '" alt="Slider Image" width="300" height="100">'; 
+                })
+                ->addColumn('action', function ($data) {
+                    return '<span class="dropdown">
+                            <a href="#" class="btn btn-md btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">
+                              <i class="la la-gear"></i>
+                            </a>
+                            <div class="dropdown-menu '.( (\App::getLocale() == 'ar') ? 'dropdown-menu-left' : 'dropdown-menu-right').'" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
+                                <a class="dropdown-item" href="'.route('home-slider.edit',$data->id).'"><i class="la la-edit"></i> '.__('Edit').'</a>
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="deleteSlider(\'' . route( 'home-slider.destroy', $data->id ) . '\')"><i class="la la-trash"></i> '.__('Delete').'</a>
+                            </div>
+                        </span>';
+                })
+                ->rawColumns(['image','action'])
+                ->make('true');
+        }
+
+        if($request->withTrashed){
+            $this->viewData['pageTitle'] = __('Deleted Slider');
+        }else{
+            $this->viewData['pageTitle'] = __('Sliders');
+        }
+        $this->viewData['breadcrumb'][] = [ 'text'=> __('slider') ];
+        if (Slider::where('slider_type', self::SLIDER_TYPE)->count() < 1) {
+            $this->viewData['add_new'] = [ 'text'=> __('Add Slider'), 'route'=> 'home-slider.create'];
+        }
+        
+        return $this->view('home.slider.index', $this->viewData);
     }
 
     public function create()
     {
-        return $this->view('home.slider.create');
+        $this->viewData['pageTitle'] = __('Create Slider');
+        $this->viewData['breadcrumb'][] = [ 'text'=> __('slider') ];
+        return $this->view('home.slider.create', $this->viewData);
     }
 
     public function store(SliderRequest $request)
@@ -58,8 +92,9 @@ class HomeSliderController extends SystemController
 
     public function edit($id)
     {
-        $sliders = Slider::findOrFail($id);
-        return $this->view('home.slider.edit', compact('sliders'));
+        $this->viewData['sliders'] = Slider::findOrFail($id);
+        $this->viewData['pageTitle'] = __('Edit Slider');
+        return $this->view('home.slider.edit', $this->viewData);
     }
 
     public function update(SliderRequest $request, $id)
@@ -105,25 +140,25 @@ class HomeSliderController extends SystemController
         return $this->response(true, 200, $message );
     }
 
-    public function InactiveSlider($id)
-    {
-        Slider::findOrFail($id)->update(['is_publish' => 'in-active']);
-        $notification = array(
-            'message' => 'Slider is Inactive',
-            'alert-type' => 'info',
-        );
+    // public function InactiveSlider($id)
+    // {
+    //     Slider::findOrFail($id)->update(['is_publish' => 'in-active']);
+    //     $notification = array(
+    //         'message' => 'Slider is Inactive',
+    //         'alert-type' => 'info',
+    //     );
 
-        return redirect()->back()->with($notification);
-    }
+    //     return redirect()->back()->with($notification);
+    // }
 
-    public function ActiveSlider($id)
-    {
-        Slider::findOrFail($id)->update(['is_publish' => 'active']);
-        $notification = array(
-            'message' => 'Slider is Active',
-            'alert-type' => 'success',
-        );
+    // public function ActiveSlider($id)
+    // {
+    //     Slider::findOrFail($id)->update(['is_publish' => 'active']);
+    //     $notification = array(
+    //         'message' => 'Slider is Active',
+    //         'alert-type' => 'success',
+    //     );
 
-        return redirect()->back()->with($notification);
-    }
+    //     return redirect()->back()->with($notification);
+    // }
 }

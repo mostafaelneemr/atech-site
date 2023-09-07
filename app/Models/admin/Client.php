@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class Client extends Model
 {
     use HasFactory;
-
-    protected $table = 'brands';
+    protected $table = "clients";
     protected $guarded = [];
 }

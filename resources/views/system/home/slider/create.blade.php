@@ -1,25 +1,8 @@
 @extends('system.layout')
 
-@section('title')
-    Add slider
-@endsection
-
 @section('content')
-    <div class="page-title">
-        <div class="row">
-            <div class="col-sm-6">
-                <h4 class="mb-0">Create slider</h4>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                    <li class="breadcrumb-item"><a href="{{route('system.dashboard')}}" class="default-color">dashboard</a></li>
-                    <li class="breadcrumb-item active">create slider section</li>
-                </ol>
-            </div>
-        </div>
-    </div>
 
-   {{-- @include('admin.message') --}}
+   @include('system.message')
 
     <!-- main body -->
     <div class="row">
@@ -30,12 +13,13 @@
                         @csrf
 
                         <div class="form-group">
-                            <label> slider image</label>
-                            <label id="projectinput7" class="file center-block">
-                                <input type="file" id="file" name="image" required>
+                            <label>ٍSlider Image</label>
+                            <label id="projectinput5" class="file center-block">
+                                <input type="file" id="file" name="image" onChange="imageUrl(this)" required>
                                 <span class="file-custom"></span>
                             </label>
                             @error('image') <span class="text-danger">{{$message}}</span> @enderror
+                            <img src="" id="image" >
                         </div>
 
                         <div class="form-body">
@@ -73,4 +57,20 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+
+<script type="text/javascript">
+    function imageUrl(input) {
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e){
+                $('#image').attr('src',e.target.result).width(100).height(80);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
 @endsection

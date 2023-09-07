@@ -28,6 +28,7 @@ Route::resource('/testimonials', TestimonialController::class);
 Route::resource('/brands', BrandController::class);
 Route::resource('/certificates', CertificateController::class);
 Route::resource('/blogs', BlogController::class);
+Route::resource('/clients', ClientController::class);
 
 
 

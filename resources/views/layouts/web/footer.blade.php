@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget text-var--2">
                             <div class="logo">
                                 <a href="index.html">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-2 col-md-6 col-sm-6 col-12 mt_mobile--40">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_mobile--40">
                         <div class="footer-widget text-var--2 menu--about">
                             <h2 class="widgettitle">About us</h2>
                             <div class="footer-menu">
@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40">
+                    {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_md--40 mt_sm--40">
                         <div class="footer-widget text-var--2 menu--instagram">
                             <h2 class="widgettitle">Instagram</h2>
 
@@ -161,7 +161,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
@@ -183,7 +183,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="copyright-right text-md-end text-center">
-                            <p>© 2019 Brook. <a href="https://hasthemes.com/">All Rights Reserved.</a></p>
+                            <p>{{ setting('copyright') }}</a></p>
                         </div>
                     </div>
                 </div>

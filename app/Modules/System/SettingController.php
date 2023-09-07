@@ -63,8 +63,20 @@ class SettingController extends SystemController
                         if($request->file('site_logo')){
                             $path = $request->file('site_logo');
                             $name_gen = hexdec(uniqid()) . '.' . $path->getClientOriginalExtension();
-                            Image::make($path)->resize(230, 70)->save('upload/logo/' . $name_gen);
-                            $save_url = 'upload/logo/' . $name_gen;
+                            Image::make($path)->resize(230, 70)->save('upload/setting/' . $name_gen);
+                            $save_url = 'upload/setting/' . $name_gen;
+                            if($path){ Setting::where(['name'=>$value->name])->where('is_visible','yes')->update(['value'=>$save_url]); }
+                        }elseif($request->file('admin_logo')){
+                            $path = $request->file('admin_logo');
+                            $name_gen = hexdec(uniqid()) . '.' . $path->getClientOriginalExtension();
+                            Image::make($path)->resize(230, 70)->save('upload/setting/' . $name_gen);
+                            $save_url = 'upload/setting/' . $name_gen;
+                            if($path){ Setting::where(['name'=>$value->name])->where('is_visible','yes')->update(['value'=>$save_url]); }
+                        }elseif($request->file('video_image')){
+                            $path = $request->file('video_image');
+                            $name_gen = hexdec(uniqid()) . '.' . $path->getClientOriginalExtension();
+                            Image::make($path)->resize(623, 384)->save('upload/setting/' . $name_gen);
+                            $save_url = 'upload/setting/' . $name_gen;
                             if($path){ Setting::where(['name'=>$value->name])->where('is_visible','yes')->update(['value'=>$save_url]); }
                         }
                     }

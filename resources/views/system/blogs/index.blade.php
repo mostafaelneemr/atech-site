@@ -1,11 +1,15 @@
 @extends('system.layout')
 
+@section('style')
+    <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle'.direction().'.css')}}" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
 
     <div class="row">
         <div class="col-md-12 ">
 
-            {{-- @include('admin.message') --}}
+            @include('system.message')
 
             <div class="card">
 
@@ -14,36 +18,15 @@
                         <table id="datatable" class="table table-striped table-bordered p-0 text-center table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
                             <th>Image</th>
-                            <th>Name</th>
                             <th>Title</th>
-                            <th>Description</th>
                             <th>Publish</th>
                             <th>Action</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($blogs as $item)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td><img src="{{asset($item->image)}}" style="width: 80px; height: 80px" alt=""></td>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->title}}</td>
-                                <td>{!! $item->desc !!}</td>
-                                <td class={{$item->is_publish == 'active' ? 'text-success':'text-danger'}}>{{$item->is_publish == 'active' ? 'published' : 'draft'}}</td>
-                                <td width="18%">
-                                    <a href="{{route('testimonials.edit', $item->id)}}" class="btn btn-info btn-sm" title="Edit" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                    <a href="javascript:void(0);" onclick="deleteSlider( '{{route('testimonials.destroy', $item->id )}}')" class="btn btn-danger btn-sm" title="delete" role="button" aria-pressed="true"><i class="fa fa-trash"></i></a>
-                                    {{-- @if($item->is_publish == 'active')
-                                        <a href="{{ route('inactive.testimonial', $item->id) }}" class="btn btn-sm btn-danger" title="InActive Now"><i class="fa fa-arrow-down"></i></a>
-                                    @else
-                                        <a href="{{ route('active.testimonial', $item->id) }}" class="btn btn-sm btn-success" title="Active Now"><i class="fa fa-arrow-up"></i></a>
-                                    @endif --}}
-                                </td>
-                            </tr>
-                        @endforeach
+                        
                         </tbody>
 
                     </table>
@@ -54,14 +37,36 @@
     </div>
 @endsection
 
-@section('js')
-@endsection
+@section('script')
+    <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+    <script src="{{asset('assets/js/pages/crud/datatables/basic/paginations.js')}}"></script>
 
-@push('script')
     <script type="text/javascript">
-        function deleteSlider($routeName,$reload){
+        $(function () {
 
-            if(!confirm("Do you want to delete this Testimonial?")){ return false; }
+            $datatable = $('#datatable').DataTable({
+                processing: true,
+                serverSide: true,
+                order: [
+                    [0, "DESC"],
+                ],
+                "pageLength": 10,
+                ajax: "{{ Route('blogs.index', ['datatable' => true]) }}",
+                columns: [
+                    {data: 'image',},
+                    {data: 'title',},
+                    {data: 'is_publish',},
+                    {data: 'action',},
+                ],
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        function deleteBlog($routeName,$reload){
+
+            if(!confirm("Do you want to delete this Blog?")){ return false; }
 
             if($reload == undefined){ $reload = 3000; }
             addLoading();
@@ -70,15 +75,15 @@
                 $routeName,
                 {
                     '_method':'DELETE',
-                    '_token':$('meta[name="csrf-token"]').attr('content'),
+                    '_token':$('meta[name="csrf-token"]').attr('content')
                 },
                 function(response){
                     removeLoading();
                     if(isJSON(response)){
                         $data = response;
                         if($data.status == true){
-                            location.reload();
                             toastr.success($data.message, 'Success !', {"closeButton": true});
+                            $('#datatable').DataTable().ajax.reload();
                         }else{
                             toastr.error($data.message, 'Error !', {"closeButton": true});
                         }
@@ -87,4 +92,7 @@
             )
         }
     </script>
+@endsection
+
+@push('js')
 @endpush

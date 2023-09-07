@@ -34,7 +34,7 @@
                             <div class="header-left">
                                 <div class="logo">
                                     <a href="{{ route('home') }}">
-                                        <img src="{{setting('site_logo')}}" alt="Brook Images">
+                                        <img src="{{asset(setting('site_logo'))}}" alt="Brook Images">
                                     </a>
                                 </div>
                             </div>

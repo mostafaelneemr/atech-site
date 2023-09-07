@@ -39,7 +39,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{asset('assets/css/themes/layout/brand/light'.direction().'.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/css/themes/layout/aside/light'.direction().'.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{asset('logo/favicon.ico')}}" />
+    {{-- <link rel="shortcut icon" href="{{asset('logo/favicon.ico')}}" /> --}}
     <!-- Hotjar Tracking Code for keenthemes.com -->
     <script>(function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:1070954,hjsv:6}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script>
 </head>
@@ -66,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--begin::Logo-->
                 <p style="text-align: center;">
                 <a href="#" class="login-logo pb-xl-20 pb-15">
-                    <img src="{{asset('logo/logo.png')}}"  alt="" />
+                    {{-- <img src="{{asset('logo/logo.png')}}"  alt="" /> --}}
                 </a>
                 </p>
                 <!--end::Logo-->

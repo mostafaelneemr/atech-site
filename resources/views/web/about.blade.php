@@ -1,78 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.web.master')
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+@section('title')
+    About-US - Atech
+@endsection
 
-  <title>WeBuild - Bootstrap Coming Soon Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+@section('content')
 
-  <!-- Favicons -->
-  <link href="{{asset('build/assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('build/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{{asset('build/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('build/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{{asset('build/assets/css/style.css')}}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: WeBuild
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/free-bootstrap-coming-soon-template-countdwon/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-
-      <div class="logo">
-        <h1 class="text-light"><a href="{{ route('home') }}"><span>ATECH</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+  @foreach($sliders as $slider)
+  <div class="breadcaump-area pt--400 pt_lg--300 pt_md--250 pt_sm--200 pb--100 breadcaump-title-bar breadcaump-title-white" style="background-image: url('{{ asset($slider->image) }}');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="breadcaump-inner text-center">
+                      <h2 class="heading">A B O U T - U S</h2>
+                      <div class="breadcrumb-insite">
+                          {{-- <ul class="core-breadcaump">
+                              <li><a href="index.html">Home</a></li>
+                              <li><a href="elements.html">Elements</a></li>
+                              <li class="current">Grid Classic</li>
+                          </ul> --}}
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
+  </div>
+  @endforeach
 
-      <div class="contact-link float-left">
-        <a href="{{ route('home') }}" class="scrollto">Home</a>
+  <!-- Start Testimonial Area -->
+  <div class="brook-testimonial-area ptb--100 ptb-md--80 ptb-sm--60 bg_color--6">
+    <div class="container">
+      <div class="row">
+        <!-- Start Single Testimonial -->
+          @foreach($testimonials as $testimonial)
+          <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up mt-3">
+            <div class="testimonial testimonial_style--1">
+              <div class="content">
+                      <p class="bk_pra">{!! $testimonial->desc !!}</p>
+                    <div class="testimonial-info">
+                          <div class="post-thumbnail">
+                              <img src="{{ $testimonial->image }}" alt="client image">
+                          </div>
+                          <div class="clint-info">
+                              <h6>{{ $testimonial->name }}</h6>
+                              <span>{{ $testimonial->title }}</span>
+                          </div>
+                      </div>
+                      <div class="testimonial-quote">
+                          <span class="fa fa-quote-right"></span>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          @endforeach
+        <!-- End Single Testimonial -->
       </div>
-      <div class="contact-link float-right">
-        <a href="{{ route('contact') }}" class="scrollto">Contact Us</a>
-      </div>
-
     </div>
-  </header><!-- End #header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="hero-container">
-      <h1>ATECH</h1>
-      <h2>We're working hard to improve our website and we'll ready to launch after</h2>
-      <div class="countdown" data-count="2023/10/3" data-template="%d days %h:%m:%s"></div>
-    </div>
-  </section><!-- End Hero -->
+  </div>
+  <!-- End Testimonial Area -->
 
 
 
+@endsection
 
-  <!-- Vendor JS Files -->
-  <script src="{{asset('build/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('build/assets/vendor/php-email-form/validate.js')}}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{asset('build/assets/js/main.js')}}"></script>
-
-</body>
-
-</html>
+@section('script')
+@endsection

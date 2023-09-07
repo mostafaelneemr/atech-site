@@ -35,7 +35,7 @@
     <link href="{{asset('assets/css/themes/layout/aside/light'.direction().'.css')}}" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{asset('logo/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{ setting('admin_logo') }}" />
     <script type="application/javascript">
         var $global_lang ='{{lang()}}';
     </script>
@@ -43,9 +43,7 @@
 
 @if(lang() == 'en')
 
-
 @else
-
 
     <style>
         @import url(//fonts.googleapis.com/earlyaccess/droidarabickufi.css);
@@ -57,7 +55,7 @@
         }
     </style>
 
-    @endif
+@endif
 
 
 {{--    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />--}}

@@ -14,18 +14,33 @@
                 [
                     'permission'=> 'home-slider.index',
                     'url'=> route('home-slider.index'),
-                    'text'=> __('home-slider')
+                    'text'=> __('Home-slider')
                 ],
                 [
                     'permission'=> 'testimonials.index',
                     'url'=> route('testimonials.index'),
-                    'text'=> __('testimonials')
+                    'text'=> __('Testimonials')
                 ],
                 [
                     'permission'=> 'brands.index',
                     'url'=> route('brands.index'),
-                    'text'=> __('brands')
-                ]
+                    'text'=> __('Brands')
+                ],
+                [
+                    'permission'=> 'certificates.index',
+                    'url'=> route('certificates.index'),
+                    'text'=> __('Certificates')
+                ],
+                [
+                    'permission'=> 'clients.index',
+                    'url'=> route('clients.index'),
+                    'text'=> __('Clients')
+                ],
+                [
+                    'permission'=> 'blogs.index',
+                    'url'=> route('blogs.index'),
+                    'text'=> __('Blogs')
+                ],
             ]
     ];
 
