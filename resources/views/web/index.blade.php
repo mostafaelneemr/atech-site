@@ -6,7 +6,7 @@
 
 @section('slider')
     <!-- Start Breadcaump Area -->
-    {{-- @foreach($sliders as $slider)
+    @foreach($sliders as $slider)
     <div class="brook-breadcaump-area fullscreen breadcaump-title-bar breadcaump-title-white d-flex align-items-center pt_md--70 pt_sm--100 pb_sm--50"
         data-black-overlay="6" style="background-image: url('{{ $slider->image }}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
 
@@ -24,11 +24,11 @@
             </div>
         </div>
     </div>
-    @endforeach --}}
+    @endforeach
     <!-- End Breadcaump Area -->
 
 
-    <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="home-authentic-studio"
+    {{-- <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="home-authentic-studio"
          data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
         <!-- START REVOLUTION SLIDER 5.4.7 fullwidth mode -->
         <div id="rev_slider_8_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.7">
@@ -74,7 +74,7 @@
             </ul>
             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
         </div>
-    </div>
+    </div> --}}
     <!-- END REVOLUTION SLIDER -->
 @endsection
 
