@@ -2,6 +2,7 @@
 
 namespace App\Modules\System;
 
+use App\Http\Requests\ImageFormRequest;
 use App\Models\admin\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -13,8 +14,6 @@ class ClientController extends SystemController
 {
     public function index(Request $request)
     {
-
-
         if ($request->datatable) {
             $data =  Client::all();
             return DataTables::of($data)
@@ -53,29 +52,42 @@ class ClientController extends SystemController
     }
 
 
-    public function store(Request $request)
+    public function store(ImageFormRequest $request)
     {
-       try{
-        $image = $request->file('image');
-        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(81, 80)->save('upload/about/' . $name_gen);
-        $save_url = 'upload/about/' . $name_gen;
-        Client::create(['image' => $save_url]);
+        try{
 
-        $notification = array(
-            'message' => 'Client Inserted Successfully',
-            'alert-type' => 'success',
-        );
-        return redirect::route('clients.index')->with($notification);
-       }catch (\Exception $e) {
-           return redirect::back()->withErrors(['errors' => $e->getMessage()]);
-       }
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(66, 66)->save('upload/about/' . $name_gen);
+            $save_url = 'upload/about/' . $name_gen;
+            $insertData = Client::create(['image' => $save_url]);
+
+            if($insertData){
+                return $this->response(
+                    true,
+                    200,
+                    __('Data added successfully'),
+                    [
+                        'url'=> route('clients.index')
+                    ]
+                );
+            }else{
+                return $this->response(
+                    false,
+                    11001,
+                    __('Sorry, we could not add the data')
+                );
+            }
+            return redirect::back();
+        }catch (\Exception $e) {
+            return redirect::back()->withErrors(['errors' => $e->getMessage()]);
+        }
     }
 
 
     public function show($id)
     {
-        return back();
+        //
     }
 
 

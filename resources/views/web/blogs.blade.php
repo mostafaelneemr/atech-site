@@ -4,10 +4,10 @@
     Blogs - Atech
 @endsection
 
-@section('slider')
+{{-- @section('slider') --}}
 
     <!-- Start Breadcaump Area -->
-    @foreach($sliders as $slider)
+    {{-- @foreach($sliders as $slider)
     <div class="brook-breadcaump-area fullscreen breadcaump-title-bar breadcaump-title-white d-flex align-items-center pt_md--70 pt_sm--100 pb_sm--50"
         data-black-overlay="6" style="background-image: url('{{ $slider->image }}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
 
@@ -25,10 +25,10 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @endforeach --}}
     <!-- End Breadcaump Area -->
 
-@endsection
+{{-- @endsection --}}
 
 @section('content')
 

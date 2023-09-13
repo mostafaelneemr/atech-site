@@ -1,38 +1,13 @@
 @extends('layouts.web.master')
 
 @section('title')
-    Blog - Atech
+    project - Atech
 @endsection
 
 @section('content')
 
     <!-- Start Blog Details -->
-
-    {{-- @foreach($sliders as $slider)
-    <div class="breadcaump-area pt--400 pt_lg--300 pt_md--250 pt_sm--200 pb--100 breadcaump-title-bar breadcaump-title-white" style="background-image: url('{{ asset($slider->image) }}');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcaump-inner text-center">
-                        <h2 class="heading">B l o g s</h2>
-                        <div class="breadcrumb-insite">
-                            <ul class="core-breadcaump">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="elements.html">Elements</a></li>
-                                <li class="current">Grid Classic</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach --}}
-
-    @foreach($blogs as $blog) 
+    @foreach($projects as $project) 
     <div class="brook-blog-details-area bg_color--5 pt--110 pb--150">
         <div class="container">
             <div class="row">
@@ -42,9 +17,9 @@
                         <article class="blog-post standard-post">
                             <!-- Start Header -->
                             <div class="header mb--40 text-center">
-                                <h3 class="heading heading-h3 font-32">{{ $blog->title }}</h3>
+                                <h3 class="heading heading-h3 font-32">{{ $project->title }}</h3>
                                 <div class="post-meta mt--20">
-                                    <div class="post-date">{{ date('d-m-Y', strtotime($blog->created_at)) }}</div>
+                                    <div class="post-date">{{ date('d-m-Y', strtotime($project->created_at)) }}</div>
                                     <div class="post-category"><a href="#">Life Style</a></div>
                                 </div>
                             </div>
@@ -68,10 +43,10 @@
                                     </div>
                                 </div> --}}
                                 <div class="thumbnail">
-                                    <img class="w-100" src="{{ asset($blog->image) }}" alt="Multipurpose">
+                                    <img class="w-100" src="{{ asset($project->image_desc) }}" alt="Multipurpose">
                                 </div>
                                 <div class="desc mt--45">
-                                    <p class="bk_pra wow move-up">{!! $blog->desc !!}</p>
+                                    <p class="bk_pra wow move-up">{!! $project->desc !!}</p>
                                 </div>
                             </div>
                     </div>

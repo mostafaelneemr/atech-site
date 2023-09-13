@@ -116,7 +116,54 @@ class BlogController extends SystemController
 
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $old_thumbnail = $request->old_thumbnail;
+            $old_image = $request->old_image;
+
+            if ($request->file('thumbnail')) {
+                unlink($old_thumbnail);
+                $image = $request->file('image');
+                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+                Image::make($image)->resize(350, 230)->save('upload/about/' . $name_gen);
+                $thumbnail = 'upload/about/' . $name_gen;
+                Blog::where('id', $id)->update(['thumbnail' => $thumbnail]);
+            }
+    
+            if ($request->file('image')) {
+                unlink($old_image);
+                $image = $request->file('image_desc');
+                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+                Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
+                $path_url = 'upload/about/' . $name_gen;
+                Blog::where('id', $id)->update(['image' => $path_url]);
+            }
+    
+            $insertData = Blog::where('id', $id)->update([
+                'title' => $request->title,
+                'name' => $request->name,
+                'desc' => $request->desc,
+            ]);
+    
+            if($insertData){
+                return $this->response(
+                    true,
+                    200,
+                    __('Data added successfully'),
+                    [
+                        'url'=> route('blogs.index',$insertData->id)
+                    ]
+                );
+            }else{
+                return $this->response(
+                    false,
+                    11001,
+                    __('Sorry, we could not add the data')
+                );
+            }
+            // return redirect::route('blogs.index')->with($notification);
+        }catch (\Exception $e) {
+            return redirect::back()->withErrors(['errors' => $e->getMessage()]);
+        }
     }
 
 

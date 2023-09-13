@@ -8,6 +8,9 @@ use App\Models\admin\Testimonial;
 use App\Models\admin\Blog;
 use App\Models\admin\Brand;
 use App\Models\admin\Certificate;
+use App\Models\admin\Client;
+use App\Models\admin\PortfolioItem;
+use App\Models\admin\Project;
 
 class WebController extends Controller{
 
@@ -33,6 +36,11 @@ class WebController extends Controller{
         $this->viewData['brands'] = Brand::get(); 
         $this->viewData['certificates'] = Certificate::get(); 
         $this->viewData['blogs'] = Blog::get(); 
+        $this->viewData['clients'] = Client::get(); 
+
+        $this->viewData['categories'] = Project::distinct('category')->pluck('category');
+        $this->viewData['items'] = Project::all();
+        
         return $this->view('index', $this->viewData);
     }
 
@@ -66,6 +74,12 @@ class WebController extends Controller{
     public function contact(){
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         return $this->view('contact', $this->viewData);
+    }
+
+    public function ProjectSlug($slug)
+    {
+        $this->viewData['projects'] = Project::where('slug', $slug)->get();
+        return $this->view('project_slug', $this->viewData);
     }
 
 }

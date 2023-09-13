@@ -41,6 +41,11 @@
                     'url'=> route('blogs.index'),
                     'text'=> __('Blogs')
                 ],
+                [
+                    'permission'=> 'projects.index',
+                    'url'=> route('projects.index'),
+                    'text'=> __('Projects')
+                ],
             ]
     ];
 

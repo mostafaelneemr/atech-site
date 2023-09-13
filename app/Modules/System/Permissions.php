@@ -42,6 +42,10 @@ return [
             'create-clients' =>['clients.create', 'clients.store'],
             'Update-and-Delete-clients' =>['clients.edit','clients.update', 'clients.destroy'],
 
+            'view-all-projects' =>['projects.index'],
+            'create-projects' =>['projects.create', 'projects.store'],
+            'Update-and-Delete-projects' =>['projects.edit','projects.update', 'projects.destroy'],
+
         ]
     ],
 

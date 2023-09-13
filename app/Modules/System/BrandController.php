@@ -2,6 +2,7 @@
 
 namespace App\Modules\System;
 
+use App\Http\Requests\ImageFormRequest;
 use App\Models\admin\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -52,7 +53,7 @@ class BrandController extends SystemController
     }
 
 
-    public function store(Request $request)
+    public function store(ImageFormRequest $request)
     {
        try{
         $image = $request->file('image');

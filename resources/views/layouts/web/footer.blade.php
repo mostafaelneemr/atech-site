@@ -9,7 +9,7 @@
                         <div class="footer-widget text-var--2">
                             <div class="logo">
                                 <a href="index.html">
-                                    <img src="{{ setting('site_logo') }}" alt="brook white">
+                                    <img src="{{ asset(setting('site_logo')) }}" alt="brook white">
                                 </a>
                             </div>
                             <div class="footer-inner">

@@ -4,12 +4,9 @@
     Contact - Atech
 @endsection
 
-
-
 @section('content')
 
-
-    @foreach($sliders as $slider)
+    {{-- @foreach($sliders as $slider)
     <div class="breadcaump-area pt--400 pt_lg--300 pt_md--250 pt_sm--200 pb--100 breadcaump-title-bar breadcaump-title-white" style="background-image: url('{{ asset($slider->image) }}');
         background-repeat: no-repeat;
         background-size: cover;
@@ -20,25 +17,25 @@
                     <div class="breadcaump-inner text-center">
                         <h2 class="heading">C O N T A C T - U S</h2>
                         <div class="breadcrumb-insite">
-                            {{-- <ul class="core-breadcaump">
+                            <ul class="core-breadcaump">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="elements.html">Elements</a></li>
                                 <li class="current">Grid Classic</li>
-                            </ul> --}}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @endforeach
+    @endforeach --}}
 
     <!-- Start Contact Area -->
-    <div class="contact-us-area">
+    <div class="contact-us-area ">
         <div class="contauner-fluid">
             <div class="row">
 
-                <div class="col-lg-6 col-md-6 col-12 bg_color--1 pl--270 pt--160 pb--160 pl_lg--50 pl_md--50 pt_md--80 pb_md--80 pl_sm--50 pr_sm--50 pt_sm--80 pb_sm--80">
+                <div class="col-lg-6 col-md-6 col-12 bg_color--5 pl--270 pt--160 pb--160 pl_lg--50 pl_md--50 pt_md--80 pb_md--80 pl_sm--50 pr_sm--50 pt_sm--80 pb_sm--80">
                     <div class="contact-address-wrapper">
                         <div class="classic-address text-start">
                             <h4 class="heading heading-h4">Visit our studio at</h4>
