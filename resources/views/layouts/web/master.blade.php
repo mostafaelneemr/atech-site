@@ -46,7 +46,8 @@
                                         <li class="lavel-1"><a href="{{ route('home') }}"><span>Home</span></a></li>
                                         <li class="lavel-1"><a href="{{ route('about') }}"><span>About</span></a></li>
                                         <li class="lavel-1"><a href="{{ route('service') }}"><span>Services</span></a></li>
-                                        <li class="lavel-1"><a href="{{ route('portfolio') }}"><span>Portfolio</span></a></li>
+                                        <li class="lavel-1"><a href="{{ route('blogs') }}"><span>Blogs</span></a></li>
+                                        <li class="lavel-1"><a href="{{ route('projects') }}"><span>Projects</span></a></li>
                                         {{-- <li class="lavel-1 with--drop slide-dropdown"><a href="#"><span>Pages</span></a> --}}
                                             <!-- Start Dropdown Menu -->
                                             {{-- <ul class="dropdown__menu">
@@ -118,6 +119,7 @@
                         <li><a href="{{ route('home') }}"><span>Home</span></a></li>
                         <li><a href="{{ route('about') }}"><span>About</span></a></li>
                         <li><a href="{{ route('service') }}"><span>Services</span></a></li>
+                        <li><a href="{{ route('blogs') }}"><span>Blogs</span></a></li>
                         <li><a href="{{ route('portfolio') }}"><span>Portfolio</span></a></li>
 
                         {{-- <li class="has-mega-menu"><a href="#"><span>Pages</span></a>

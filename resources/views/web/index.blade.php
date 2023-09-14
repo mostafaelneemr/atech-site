@@ -146,8 +146,43 @@
         </div>
     </div>
     <!-- End Video Popup Area -->
+
+
+    <!-- Start Icon Boxes -->
+    <div class="brook-icon-boxes-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="brook-section-title text-center">
+                        <h3 class="heading heading-h3">Our Activities</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt--30">
+                @foreach($activities as $active)
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="icon-box text-center mt--30">
+                        <div class="inner">
+                            <div class="icon" style="color: #222933">
+                                <i class="{{ $active->icon }}"></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="heading heading-h5">{{ $active->title }}</h5>
+                                <p class="bk_pra">{!! $active->desc !!}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Icon Boxes -->
+                @endforeach
+  
+            </div>
+        </div>
+    </div>
+    <!-- End Icon Boxes -->
     
-    <!-- Start Portfolio Caption  our works-->
+    <!-- Start projects Caption  our works-->
     <div class="bk-portfolio-with-caption-area pt--50 pt_md--80 pt_sm--60 pb--25 pb_md--30 pb_sm--20 bg_color--1 poss_relative bk-masonary-wrapper" style="background-image: url('{{asset('sbg.jpg')}}')">
         <div class="container">
             <div class="row">
@@ -206,9 +241,9 @@
             </div>
          </div>
       </div>
-    <!-- End Portfolio Caption -->
+    <!-- End projects Caption -->
 
-    <!-- Start Portfolio Area -->
+    <!-- Start Certificates Area -->
     <div class="brook-portfolio-area ptb--40 ptb-md--80 ptb-sm--60 bg_color--1 basic-thine-line">
         <div class="container">
             <div class="row">
@@ -219,7 +254,7 @@
                 </div>
     
                 @foreach($certificates as $certificate)
-                <div class="col-lg-4 col-sm-6 col-12 move-up wow" style="border:2px solid #222933">
+                <div class="col-lg-4 col-sm-6 col-12 move-up wow" >
                     <div class="portfolio portfolio_style--1 mt--30">
                         <div class="thumb">
                             <img src="{{ $certificate->image }}" alt="Portfolio Images">
@@ -236,88 +271,71 @@
             </div>
         </div>
     </div>
-    <!-- End Portfolio Area -->
+    <!-- End Certificates Area -->
 
     <!-- Start Testimonial Area -->
-    <div class="brook-testimonial-area poss_relative wavify-activation ptb--100 ptb-md--80 ptb-sm--60" >
+    <div class="brook-testimonial-area ptb--100 ptb-md--80 ptb-sm--60" style="background-image: url('{{asset('test.jpg')}}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
 
-        <div class="wavify-wrapper">
-            <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
-                data-wavify-height="140" data-wavify-background="rgba(255,226,217,0.5)" data-wavify-amplitude="80"
-                data-wavify-bones="4">
-                <path d="M 0 141.71042689406383 C 237.875 148.50471572578806 237.875 148.50471572578806 475.75 145.107571309926 C 713.625 141.71042689406383 713.625 141.71042689406383 951.5 165.82491752026056 C 1189.375 189.9394081464571 1189.375 189.9394081464571 1427.25 193.5786122514483 C 1665.125 197.21781635643944 1665.125 197.21781635643944 1903 165.82491752026056 L 1903 7389 L 0 7389 Z"
-                    fill="rgba(255,226,217,0.5)"></path>
-            </svg>
-
-            <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
-                data-wavify-height="140" data-wavify-background="#FFF3F2" data-wavify-amplitude="80"
-                data-wavify-bones="3">
-                <path d="M 0 147.22020568980648 C 317.16666666666663 183.65559797623268 317.16666666666663 183.65559797623268 634.3333333333333 165.43790183301957 C 951.4999999999999 147.22020568980648 951.4999999999999 147.22020568980648 1268.6666666666665 200.09089320557024 C 1585.833333333333 252.96158072133412 1585.833333333333 252.96158072133412 1903 183.26276877337258 L 1903 7389 L 0 7389 Z"
-                    fill="#f5f5f5"></path>
-            </svg>
-        </div>
-
-        <div class="container section-pt-xl">
+        <div class="container ">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title text-center wow move-up">
-                        <h2 class="heading heading-h2 line-height-1-25">Client's feedback</h2>
+                        <h2 class="heading heading-h2 line-height-1-25 text-white">{{ setting('title_testimonial') }}</h2>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="testimonial-wrapper mt--50 wow move-up">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 pb--30">
+                        <div class="brook-element-carousel slick-arrow-center slick-dots-bottom" 
+                            data-slick-options='{ "spaceBetween": 15,  "slidesToShow": 3, 
+                                "slidesToScroll": 1,  "arrows": true,  "infinite": true, "dots": true,
+                                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
+                                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
+                            }'
+                            data-slick-responsive='[
+                                {"breakpoint":770, "settings": {"slidesToShow": 2}},
+                                {"breakpoint":577, "settings": {"slidesToShow": 1}},
+                                {"breakpoint":481, "settings": {"slidesToShow": 1}}
+                            ]'>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 pb--30">
-                    <div class="brook-element-carousel slick-arrow-center slick-dots-bottom" 
-                        data-slick-options='{ "spaceBetween": 15,  "slidesToShow": 3, 
-                            "slidesToScroll": 1,  "arrows": true,  "infinite": true, "dots": true,
-                            "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
-                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
-                        }'
-                        data-slick-responsive='[
-                            {"breakpoint":770, "settings": {"slidesToShow": 2}},
-                            {"breakpoint":577, "settings": {"slidesToShow": 1}},
-                            {"breakpoint":481, "settings": {"slidesToShow": 1}}
-                        ]'>
+                            <!-- Start Single Testimonial -->
 
-                        <!-- Start Single Testimonial -->
-                        
-                        @foreach($testimonials as $testimonial)
-                        <div class="testimonial testimonial_style--1 mh-100 d-inline-block" style="height:350px">
-                            <div class="content">
-                                <p class="bk_pra">{!! $testimonial->desc !!}</p>
-                                <div class="testimonial-info">
-                                    <div class="post-thumbnail">
-                                        <img src="{{ $testimonial->image }}" alt="clint image">
+                            @foreach($testimonials as $testimonial)
+                            <div class="testimonial testimonial_style--1 mh-100 d-inline-block" style="height:350px">
+                                <div class="content">
+                                    <p class="bk_pra">{!! $testimonial->desc !!}</p>
+                                    <div class="testimonial-info">
+                                        <div class="post-thumbnail">
+                                            <img src="{{ $testimonial->image }}" alt="clint image">
+                                        </div>
+                                        <div class="clint-info">
+                                            <h6>{{ $testimonial->name }}</h6>
+                                            <span>{{ $testimonial->title }}</span>
+                                        </div>
                                     </div>
-                                    <div class="clint-info">
-                                        <h6>{{ $testimonial->name }}</h6>
-                                        <span>{{ $testimonial->title }}</span>
+                                    <div class="testimonial-quote">
+                                        <span class="fa fa-quote-right"></span>
                                     </div>
-                                </div>
-                                <div class="testimonial-quote">
-                                    <span class="fa fa-quote-right"></span>
                                 </div>
                             </div>
+                            @endforeach
+                            <!-- End Single Testimonial -->
+
                         </div>
-                        @endforeach
-                        <!-- End Single Testimonial -->
-
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
         </div>
     </div>
     <!-- End Testimonial Area -->
 
     <!-- Start Blog Grid Area -->
-    <div class="bk-blog-grid-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--5">
+    <div class="bk-blog-grid-area ptb--80 ptb-md--80 ptb-sm--60" style="background-color: #F0F4F9">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 col-xl-6 col-sm-12 col-12">
@@ -407,37 +425,56 @@
 
 
     <!-- Start Counterup Area -->
-    <div class="brook-counterup-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--1">
+    <div class="brook-counterup-area poss_relative wavify-activation ptb--80 ptb-md--80 ptb-sm--60 bg_color--1">
+        
+        <div class="wavify-wrapper">
+            <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
+                data-wavify-height="140" data-wavify-background="rgb(196,220,250)" data-wavify-amplitude="80"
+                data-wavify-bones="4">
+                <path d="M 0 141.71042689406383 C 237.875 148.50471572578806 237.875 148.50471572578806 475.75 145.107571309926 C 713.625 141.71042689406383 713.625 141.71042689406383 951.5 165.82491752026056 C 1189.375 189.9394081464571 1189.375 189.9394081464571 1427.25 193.5786122514483 C 1665.125 197.21781635643944 1665.125 197.21781635643944 1903 165.82491752026056 L 1903 7389 L 0 7389 Z"
+                    fill="rgba(255,226,217,0.5)"></path>
+            </svg>
+
+            <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
+                data-wavify-height="140" data-wavify-background="#C4DCFA" data-wavify-amplitude="80"
+                data-wavify-bones="3">
+                <path d="M 0 147.22020568980648 C 317.16666666666663 183.65559797623268 317.16666666666663 183.65559797623268 634.3333333333333 165.43790183301957 C 951.4999999999999 147.22020568980648 951.4999999999999 147.22020568980648 1268.6666666666665 200.09089320557024 C 1585.833333333333 252.96158072133412 1585.833333333333 252.96158072133412 1903 183.26276877337258 L 1903 7389 L 0 7389 Z"
+                    fill="#f5f5f5"></path>
+            </svg>
+        </div>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12 col-md-12">
                     <div class="bk-title--default text-start brook-section-title-business">
-                        <h5>Trusted Clients</h5>
-                        <h3 class="fw-200">We are pleased to have many <br> trusted partners.</h3>
+                        <h5>{{ setting('title_brand') }}</h5>
+                        <h3 class="fw-200">{{ setting('header_brand') }}</h3>
                         <div class="separator"></div>
                     </div>
                 </div>
             </div>
-            <div class="row">
 
+            <div class="row">
                 <!-- Start Single Counter -->
                 @foreach($clients as $client)
-                <div class="col-lg-1 col-md-4 col-sm-6 col-6">
+                <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="brook-counter text-center">
                         <div class="icon">
-                            <img src="{{asset($client->image)}}" alt="">
+                            <img src="{{asset($client->image)}}" alt="Clients Image">
                         </div>
                     </div>
                 </div>
                 @endforeach
                 <!-- End Single Counter -->
             </div>
+            
         </div>
     </div>
     <!-- End Counterup Area -->
 
     @include('web.call')
 @endsection
+
+
 
 @section('script')
 

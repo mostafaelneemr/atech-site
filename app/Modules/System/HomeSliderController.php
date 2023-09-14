@@ -61,28 +61,25 @@ class HomeSliderController extends SystemController
 
     public function store(SliderRequest $request)
     {
-       try{
-            $image = $request->file('image');
-            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(1920, 1000)->save('upload/home/' . $name_gen);
-            $save_url = 'upload/home/' . $name_gen;
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(1920, 1000)->save('upload/home/' . $name_gen);
+        $save_url = 'upload/home/' . $name_gen;
 
-            Slider::create([
-                'title' => $request->title,
-                'sub_title' => $request->sub_title,
-                'desc' => $request->desc,
-                'slider_type' => static::SLIDER_TYPE,
-                'image' => $save_url,
-            ]);
+        Slider::create([
+            'title' => $request->title,
+            'sub_title' => $request->sub_title,
+            'desc' => $request->desc,
+            'slider_type' => static::SLIDER_TYPE,
+            'image' => $save_url,
+        ]);
 
-            $notification = array(
-                'message' => 'slider Inserted Successfully',
-                'alert-type' => 'success',
-            );
-            return redirect::route('home-slider.index')->with($notification);
-       }catch (\Exception $e) {
-           return redirect::back()->withErrors(['errors' => $e->getMessage()]);
-       }
+        $notification = array(
+            'message' => 'slider Inserted Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect::route('home-slider.index')->with($notification);
+
     }
 
     public function show($id)
@@ -99,33 +96,30 @@ class HomeSliderController extends SystemController
 
     public function update(SliderRequest $request, $id)
     {
-        try {
-            $id = $request->id;
-            $old_image = $request->old_image;
+        $id = $request->id;
+        $old_image = $request->old_image;
 
-            if($request->file('image')){
-                @unlink($old_image);
-                $image = $request->file('image');
-                $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                Image::make($image)->resize(1920,1000)->save('upload/home/'.$name_gen);
-                $save_url = 'upload/home/'.$name_gen;
-                Slider::findOrFail($id)->update(['image' => $save_url]);
-            }
-
-            Slider::findOrFail($id)->update([
-                'title' => $request->title,
-                'sub_title' => $request->sub_title,
-                'desc' => $request->desc,
-            ]);
-
-            $notification = array(
-                'message' => 'slider updated Successfully',
-                'alert-type' => 'info',
-            );
-            return redirect::route('home-slider.index')->with($notification);
-        } catch (\Exception $e) {
-            return redirect::back()->withErrors(['errors' => $e->getMessage()]);
+        if($request->file('image')){
+            @unlink($old_image);
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(1920,1000)->save('upload/home/'.$name_gen);
+            $save_url = 'upload/home/'.$name_gen;
+            Slider::findOrFail($id)->update(['image' => $save_url]);
         }
+
+        Slider::findOrFail($id)->update([
+            'title' => $request->title,
+            'sub_title' => $request->sub_title,
+            'desc' => $request->desc,
+        ]);
+
+        $notification = array(
+            'message' => 'slider updated Successfully',
+            'alert-type' => 'info',
+        );
+        return redirect::route('home-slider.index')->with($notification);
+
     }
 
     public function destroy($id)

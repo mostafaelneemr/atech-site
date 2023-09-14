@@ -46,6 +46,10 @@ return [
             'create-projects' =>['projects.create', 'projects.store'],
             'Update-and-Delete-projects' =>['projects.edit','projects.update', 'projects.destroy'],
 
+            'view-all-our-activities' =>['our-activities.index'],
+            'create-our-activities' =>['our-activities.create', 'our-activities.store'],
+            'Update-and-Delete-our-activities' =>['our-activities.edit','our-activities.update', 'our-activities.destroy'],
+
         ]
     ],
 

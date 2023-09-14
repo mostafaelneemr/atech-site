@@ -2,6 +2,7 @@
 
 namespace App\Modules\System;
 
+use App\Http\Requests\ImageFormRequest;
 use App\Models\admin\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -51,9 +52,8 @@ class CertificateController extends SystemController
     }
 
 
-    public function store(Request $request)
+    public function store(ImageFormRequest $request)
     {
-       try{
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
@@ -65,9 +65,6 @@ class CertificateController extends SystemController
             'alert-type' => 'success',
         );
         return redirect::route('certificates.index')->with($notification);
-       }catch (\Exception $e) {
-           return redirect::back()->withErrors(['errors' => $e->getMessage()]);
-       }
     }
 
 

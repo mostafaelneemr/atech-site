@@ -30,6 +30,7 @@ Route::resource('/certificates', CertificateController::class);
 Route::resource('/blogs', BlogController::class);
 Route::resource('/clients', ClientController::class);
 Route::resource('/projects', ProjectsController::class);
+Route::resource('/our-activities', OurActivitieController::class);
 
 
 

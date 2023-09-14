@@ -28,8 +28,12 @@
                                 <div class="form-group col-md-4">
                                     <label>Category </label>
                                     <select name="category" class="form-control" autocomplete="off">
-                                        <option value="BMS">{{ __('BMS') }}</option>
-                                        <option value="KNX">{{ __('KNX') }}</option>
+                                        <option value="pharma">{{ __('Pharma') }}</option>
+                                        <option value="health">{{ __('HealthCare') }}</option>
+                                        <option value="hotel">{{ __('Hotels') }}</option>
+                                        <option value="admin">{{ __('Admin') }}</option>
+                                        <option value="oil">{{ __('Oil & Gas') }}</option>
+                                        <option value="other">{{ __('Others') }}</option>
                                     </select>
                                     @error('category') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>

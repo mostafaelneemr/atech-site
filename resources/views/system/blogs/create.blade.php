@@ -60,8 +60,6 @@
                                     @error('desc') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
                             </div>
-                            
-
                         </div>
 
                         <div class="form-actions">
@@ -98,16 +96,16 @@
         }
     </script>
 
-<script type="text/javascript">
-    function imageUrl(input) {
-        if(input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e){
-                $('#image').attr('src',e.target.result).width(100).height(80);
-            };
-            reader.readAsDataURL(input.files[0]);
+    <script type="text/javascript">
+        function imageUrl(input) {
+            if(input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e){
+                    $('#image').attr('src',e.target.result).width(100).height(80);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
         }
-    }
-</script>
+    </script>
 
 @endsection

@@ -20,14 +20,14 @@
 
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt_mobile--40">
                         <div class="footer-widget text-var--2 menu--about">
-                            <h2 class="widgettitle">About us</h2>
+                            <h2 class="widgettitle">Home</h2>
                             <div class="footer-menu">
                                 <ul class="ft-menu-list bk-hover">
-                                    <li><a href="about-us-01.html">About Us</a></li>
-                                    <li><a href="team.html">Team</a></li>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="services-classic.html">Services</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ route('about') }}">About Us</a></li>
+                                    <li><a href="{{ route('service') }}">Services</a></li>
+                                    <li><a href="{{ route('blogs') }}">Blogs</a></li>
+                                    <li><a href="{{ route('projects') }}">Projects</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -173,13 +173,13 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="copyright-left text-md-start text-center">
+                        {{-- <div class="copyright-left text-md-start text-center">
                             <ul class="bk-copyright-menu d-flex bk-hover justify-content-center justify-content-md-start flex-wrap flex-sm-nowrap">
                                 <li><a href="#">Our blog</a></li>
                                 <li><a href="#">Latest projects</a></li>
                                 <li><a href="#">Contact us</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="copyright-right text-md-end text-center">

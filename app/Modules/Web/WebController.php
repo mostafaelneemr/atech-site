@@ -11,6 +11,7 @@ use App\Models\admin\Certificate;
 use App\Models\admin\Client;
 use App\Models\admin\PortfolioItem;
 use App\Models\admin\Project;
+use App\Models\OurActive;
 
 class WebController extends Controller{
 
@@ -29,7 +30,6 @@ class WebController extends Controller{
         ];
     }
 
-    
     public function index(){
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         $this->viewData['testimonials'] = Testimonial::get(); 
@@ -37,25 +37,12 @@ class WebController extends Controller{
         $this->viewData['certificates'] = Certificate::get(); 
         $this->viewData['blogs'] = Blog::get(); 
         $this->viewData['clients'] = Client::get(); 
+        $this->viewData['activities'] = OurActive::get(); 
 
         $this->viewData['categories'] = Project::distinct('category')->pluck('category');
         $this->viewData['items'] = Project::all();
         
         return $this->view('index', $this->viewData);
-    }
-
-    public function blog($slug)
-    {
-        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
-        $this->viewData['blogs'] = Blog::where('slug', $slug)->get();
-        return $this->view('slug', $this->viewData);
-    }
-
-    public function Blogs()
-    {
-        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
-        $this->viewData['blogs'] = Blog::all();
-        return $this->view('blogs', $this->viewData);
     }
 
     public function about()
@@ -71,15 +58,36 @@ class WebController extends Controller{
         return $this->view('service');
     }
 
-    public function contact(){
+    public function blogs()
+    {
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
-        return $this->view('contact', $this->viewData);
+        $this->viewData['blogs'] = Blog::all();
+        return $this->view('blogs', $this->viewData);
+    }
+
+    public function blogSlug($slug)
+    {
+        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
+        $this->viewData['blogs'] = Blog::where('slug', $slug)->get();
+        return $this->view('blog_slug', $this->viewData);
+    }
+
+    public function project()
+    {
+        $this->viewData['categories'] = Project::distinct('category')->pluck('category');
+        $this->viewData['items'] = Project::all();
+        return $this->view('projects', $this->viewData);
     }
 
     public function ProjectSlug($slug)
     {
         $this->viewData['projects'] = Project::where('slug', $slug)->get();
         return $this->view('project_slug', $this->viewData);
+    }
+
+    public function contact(){
+        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
+        return $this->view('contact', $this->viewData);
     }
 
 }

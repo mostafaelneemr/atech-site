@@ -55,7 +55,6 @@ class BrandController extends SystemController
 
     public function store(ImageFormRequest $request)
     {
-       try{
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(81, 80)->save('upload/about/' . $name_gen);
@@ -67,9 +66,7 @@ class BrandController extends SystemController
             'alert-type' => 'success',
         );
         return redirect::route('brands.index')->with($notification);
-       }catch (\Exception $e) {
-           return redirect::back()->withErrors(['errors' => $e->getMessage()]);
-       }
+
     }
 
 

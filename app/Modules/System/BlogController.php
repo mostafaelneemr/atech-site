@@ -14,14 +14,6 @@ class BlogController extends SystemController
 {
     public function index(Request $request)
     {
-        // $this->viewData['blogs'] = Blog::all();
-        // $this->viewData['pageTitle'] = __('Blogs');
-        // $this->viewData['breadcrumb'][] = [ 'text'=> __('Blog') ];
-        
-        // $this->viewData['add_new'] = [  'text'=> __('Add Blog'), 'route'=>'blogs.create' ];
-
-        // return $this->view('blogs.index', $this->viewData);
-
         if ($request->datatable) {
             $data =  Blog::all();
             return DataTables::of($data)
@@ -64,10 +56,22 @@ class BlogController extends SystemController
         return $this->view('blogs.create',$this->viewData);
     }
 
-
     public function store(Request $request)
     {
-    //    try{
+        $this->validate($request, [
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,',
+            'image' => 'required|image|mimes:jpeg,png,jpg,',
+            'title' => 'required|string',
+            'name' => 'required|string',
+            'desc' => 'nullable|string',
+        ],
+        [
+            'thumbnail.mimes' => 'thumbnail should be extension one of jpg , png or jpeg',
+            'thumbnail.image' => 'thumbnail should be extension one of jpg , png or jpeg',
+            'image.mimes' => 'image should be extension one of jpg , png or jpeg',
+            'image.image' => 'image should be extension one of jpg , png or jpeg',
+        ]);
+
         $image = $request->file('thumbnail');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(350, 230)->save('upload/about/' . $name_gen);
@@ -87,22 +91,13 @@ class BlogController extends SystemController
             'desc' => $request->desc
         ]);
 
-        $notification = array(
-            'message' => 'Testimonial Inserted Successfully',
-            'alert-type' => 'success',
-        );
-        return redirect::route('blogs.index')->with($notification);
-    //    }catch (\Exception $e) {
-    //        return redirect::back()->withErrors(['errors' => $e->getMessage()]);
-    //    }
+        return redirect::route('blogs.index');
     }
-
 
     public function show($id)
     {
         return back();
     }
-
 
     public function edit($id)
     {
@@ -113,57 +108,67 @@ class BlogController extends SystemController
         return $this->view('blogs.edit',$this->viewData);
     }
 
-
     public function update(Request $request, $id)
     {
-        try{
-            $old_thumbnail = $request->old_thumbnail;
-            $old_image = $request->old_image;
+        $this->validate($request, [
+            'thumbnail' => 'image|mimes:jpeg,png,jpg,',
+            'image' => 'image|mimes:jpeg,png,jpg,',
+            'title' => 'required|string',
+            'name' => 'required|string',
+            'desc' => 'nullable|string',
+        ],
+        [
+            'thumbnail.mimes' => 'thumbnail should be extension one of jpg , png or jpeg',
+            'thumbnail.image' => 'thumbnail should be extension one of jpg , png or jpeg',
+            'image.mimes' => 'image should be extension one of jpg , png or jpeg',
+            'image.image' => 'image should be extension one of jpg , png or jpeg',
+            
+        ]);
 
-            if ($request->file('thumbnail')) {
-                unlink($old_thumbnail);
-                $image = $request->file('image');
-                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(350, 230)->save('upload/about/' . $name_gen);
-                $thumbnail = 'upload/about/' . $name_gen;
-                Blog::where('id', $id)->update(['thumbnail' => $thumbnail]);
-            }
-    
-            if ($request->file('image')) {
-                unlink($old_image);
-                $image = $request->file('image_desc');
-                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
-                $path_url = 'upload/about/' . $name_gen;
-                Blog::where('id', $id)->update(['image' => $path_url]);
-            }
-    
-            $insertData = Blog::where('id', $id)->update([
-                'title' => $request->title,
-                'name' => $request->name,
-                'desc' => $request->desc,
-            ]);
-    
-            if($insertData){
-                return $this->response(
-                    true,
-                    200,
-                    __('Data added successfully'),
-                    [
-                        'url'=> route('blogs.index',$insertData->id)
-                    ]
-                );
-            }else{
-                return $this->response(
-                    false,
-                    11001,
-                    __('Sorry, we could not add the data')
-                );
-            }
-            // return redirect::route('blogs.index')->with($notification);
-        }catch (\Exception $e) {
-            return redirect::back()->withErrors(['errors' => $e->getMessage()]);
+        $old_thumbnail = $request->old_thumbnail;
+        $old_image = $request->old_image;
+
+        if ($request->file('thumbnail')) {
+            unlink($old_thumbnail);
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(350, 230)->save('upload/about/' . $name_gen);
+            $thumbnail = 'upload/about/' . $name_gen;
+            Blog::where('id', $id)->update(['thumbnail' => $thumbnail]);
         }
+
+        if ($request->file('image')) {
+            unlink($old_image);
+            $image = $request->file('image_desc');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
+            $path_url = 'upload/about/' . $name_gen;
+            Blog::where('id', $id)->update(['image' => $path_url]);
+        }
+
+        $insertData = Blog::where('id', $id)->update([
+            'title' => $request->title,
+            'name' => $request->name,
+            'desc' => $request->desc,
+        ]);
+
+        if($insertData){
+            return $this->response(
+                true,
+                200,
+                __('Data added successfully'),
+                [
+                    'url'=> route('blogs.index',$insertData->id)
+                ]
+            );
+        }else{
+            return $this->response(
+                false,
+                11001,
+                __('Sorry, we could not add the data')
+            );
+        }
+        // return redirect::route('blogs.index')->with($notification);
     }
 
 
