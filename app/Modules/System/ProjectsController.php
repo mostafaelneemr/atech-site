@@ -143,7 +143,7 @@ class ProjectsController extends SystemController
         $oldImageDesc = $request->oldImageDesc;
 
         if ($request->file('image')) {
-            unlink($oldImage);
+            // unlink($oldImage);
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
@@ -152,7 +152,7 @@ class ProjectsController extends SystemController
         }
 
         if ($request->file('image_desc')) {
-            unlink($oldImageDesc);
+            // unlink($oldImageDesc);
             $image = $request->file('image_desc');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
