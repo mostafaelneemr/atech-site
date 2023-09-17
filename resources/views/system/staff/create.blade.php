@@ -154,7 +154,7 @@
     </div>
 
 @endsection
-@section('footer')
+@section('script')
     <script src="{{asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
 

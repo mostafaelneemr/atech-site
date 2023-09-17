@@ -9,6 +9,8 @@ use Form;
 use Auth;
 use Spatie\Activitylog\Models\Activity;
 use Datatables;
+use Intervention\Image\Facades\Image;
+
 
 class StaffController extends SystemController
 {
@@ -215,7 +217,11 @@ class StaffController extends SystemController
         $requestData['password'] = bcrypt($requestData['password']);
 
         if($request->file('avatar')){
-            $path = $request->file('avatar')->store(setting('system_path').'/avatar/'.date('Y/m/d'),'first_public');
+            $image = $request->file('avatar');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(300, 300)->save('upload/staff/' . $name_gen);
+            $path = 'upload/staff/' . $name_gen;
+            // $path = $request->file('avatar')->store(setting('system_path').'/avatar/'.date('Y/m/d'),'first_public');
             if($path){
                 $requestData['avatar'] = $path;
             }
