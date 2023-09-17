@@ -35,12 +35,12 @@ class WebController extends Controller{
         $this->viewData['testimonials'] = Testimonial::get(); 
         $this->viewData['brands'] = Brand::get(); 
         $this->viewData['certificates'] = Certificate::get(); 
-        $this->viewData['blogs'] = Blog::get(); 
-        $this->viewData['clients'] = Client::get(); 
-        $this->viewData['activities'] = OurActive::get(); 
+        $this->viewData['blogs'] = Blog::paginate(3); 
+        $this->viewData['clients'] = Client::paginate(18); 
+        $this->viewData['activities'] = OurActive::orderBy('id', 'ASC')->paginate(8); 
 
         $this->viewData['categories'] = Project::distinct('category')->pluck('category');
-        $this->viewData['items'] = Project::all();
+        $this->viewData['items'] = Project::orderBy('id', 'DESC')->paginate(6);
         
         return $this->view('index', $this->viewData);
     }
@@ -48,6 +48,7 @@ class WebController extends Controller{
     public function about()
     {
         $this->viewData['testimonials'] = Testimonial::get(); 
+        $this->viewData['clients'] = Client::get(); 
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
 
         return $this->view('about', $this->viewData);
@@ -55,7 +56,9 @@ class WebController extends Controller{
 
     public function service()
     {
-        return $this->view('service');
+        $this->viewData['items'] = Project::orderBy('id', 'DESC')->get();
+        $this->viewData['activities'] = OurActive::orderBy('id', 'ASC')->get(); 
+        return $this->view('service',$this->viewData);
     }
 
     public function blogs()

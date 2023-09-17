@@ -1,134 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.web.master')
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>ComingSoon - Automation Technology</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+@section('title')
+    Services - Atech
+@endsection
 
-  <!-- Favicons -->
-  <link href="{{asset( setting('site_logo') )}}" rel="icon">
-  <link href="{{asset('build/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+@section('content')
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{{asset('build/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('build/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{{asset('build/assets/css/style.css')}}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: ComingSoon
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/comingsoon-free-html-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex flex-column align-items-center">
-
-      <h1>ComingSoon</h1>
-      <h2>We're working hard to improve our website and we'll ready to launch after</h2>
-      <div class="countdown d-flex justify-content-center" data-count="2023/10/5">
-        <div>
-          <h3>%d</h3>
-          <h4>Days</h4>
-        </div>
-        <div>
-          <h3>%h</h3>
-          <h4>Hours</h4>
-        </div>
-        <div>
-          <h3>%m</h3>
-          <h4>Minutes</h4>
-        </div>
-        <div>
-          <h3>%s</h3>
-          <h4>Seconds</h4>
-        </div>
-      </div>
-
-      
-
-      <div class="social-links text-center">
-        <a href="{{ setting('twitter') }}" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="{{ setting('facebook') }}" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="{{ setting('instagram') }}" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="{{ setting('linkedin') }}" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      </div>
-
-    </div>
-  </header><!-- End #header -->
-
-  <main id="main">
-
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
+  {{-- @foreach($sliders as $slider)
+  <div class="breadcaump-area pt--400 pt_lg--300 pt_md--250 pt_sm--200 pb--100 breadcaump-title-bar breadcaump-title-white" style="background-image: url('{{ asset($slider->image) }}');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;">
       <div class="container">
-
-        <div class="row content">
-          <div class="col-lg-6">
-            <h2>Eum ipsam laborum deleniti velitena</h2>
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="breadcaump-inner text-center">
+                      <h2 class="heading">A B O U T - U S</h2>
+                      <div class="breadcrumb-insite">
+                          <ul class="core-breadcaump">
+                              <li><a href="index.html">Home</a></li>
+                              <li><a href="elements.html">Elements</a></li>
+                              <li class="current">Grid Classic</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-            <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
-            </ul>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
+      </div>
+  </div>
+  @endforeach --}}
+
+
+        <!-- Start Activities Boxes -->
+        <div class="brook-icon-boxes-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--5">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12 mt--70">
+                      <div class="brook-section-title text-center">
+                          <h3 class="heading heading-h3">Our Activities</h3>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="row mt--30">
+                  @foreach($activities as $active)
+                  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                      <div class="icon-box text-center mt--30 ">
+                          <div class="inner mh-100 d-inline-block" style="height:300px">
+                              <div class="services-icon mb-3" style="color: #4d5e75; font-size: 40px;" >
+                                  <i class="{{ $active->icon }}"></i>
+                              </div> 
+                              <div class="content">
+                                  <h5 class="heading heading-h5">{{ $active->title }}</h5>
+                                  <p class="bk_pra">{!! $active->desc !!}</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- End Single Icon Boxes -->
+                  @endforeach
+    
+              </div>
           </div>
-        </div>
-
       </div>
-    </section><!-- End About Us Section -->
+      <!-- End Icon Boxes -->
 
-  </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-       {{ setting('copyright') }}
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/comingsoon-free-html-bootstrap-template/ -->
-       
-      </div>
-    </div>
-  </footer><!-- End #footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+@endsection
 
-  <!-- Vendor JS Files -->
-  <script src="{{asset('build/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('build/assets/vendor/php-email-form/validate.js')}}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{{asset('build/assets/js/main.js')}}"></script>
-
-</body>
-
-</html>
+@section('script')
+@endsection

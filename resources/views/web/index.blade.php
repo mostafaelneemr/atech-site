@@ -6,7 +6,7 @@
 
 @section('slider')
     <!-- Start Breadcaump Area -->
-    @foreach($sliders as $slider)
+    {{-- @foreach($sliders as $slider)
     <div class="brook-breadcaump-area fullscreen breadcaump-title-bar breadcaump-title-white d-flex align-items-center pt_md--70 pt_sm--100 pb_sm--50"
         data-black-overlay="6" style="background-image: url('{{ $slider->image }}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
 
@@ -24,11 +24,11 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @endforeach --}}
     <!-- End Breadcaump Area -->
 
 
-    {{-- <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="home-authentic-studio"
+    <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="home-authentic-studio"
          data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
         <!-- START REVOLUTION SLIDER 5.4.7 fullwidth mode -->
         <div id="rev_slider_8_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.7">
@@ -60,21 +60,21 @@
                     </div>
 
                     <!-- LAYER NR. 3 -->
-                    <a class="tp-caption rev-btn smooth-scroll-link mx-5" href="{{ setting('slider_link') }}" target="_self" id="slide-16-layer-24"
+                    {{-- <a class="tp-caption rev-btn smooth-scroll-link mx-5" href="{{ setting('slider_link') }}" target="_self" id="slide-16-layer-24"
                        data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
                        data-voffset="['140','140','140','100']" data-width="160" data-height="55"
                        data-whitespace="normal" data-type="button" data-actions='' data-responsive_offset="on"
                        data-responsive="off" data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(255,255,255);bg:rgb(34,34,34);transform:translateY(-3px);"}]'
                        data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
                        data-paddingright="[20,20,20,20]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[20,20,20,20]"
-                       style="z-index: 7; margin-top:100px;min-width: 160px; max-width: 160px; max-width: 55px; max-width: 55px; white-space: normal; font-size: 16px; line-height: 55px; font-weight: 700; color: #222222; letter-spacing: 0px;background-color:rgb(255,255,255);border-radius:5px 5px 5px 5px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;text-decoration: none;">{{ setting('slider_button') }} </a>
+                       style="z-index: 7; margin-top:100px;min-width: 160px; max-width: 160px; max-width: 55px; max-width: 55px; white-space: normal; font-size: 16px; line-height: 55px; font-weight: 700; color: #222222; letter-spacing: 0px;background-color:rgb(255,255,255);border-radius:5px 5px 5px 5px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;text-decoration: none;">{{ setting('slider_button') }} </a> --}}
 
                     </li>
                 @endforeach
             </ul>
             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
         </div>
-    </div> --}}
+    </div>
     <!-- END REVOLUTION SLIDER -->
 @endsection
 
@@ -147,8 +147,7 @@
     </div>
     <!-- End Video Popup Area -->
 
-
-    <!-- Start Icon Boxes -->
+    <!-- Start Activities Boxes -->
     <div class="brook-icon-boxes-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--5">
         <div class="container">
             <div class="row">
@@ -162,11 +161,11 @@
             <div class="row mt--30">
                 @foreach($activities as $active)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="icon-box text-center mt--30">
-                        <div class="inner">
-                            <div class="icon" style="color: #222933">
+                    <div class="icon-box text-center mt--30 ">
+                        <div class="inner mh-100 d-inline-block" style="height:300px">
+                            <div class="services-icon mb-3" style="color: #4d5e75; font-size: 40px;" >
                                 <i class="{{ $active->icon }}"></i>
-                            </div>
+                            </div> 
                             <div class="content">
                                 <h5 class="heading heading-h5">{{ $active->title }}</h5>
                                 <p class="bk_pra">{!! $active->desc !!}</p>
@@ -200,7 +199,7 @@
                             <span class="filter-counter">{{ count($items) }}</span>
                         </button>
                         @foreach ($categories as $key => $category)
-                            <button data-filter="cat--{{ $category  }}">
+                            <button data-filter="cat--{{ $key  }}">
                                 <span class="filter-text text-white">{{ $category }}</span>
                                 {{-- <span class="filter-counter">{{ $key + 1 }}</span> --}}
                             </button>
@@ -239,8 +238,8 @@
                     </div>
                 </div>
             </div>
-         </div>
-      </div>
+        </div>
+    </div>
     <!-- End projects Caption -->
 
     <!-- Start Certificates Area -->
@@ -478,33 +477,29 @@
 
 @section('script')
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
 
+<!-- JavaScript for filtering -->
 <script>
-    $(document).ready(function () {
-        var $portfolioItems = $('#portfolio-container').find('.portfolio-33-33');
-        
-        // Initial filter, show all items
-        $portfolioItems.show();
-    
-        // Filter by category when a button is clicked
-        $('.messonry-button').on('click', function () {
-            var selectedCategory = $(this).data('filter');
-            
-            console.log($selectedCategory);
-            // Reset active class for buttons
-            $('.messonry-button').removeClass('is-checked');
-            $(this).addClass('is-checked');
-    
-            if (selectedCategory === '*') {
-                // Show all items
-                $portfolioItems.show();
-            } else {
-                // Hide items that don't match the selected category
-                $portfolioItems.hide().filter('.' + selectedCategory).show();
-            }
-        });
+$(document).ready(function() {
+    // Initialize Isotope
+    var $grid = $('.portfolio-grid-metro6').isotope({
+        itemSelector: '.portfolio-33-33',
+        layoutMode: 'fitRows'
     });
-    </script>
+
+    // Filter items on button click
+    $('.messonry-button button').on('click', function() {
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+    });
+
+    // Change is-checked class on buttons
+    $('.messonry-button button').on('click', function() {
+        $('.messonry-button button').removeClass('is-checked');
+        $(this).addClass('is-checked');
+    });
+});
+</script>
 
 @endsection
