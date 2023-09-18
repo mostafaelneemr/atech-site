@@ -116,6 +116,7 @@
     </div>
     <!-- End Brand Area -->
 
+
     <!-- Start Video Popup Area -->
     <div class="brook-video-area bg_color--1 pb--30 pt--30 pb_md--80 pb_sm--60 mt-2" style="background: #F0F4F9">
         <div class="container">
@@ -146,6 +147,7 @@
         </div>
     </div>
     <!-- End Video Popup Area -->
+
 
     <!-- Start Activities Boxes -->
     <div class="brook-icon-boxes-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--5">
@@ -181,6 +183,7 @@
     </div>
     <!-- End Icon Boxes -->
     
+
     <!-- Start projects Caption  our works-->
     <div class="bk-portfolio-with-caption-area pt--50 pt_md--80 pt_sm--60 pb--25 pb_md--30 pb_sm--20 bg_color--1 poss_relative bk-masonary-wrapper" style="background-image: url('{{asset('sbg.jpg')}}')">
         <div class="container">
@@ -198,10 +201,9 @@
                             <span class="filter-text text-white">All</span>
                             <span class="filter-counter">{{ count($items) }}</span>
                         </button>
-                        @foreach ($categories as $key => $category)
-                            <button data-filter="cat--{{ $key  }}">
+                        @foreach ($categories as $category)
+                            <button data-filter=".cat--{{ $category  }}">
                                 <span class="filter-text text-white">{{ $category }}</span>
-                                {{-- <span class="filter-counter">{{ $key + 1 }}</span> --}}
                             </button>
                         @endforeach
                     </div>
@@ -216,6 +218,7 @@
                         <!-- Start Single Portfolio -->
                         
                         @foreach($items as $item)
+                        {{-- {{ dd($items) }} --}}
                         <div class="portfolio-33-33 cat--{{$item->category}}">
                             <div class="portfolio with-caption">
                                 <div class="thumb video-with-thumb">
@@ -241,6 +244,7 @@
         </div>
     </div>
     <!-- End projects Caption -->
+
 
     <!-- Start Certificates Area -->
     <div class="brook-portfolio-area ptb--40 ptb-md--80 ptb-sm--60 bg_color--1 basic-thine-line">
@@ -271,6 +275,7 @@
         </div>
     </div>
     <!-- End Certificates Area -->
+
 
     <!-- Start Testimonial Area -->
     <div class="brook-testimonial-area ptb--100 ptb-md--80 ptb-sm--60" style="background-image: url('{{asset('test.jpg')}}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -333,6 +338,7 @@
     </div>
     <!-- End Testimonial Area -->
 
+
     <!-- Start Blog Grid Area -->
     <div class="bk-blog-grid-area ptb--80 ptb-md--80 ptb-sm--60" style="background-color: #F0F4F9">
         <div class="container">
@@ -378,6 +384,7 @@
     </div>
     <!-- End Blog Grid Area -->
 
+    
     {{-- <section class="height-auto pb_sm--0 mt-4" data-skin="black">
         <div class="presentation-slider-wrapper">
             <div class="presentation-inner">
@@ -474,32 +481,31 @@
 @endsection
 
 
+@section('js')
 
-@section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
-
-<!-- JavaScript for filtering -->
-<script>
-$(document).ready(function() {
-    // Initialize Isotope
-    var $grid = $('.portfolio-grid-metro6').isotope({
-        itemSelector: '.portfolio-33-33',
-        layoutMode: 'fitRows'
-    });
-
-    // Filter items on button click
-    $('.messonry-button button').on('click', function() {
-        var filterValue = $(this).attr('data-filter');
-        $grid.isotope({ filter: filterValue });
-    });
-
-    // Change is-checked class on buttons
-    $('.messonry-button button').on('click', function() {
-        $('.messonry-button button').removeClass('is-checked');
-        $(this).addClass('is-checked');
-    });
-});
-</script>
+    <!-- JavaScript for filtering -->
+    <script>
+        $(document).ready(function() {
+            // Initialize Isotope
+            var $grid = $('.portfolio-grid-metro6').isotope({
+                itemSelector: '.portfolio-33-33',
+                layoutMode: 'fitRows'
+            });
+        
+            // Category filter button click event
+            $('.messonry-button button').on('click', function() {
+                var filterValue = $(this).attr('data-filter');
+                $grid.isotope({ filter: filterValue });
+            });
+        
+            // Change is-checked class on buttons
+            $('.messonry-button button').on('click', function() {
+                $('.messonry-button button').removeClass('is-checked');
+                $(this).addClass('is-checked');
+            });
+        });
+    </script>
 
 @endsection

@@ -46,8 +46,8 @@
                                     <a href="{{ setting('facebook') }}" target="_blank"><i class="fab fa-facebook"></i></a>
                                     <a href="{{ setting('twitter') }}" target="_blank"><i class="fab fa-twitter"></i></a>
                                     <a href="{{ setting('instagram') }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="{{ setting('linked') }}" target="_blank"><i class="fab fa-linkedin"></i></a>
                                     <a href="{{ setting('dribbble') }}" target="_blank"><i class="fab fa-dribbble"></i></a>
-                                    <a href="{{ setting('pinterest') }}" target="_blank"><i class="fab fa-pinterest"></i></a>
                                 </div>
                             </div>
                         </div>

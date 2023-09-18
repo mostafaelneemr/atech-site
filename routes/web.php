@@ -1,6 +1,8 @@
 <?php
 
+use App\Modules\System\SendEmailController;
 use App\Modules\Web\WebController;
+
 
 
 /*
@@ -27,5 +29,7 @@ Route::get('/blog/{slug}', [WebController::class, 'blogSlug'])->name('blog.slug'
 
 Route::get('/project/{slug}', [WebController::class, 'projectSlug'])->name('project.slug');
 Route::get('/projects', [WebController::class, 'project'])->name('projects');
+
+Route::post('send-email', [SendEmailController::class, 'index'])->name('sendmail');
 
 Route::get('/contact', [WebController::class, 'contact'])->name('contact');
