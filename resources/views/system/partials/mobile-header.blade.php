@@ -3,8 +3,12 @@
 		<div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 
 			<!--begin::Logo-->
-			<a href="{{route('system.dashboard')}}">
-				<img alt="Logo" src="{{asset('logo/logo-mobile.png')}}" />
+			<a href="{{route('system.dashboard')}}" class="brand-logo">
+				@if (!empty($admin_logo = \App\Models\Setting::where('name','admin_logo')->value('value')))
+					<img alt="Logo" style="width:50%;height:50%px;" src="{{ asset(setting('admin_logo')) }}" />
+				@else
+					<img alt="Logo" style="width:100%;height:100%px;" src="{{ asset('Logo-PNG.png') }}" />
+				@endif
 			</a>
 
 			<!--end::Logo-->

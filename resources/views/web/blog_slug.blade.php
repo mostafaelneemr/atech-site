@@ -1,7 +1,30 @@
 @extends('layouts.web.master')
 
-@section('title')
-    Blog - Atech
+@section('title') Blog - Atec @endsection
+@section('meta_title'){{ $blog->title }}@stop
+
+@section('meta_description'){{ $blog->description }}@stop
+
+@section('meta_keywords'){{ $blog->slug }}@stop
+
+@section('meta')
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="{{ $blog->title }}">
+    <meta itemprop="description" content="{{ $blog->description }}">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@publisher_handle">
+    <meta name="twitter:title" content="{{ $blog->title }}">
+    <meta name="twitter:description" content="{{ $blog->description }}">
+    <meta name="twitter:creator" content="@author_handle">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{ $blog->title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url('blog', $blog->slug) }}" />
+    <meta property="og:description" content="{{ $blog->description }}" />
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
 @endsection
 
 @section('content')
@@ -32,7 +55,6 @@
     </div>
     @endforeach --}}
 
-    @foreach($blogs as $blog) 
     <div class="brook-blog-details-area bg_color--5 pt--110 pb--150">
         <div class="container">
             <div class="row">
@@ -80,7 +102,6 @@
             </div>
         </div>
     </div>
-    @endforeach
     <!-- End Blog Details -->
 
 @endsection

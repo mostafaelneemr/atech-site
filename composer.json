@@ -20,6 +20,7 @@
         "laravelcollective/html": "^6.2",
         "nesbot/carbon": "^2.41",
         "spatie/laravel-activitylog": "^3.16",
+        "spatie/laravel-sitemap": "^6.2",
         "yajra/laravel-datatables-oracle": "^9.13"
     },
     "config": {

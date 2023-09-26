@@ -7,7 +7,7 @@
     ];
 
     $menu['Home']= [
-        'permission'=>[ 'home-slider.index' , 'testimonials.index', 'brands.index' ],
+        'permission'=>[ 'home-slider.index' ,'brands.index','our-activities.index','projects.index','certificates.index','testimonials.index','blogs.index','clients.index', ],
         'icon'=>'<i class="fa fa-users"></i>',
         'text'=> __('Home'),
           'sub'=>[
@@ -17,29 +17,14 @@
                     'text'=> __('Home-slider')
                 ],
                 [
-                    'permission'=> 'testimonials.index',
-                    'url'=> route('testimonials.index'),
-                    'text'=> __('Testimonials')
-                ],
-                [
                     'permission'=> 'brands.index',
                     'url'=> route('brands.index'),
                     'text'=> __('Brands')
                 ],
                 [
-                    'permission'=> 'certificates.index',
-                    'url'=> route('certificates.index'),
-                    'text'=> __('Certificates')
-                ],
-                [
-                    'permission'=> 'clients.index',
-                    'url'=> route('clients.index'),
-                    'text'=> __('Clients')
-                ],
-                [
-                    'permission'=> 'blogs.index',
-                    'url'=> route('blogs.index'),
-                    'text'=> __('Blogs')
+                    'permission'=> 'our-activities.index',
+                    'url'=> route('our-activities.index'),
+                    'text'=> __('Our-Activities')
                 ],
                 [
                     'permission'=> 'projects.index',
@@ -47,10 +32,26 @@
                     'text'=> __('Projects')
                 ],
                 [
-                    'permission'=> 'our-activities.index',
-                    'url'=> route('our-activities.index'),
-                    'text'=> __('Our-Activities')
+                    'permission'=> 'certificates.index',
+                    'url'=> route('certificates.index'),
+                    'text'=> __('Certificates')
                 ],
+                [
+                    'permission'=> 'testimonials.index',
+                    'url'=> route('testimonials.index'),
+                    'text'=> __('Testimonials')
+                ],
+                [
+                    'permission'=> 'blogs.index',
+                    'url'=> route('blogs.index'),
+                    'text'=> __('Blogs')
+                ],
+                [
+                    'permission'=> 'clients.index',
+                    'url'=> route('clients.index'),
+                    'text'=> __('Clients')
+                ],
+
             ]
     ];
 

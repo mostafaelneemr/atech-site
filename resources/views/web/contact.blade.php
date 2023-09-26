@@ -40,14 +40,14 @@
                 <div class="col-lg-6 col-md-6 col-12 bg_color--5 pl--270 pt--160 pb--160 pl_lg--50 pl_md--50 pt_md--80 pb_md--80 pl_sm--50 pr_sm--50 pt_sm--80 pb_sm--80">
                     <div class="contact-address-wrapper">
                         <div class="classic-address text-start">
-                            <h4 class="heading heading-h4">Visit our studio at</h4>
+                            <h4 class="heading heading-h4">{{ setting('location_title') }}</h4>
                             <div class="desc mt--15">
                                 <p class="bk_pra line-height-2-22">{{ setting('address') }}</p>
                             </div>
                         </div>
 
                         <div class="classic-address text-start mt--60 ">
-                            <h4 class="heading heading-h4">Message us</h4>
+                            <h4 class="heading heading-h4">{{ setting('message_title') }}</h4>
                             <div class="desc mt--15 mb--80">
                                 <p class="bk_pra line-height-1-87">
                                     <a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a> <br> 

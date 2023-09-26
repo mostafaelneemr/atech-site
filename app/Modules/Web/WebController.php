@@ -71,7 +71,8 @@ class WebController extends Controller{
     public function blogSlug($slug)
     {
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
-        $this->viewData['blogs'] = Blog::where('slug', $slug)->get();
+        $this->viewData['blog'] = Blog::where('slug', $slug)->first();
+        // return $this->viewData['blogs'];
         return $this->view('blog_slug', $this->viewData);
     }
 
@@ -84,7 +85,7 @@ class WebController extends Controller{
 
     public function ProjectSlug($slug)
     {
-        $this->viewData['projects'] = Project::where('slug', $slug)->get();
+        $this->viewData['project'] = Project::where('slug', $slug)->first();
         return $this->view('project_slug', $this->viewData);
     }
 

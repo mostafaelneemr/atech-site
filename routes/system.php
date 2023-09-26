@@ -32,6 +32,7 @@ Route::resource('/clients', ClientController::class);
 Route::resource('/projects', ProjectsController::class);
 Route::resource('/our-activities', OurActivitieController::class);
 
+Route::resource('/seosetting', SEOController::class);
 
 
 Route::get('/staff/change-password', 'StaffController@changePassword')->name('system.staff.change-password');

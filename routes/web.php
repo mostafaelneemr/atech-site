@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\admin\Blog;
+use App\Models\admin\Project;
 use App\Modules\System\SendEmailController;
 use App\Modules\Web\WebController;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\url;
 
 
 
@@ -17,6 +21,40 @@ use App\Modules\Web\WebController;
 */
 
 // Route::get('/', 'WebController@index')->name('web.web.index');
+
+
+Route::get('/sitemap', function () {
+    $sitemap = Sitemap::create()
+        ->add(url::create('/'))
+        ->add(url::create('/about'))
+        ->add(url::create('/service'))
+        ->add(url::create('/portfolio'))
+        ->add(url::create('/contact'));
+        Blog::all()->each(function (Blog $blog) use ($sitemap) {
+            $sitemap->add(url::create("/blog/{$blog->slug}"));
+        });
+
+        Project::all()->each(function (Project $project) use ($sitemap) {
+            $sitemap->add(url::create("/project/{$project->slug}"));
+        });
+
+        $sitemap->writeToFile(public_path('sitemap.xml'));
+});
+
+Route::get('/sitemap/{xml_site_map_file}', function ($xml_site_map_file) {
+	if (file_exists(public_path('/sitemap/' . $xml_site_map_file))) {
+		return response(file_get_contents(public_path('/sitemap/' . $xml_site_map_file)), 200, [
+			'Content-Type' => 'application/xml'
+		]);
+	} else {
+		return redirect()->route('home');
+	}
+})->name('sitemap');
+
+Route::get('/sitemap.xml', function () {
+    return base_path('sitemap.xml');
+});
+
 
 
 Route::get('/', [WebController::class, 'index'])->name('home');

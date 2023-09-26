@@ -1,9 +1,27 @@
 @extends('layouts.web.master')
 
-@section('title')
-    Blogs - Atech
-@endsection
+@php
+    $meta_title = App\Models\admin\SeoSetting::find(1)->project_meta_title;
+    $meta_description = App\Models\admin\SeoSetting::find(1)->project_meta_description;
+@endphp
 
+@section('title') Projects - Atech @endsection
+@section('meta_title'){{ $meta_title }}@stop
+@section('meta_description'){{ $meta_description }}@stop
+@section('meta')
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="{{ $meta_title }}">
+    <meta itemprop="description" content="{{ $meta_description }}">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:title" content="{{ $meta_title }}">
+    <meta name="twitter:description" content="{{ $meta_description }}">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{ $meta_title }}" />
+    <meta property="og:description" content="{{ $meta_description }}" />
+@endsection
+    
 {{-- @section('slider') --}}
 
     <!-- Start Breadcaump Area -->
