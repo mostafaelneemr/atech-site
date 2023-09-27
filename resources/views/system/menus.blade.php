@@ -102,6 +102,13 @@
         'text'=>__('Settings'),
     ];
 
+    $menu['SEO Settings'] = [
+        'permission'=> ['seosetting.index','seosetting.update'],
+        'url'=> route('seosetting.index'),
+        'icon'=>'<i class="fas fa-search"></i>',
+        'text'=>__('SEO Settings'),
+    ];
+
 
 //     $menu['ActivityLog'] = [
 //         'permission'=> ['system.activity-log.index'],

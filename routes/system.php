@@ -33,6 +33,8 @@ Route::resource('/projects', ProjectsController::class);
 Route::resource('/our-activities', OurActivitieController::class);
 
 Route::resource('/seosetting', SEOController::class);
+// Route::get('/seosetting', [SEOController::class, 'index'])->name('system.seosetting.index'); //
+// Route::patch('/seosetting', [SEOController::class, 'update'])->name('system.seosetting.update'); //
 
 
 Route::get('/staff/change-password', 'StaffController@changePassword')->name('system.staff.change-password');

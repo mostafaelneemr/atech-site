@@ -70,7 +70,7 @@
                 <div class="col-lg-6 col-md-6 col-12 bg_color--5 pt--160 pb--160 pl--60 pr--200 pr_lg--50 pr_md--50 pr_sm--50 pb_md--80 pt_md--80 pl_sm--50 pt_sm--80 pb_sm--80">
                     <div class="contact-form-inner">
                         <div class="brook-title mb--40">
-                            <h4 class="heading heading-h4">{{ setting('contact_title') }}</h4>
+                            <h1 class="heading heading-h4">{{ setting('contact_title') }}</h1>
                         </div>
                         <div class="contact-form">
                             <form id="contact-form" action="{{ route('sendmail') }}" method="POST">

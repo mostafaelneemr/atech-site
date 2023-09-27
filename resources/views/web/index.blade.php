@@ -1,7 +1,113 @@
 @extends('layouts.web.master')
 
-@section('title')
-    Atech
+@section('title') Atech @endsection
+
+@php
+    $title = App\Models\admin\SeoSetting::find(1)->title;
+    $description = App\Models\admin\SeoSetting::find(1)->description;
+
+    $meta_title_proj = App\Models\admin\SeoSetting::find(1)->project_meta_title;
+    $meta_description_proj = App\Models\admin\SeoSetting::find(1)->project_meta_description;
+
+    $meta_title_brand = App\Models\admin\SeoSetting::find(1)->brands_meta_title;
+    $meta_description_brand = App\Models\admin\SeoSetting::find(1)->brands_meta_description;
+
+    $meta_title_blog = App\Models\admin\SeoSetting::find(1)->blog_meta_title;
+    $meta_description_blog = App\Models\admin\SeoSetting::find(1)->blog_meta_description;
+@endphp
+
+@section('title') Projects - Atech @endsection
+@section('meta_title'){{ $title }}@stop
+@section('meta_description'){{ $description }}@stop
+@section('meta')
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="{{ $meta_title_proj }}">
+    <meta itemprop="name" content="{{ $meta_title_blog }}">
+    <meta itemprop="name" content="{{ $meta_title_brand }}">
+    <meta itemprop="description" content="{{ $meta_description_proj }}">
+    <meta itemprop="description" content="{{ $meta_description_blog }}">
+    <meta itemprop="description" content="{{ $meta_description_brand }}">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:title" content="{{ $meta_title_proj }}">
+    <meta name="twitter:title" content="{{ $meta_title_blog }}">
+    <meta name="twitter:title" content="{{ $meta_title_brand }}">
+    <meta name="twitter:description" content="{{ $meta_description_proj }}">
+    <meta name="twitter:description" content="{{ $meta_description_blog }}">
+    <meta name="twitter:description" content="{{ $meta_description_brand }}">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{ $meta_title_proj }}" />
+    <meta property="og:title" content="{{ $meta_title_blog }}" />
+    <meta property="og:title" content="{{ $meta_title_brand }}" />
+    <meta property="og:description" content="{{ $meta_description_proj }}" />
+    <meta property="og:description" content="{{ $meta_description_blog }}" />
+    <meta property="og:description" content="{{ $meta_description_brand }}" />
+@endsection
+
+
+@section('style')
+    {{-- style slider --}}
+    <style>
+        .firstdiv{
+            margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;
+        }
+        .secondiv{
+            display:none;
+        }
+        .divtitle{
+            z-index: 6; min-width: 1180px; max-width: 1180px; white-space: normal; font-size: 80px; line-height: 90px; font-weight: 700; color: #ffffff; letter-spacing: 0px;
+        }
+        .btnslider{
+            visibility: hidden !important;
+        }
+    </style>
+
+    <style>
+        .videobg{
+            background: #F0F4F9;
+        }
+    </style>
+
+    <style>
+        .activeinner{
+            height:300px;
+        }
+
+        .activeserv{
+            color: #4d5e75; font-size: 40px;
+        }
+    </style>
+
+    <style>
+        .portfoliobg{
+            background-image: url('{{asset('sbg.jpg')}}');
+        }
+    </style>
+
+    <style>
+        .testimonialbg{
+            background-image: url('{{asset('test.jpg')}}');background-repeat: no-repeat; background-size: cover; background-position: center center;
+        }
+
+        .testimonialhei{
+            height:350px;
+        }
+    </style>
+
+    <style>
+        .blogbg{
+            background-color: #F0F4F9;
+        }
+        .blogflex{
+            display: flex;
+            
+        }
+        .blogpad{
+            padding: 31px 20px 10px;
+        }
+    </style>
+
 @endsection
 
 @section('slider')
@@ -28,10 +134,10 @@
     <!-- End Breadcaump Area -->
 
 
-    <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="home-authentic-studio"
-         data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
+    <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container firstdiv" data-alias="home-authentic-studio"
+         data-source="gallery">
         <!-- START REVOLUTION SLIDER 5.4.7 fullwidth mode -->
-        <div id="rev_slider_8_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.7">
+        <div id="rev_slider_8_1" class="rev_slider fullwidthabanner secondiv" data-version="5.4.7">
 
             <ul>
                 <!-- SLIDE  -->
@@ -48,31 +154,30 @@
                     <!-- LAYERS -->
 
                     <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-resizeme mx-5" id="slide-16-layer-1" data-x="['left','center','center','center']"
+                    <div class="tp-caption tp-resizeme mx-5 divtitle" id="slide-16-layer-1" data-x="['left','center','center','center']"
                     data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
                     data-voffset="['0','0','0','0']" data-fontsize="['60','60','45','30']"
                     data-lineheight="['90','67','50','34']" data-width="['1180','817','620','380']"
                     data-height="['none','135','none','none']" data-whitespace="normal" data-type="text"
                     data-responsive_offset="on" data-frames='[{"delay":700,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
                     data-textAlign="['left','center','center','center']" data-paddingtop="[0,0,0,0]"
-                    data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                    style="z-index: 6; min-width: 1180px; max-width: 1180px; white-space: normal; font-size: 80px; line-height: 90px; font-weight: 700; color: #ffffff; letter-spacing: 0px;">{{ $slider->title }} 
+                    data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">{{ $slider->title }} 
                     </div>
 
                     <!-- LAYER NR. 3 -->
-                    {{-- <a class="tp-caption rev-btn smooth-scroll-link mx-5" href="{{ setting('slider_link') }}" target="_self" id="slide-16-layer-24"
+                    <a class="tp-caption rev-btn smooth-scroll-link mx-5" href="{{ setting('slider_link') }}" target="_self" id="slide-16-layer-24"
                        data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
                        data-voffset="['140','140','140','100']" data-width="160" data-height="55"
                        data-whitespace="normal" data-type="button" data-actions='' data-responsive_offset="on"
                        data-responsive="off" data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(255,255,255);bg:rgb(34,34,34);transform:translateY(-3px);"}]'
                        data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
                        data-paddingright="[20,20,20,20]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[20,20,20,20]"
-                       style="z-index: 7; margin-top:100px;min-width: 160px; max-width: 160px; max-width: 55px; max-width: 55px; white-space: normal; font-size: 16px; line-height: 55px; font-weight: 700; color: #222222; letter-spacing: 0px;background-color:rgb(255,255,255);border-radius:5px 5px 5px 5px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;text-decoration: none;">{{ setting('slider_button') }} </a> --}}
+                       style="z-index: 7; margin-top:100px;min-width: 160px; max-width: 160px; max-width: 55px; max-width: 55px; white-space: normal; font-size: 16px; line-height: 55px; font-weight: 700; color: #222222; letter-spacing: 0px;background-color:rgb(255,255,255);border-radius:5px 5px 5px 5px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;text-decoration: none;">{{ setting('slider_button') }} </a>
 
                     </li>
                 @endforeach
             </ul>
-            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+            <div class="tp-bannertimer tp-bottom btnslider" ></div>
         </div>
     </div>
     <!-- END REVOLUTION SLIDER -->
@@ -101,10 +206,8 @@
                                 {"breakpoint":481, "settings": {"slidesToShow": 2}}
                             ]'>
     
-                            @foreach($brands as $brand)
-                                <div class=""><a href="#"><img src="{{ $brand->image }}"
-                                    alt="brand image"></a>
-                                </div>
+                                @foreach($brands as $brand)
+                                    <div><a href="#"><img src="{{ $brand->image }}" alt="brand image"></a> </div>
                                 @endforeach
 
                             </div>
@@ -118,7 +221,7 @@
 
 
     <!-- Start Video Popup Area -->
-    <div class="brook-video-area bg_color--1 pb--30 pt--30 pb_md--80 pb_sm--60 mt-2" style="background: #F0F4F9">
+    <div class="brook-video-area videobg bg_color--1 pb--30 pt--30 pb_md--80 pb_sm--60 mt-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
@@ -150,12 +253,27 @@
 
 
     <!-- Start Activities Boxes -->
-    <div class="brook-icon-boxes-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--5">
+    <div class="brook-icon-boxes-area poss_relative wavify-activation ptb--80 ptb-md--80 ptb-sm--60 bg_color--5">
+        <div class="wavify-wrapper">
+            <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
+                data-wavify-height="140" data-wavify-background="rgb(196,220,250)" data-wavify-amplitude="80"
+                data-wavify-bones="4">
+                <path d="M 0 141.71042689406383 C 237.875 148.50471572578806 237.875 148.50471572578806 475.75 145.107571309926 C 713.625 141.71042689406383 713.625 141.71042689406383 951.5 165.82491752026056 C 1189.375 189.9394081464571 1189.375 189.9394081464571 1427.25 193.5786122514483 C 1665.125 197.21781635643944 1665.125 197.21781635643944 1903 165.82491752026056 L 1903 7389 L 0 7389 Z"
+                    fill="rgba(255,226,217,0.5)"></path>
+            </svg>
+
+            <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
+                data-wavify-height="140" data-wavify-background="#C4DCFA" data-wavify-amplitude="80"
+                data-wavify-bones="3">
+                <path d="M 0 147.22020568980648 C 317.16666666666663 183.65559797623268 317.16666666666663 183.65559797623268 634.3333333333333 165.43790183301957 C 951.4999999999999 147.22020568980648 951.4999999999999 147.22020568980648 1268.6666666666665 200.09089320557024 C 1585.833333333333 252.96158072133412 1585.833333333333 252.96158072133412 1903 183.26276877337258 L 1903 7389 L 0 7389 Z"
+                    fill="#f5f5f5"></path>
+            </svg>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="brook-section-title text-center">
-                        <h3 class="heading heading-h3">Our Activities</h3>
+                        <h1 class="heading heading-h3">Our Activities</h1>
                     </div>
                 </div>
             </div>
@@ -164,8 +282,8 @@
                 @foreach($activities as $active)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="icon-box text-center mt--30 ">
-                        <div class="inner mh-100 d-inline-block" style="height:300px">
-                            <div class="services-icon mb-3" style="color: #4d5e75; font-size: 40px;" >
+                        <div class="inner mh-100 d-inline-block activeinner">
+                            <div class="services-icon mb-3 activeserv">
                                 <i class="{{ $active->icon }}"></i>
                             </div> 
                             <div class="content">
@@ -185,7 +303,7 @@
     
 
     <!-- Start projects Caption  our works-->
-    <div class="bk-portfolio-with-caption-area pt--50 pt_md--80 pt_sm--60 pb--25 pb_md--30 pb_sm--20 bg_color--1 poss_relative bk-masonary-wrapper" style="background-image: url('{{asset('sbg.jpg')}}')">
+    <div class="bk-portfolio-with-caption-area pt--50 pt_md--80 pt_sm--60 pb--25 pb_md--30 pb_sm--20 bg_color--1 poss_relative bk-masonary-wrapper portfoliobg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -260,7 +378,7 @@
                 <div class="col-lg-4 col-sm-6 col-12 move-up wow" >
                     <div class="portfolio portfolio_style--1 mt--30">
                         <div class="thumb">
-                            <img src="{{ $certificate->image }}" alt="Portfolio Images">
+                            <img src="{{ $certificate->image }}" alt="certificate Images">
                         </div>
                         {{-- <div class="port-overlay-info">
                             <div class="hover-action">
@@ -278,7 +396,7 @@
 
 
     <!-- Start Testimonial Area -->
-    <div class="brook-testimonial-area ptb--100 ptb-md--80 ptb-sm--60" style="background-image: url('{{asset('test.jpg')}}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="brook-testimonial-area ptb--100 ptb-md--80 ptb-sm--60 testimonialbg">
 
         <div class="container ">
             <div class="row">
@@ -309,12 +427,12 @@
                             <!-- Start Single Testimonial -->
 
                             @foreach($testimonials as $testimonial)
-                            <div class="testimonial testimonial_style--1 mh-100 d-inline-block" style="height:350px">
+                            <div class="testimonial testimonial_style--1 mh-100 d-inline-block testimonialhei">
                                 <div class="content">
                                     <p class="bk_pra">{!! $testimonial->desc !!}</p>
                                     <div class="testimonial-info">
                                         <div class="post-thumbnail">
-                                            <img src="{{ $testimonial->image }}" alt="clint image">
+                                            <img src="{{ $testimonial->image }}" alt="testimonial image">
                                         </div>
                                         <div class="clint-info">
                                             <h6>{{ $testimonial->name }}</h6>
@@ -340,7 +458,7 @@
 
 
     <!-- Start Blog Grid Area -->
-    <div class="bk-blog-grid-area ptb--80 ptb-md--80 ptb-sm--60" style="background-color: #F0F4F9">
+    <div class="bk-blog-grid-area ptb--80 ptb-md--80 ptb-sm--60 blogbg">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 col-xl-6 col-sm-12 col-12">
@@ -357,14 +475,14 @@
             <div class="row">
                 <!-- Start Single Blog -->
                 @foreach($blogs as $blog)
-                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt--70" style="display: flex">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt--70 blogflex">
                     <div class="blog-grid blog-grid--modern blog-standard blog-yellow-color">
                         <div class="post-thumb">
                             <a href="{{url('blog/' . $blog->slug)}}">
                                 <img src="{{ $blog->thumbnail }}" alt="Multipurpose template">
                             </a>
                         </div>
-                        <div class="post-content text-center" style="padding: 31px 30px 10px">
+                        <div class="post-content text-center blogpad">
                             <div class="post-inner">
                                 <div class="post-meta mb--10">
                                     <div class="post-date">{{ date('d-m-Y', strtotime($blog->created_at)) }}</div>
@@ -433,7 +551,7 @@
     <!-- Start Counterup Area -->
     <div class="brook-counterup-area poss_relative wavify-activation ptb--80 ptb-md--80 ptb-sm--60 bg_color--1">
         
-        <div class="wavify-wrapper">
+        {{-- <div class="wavify-wrapper">
             <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
                 data-wavify-height="140" data-wavify-background="rgb(196,220,250)" data-wavify-amplitude="80"
                 data-wavify-bones="4">
@@ -447,7 +565,7 @@
                 <path d="M 0 147.22020568980648 C 317.16666666666663 183.65559797623268 317.16666666666663 183.65559797623268 634.3333333333333 165.43790183301957 C 951.4999999999999 147.22020568980648 951.4999999999999 147.22020568980648 1268.6666666666665 200.09089320557024 C 1585.833333333333 252.96158072133412 1585.833333333333 252.96158072133412 1903 183.26276877337258 L 1903 7389 L 0 7389 Z"
                     fill="#f5f5f5"></path>
             </svg>
-        </div>
+        </div> --}}
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12 col-md-12">

@@ -18,37 +18,38 @@ return [
         'name' => __('Home'),
         'description' => __('Home Page Permissions'),
         'permissions' => [
+            
             'view-all-slider' =>['home-slider.index'],
             'create-slider' =>['home-slider.create', 'home-slider.store'],
             'Update-and-Delete-slider'  =>['home-slider.edit','home-slider.update', 'home-slider.destroy'],
 
-            'view-all-testimonial' =>['testimonials.index'],
-            'create-testimonial' =>['testimonials.create', 'testimonials.store'],
-            'Update-and-Delete-testimonial' =>['testimonials.edit','testimonials.update', 'testimonials.destroy'],
-
             'view-all-brands' =>['brands.index'],
             'create-brands' =>['brands.create', 'brands.store'],
             'Update-and-Delete-brands' =>['brands.edit','brands.update', 'brands.destroy'],
-
-            'view-all-blogs' =>['blogs.index'],
-            'create-blogs' =>['blogs.create', 'blogs.store'],
-            'Update-and-Delete-blogs' =>['blogs.edit','blogs.update', 'blogs.destroy'],
-
-            'view-all-certificates' =>['certificates.index'],
-            'create-certificates' =>['certificates.create', 'certificates.store'],
-            'Update-and-Delete-certificates' =>['certificates.edit','certificates.update', 'certificates.destroy'],
-
-            'view-all-clients' =>['clients.index'],
-            'create-clients' =>['clients.create', 'clients.store'],
-            'Update-and-Delete-clients' =>['clients.edit','clients.update', 'clients.destroy'],
+            
+            'view-all-our-activities' =>['our-activities.index'],
+            'create-our-activities' =>['our-activities.create', 'our-activities.store'],
+            'Update-and-Delete-our-activities' =>['our-activities.edit','our-activities.update', 'our-activities.destroy'],
 
             'view-all-projects' =>['projects.index'],
             'create-projects' =>['projects.create', 'projects.store'],
             'Update-and-Delete-projects' =>['projects.edit','projects.update', 'projects.destroy'],
 
-            'view-all-our-activities' =>['our-activities.index'],
-            'create-our-activities' =>['our-activities.create', 'our-activities.store'],
-            'Update-and-Delete-our-activities' =>['our-activities.edit','our-activities.update', 'our-activities.destroy'],
+            'view-all-certificates' =>['certificates.index'],
+            'create-certificates' =>['certificates.create', 'certificates.store'],
+            'Update-and-Delete-certificates' =>['certificates.edit','certificates.update', 'certificates.destroy'],
+
+            'view-all-testimonial' =>['testimonials.index'],
+            'create-testimonial' =>['testimonials.create', 'testimonials.store'],
+            'Update-and-Delete-testimonial' =>['testimonials.edit','testimonials.update', 'testimonials.destroy'],
+
+            'view-all-blogs' =>['blogs.index'],
+            'create-blogs' =>['blogs.create', 'blogs.store'],
+            'Update-and-Delete-blogs' =>['blogs.edit','blogs.update', 'blogs.destroy'],
+
+            'view-all-clients' =>['clients.index'],
+            'create-clients' =>['clients.create', 'clients.store'],
+            'Update-and-Delete-clients' =>['clients.edit','clients.update', 'clients.destroy'],
 
         ]
     ],
@@ -69,6 +70,12 @@ return [
         'name' => __('Setting'),
         'description' => __('Setting Permissions'),
         'permissions' => [ 'manage-setting'  =>['system.setting.index','system.setting.update'] ]
+    ],
+
+    [
+        'name' => __('SEO Setting'),
+        'description' => __('SEO Setting Permissions'),
+        'permissions' => [ 'manage-seosetting'  =>['seosetting.index','seosetting.update'] ]
     ],
 
 

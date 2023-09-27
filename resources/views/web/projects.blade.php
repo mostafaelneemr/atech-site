@@ -21,6 +21,14 @@
     <meta property="og:title" content="{{ $meta_title }}" />
     <meta property="og:description" content="{{ $meta_description }}" />
 @endsection
+
+@section('style')
+    <style>
+        .projectbg{
+            background-image: url('{{asset('sbg.jpg')}}');
+        }
+    </style>
+@endsection
     
 {{-- @section('slider') --}}
 
@@ -51,7 +59,7 @@
 @section('content')
 
         <!-- Start projects Caption  our works-->
-        <div class="bk-portfolio-with-caption-area pt--50 pt_md--80 pt_sm--60 pb--25 pb_md--30 pb_sm--20 bg_color--1 poss_relative bk-masonary-wrapper" style="background-image: url('{{asset('sbg.jpg')}}')">
+        <div class="bk-portfolio-with-caption-area projectbg pt--50 pt_md--80 pt_sm--60 pb--25 pb_md--30 pb_sm--20 bg_color--1 poss_relative bk-masonary-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">

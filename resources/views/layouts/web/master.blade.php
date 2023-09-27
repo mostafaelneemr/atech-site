@@ -3,6 +3,12 @@
 
 <head>
     @include('layouts.web.style')
+    {{-- make width logo 100% --}}
+    <style>
+        #logowid{
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body class="template-color-26 template-font-1">
@@ -34,7 +40,7 @@
                             <div class="header-left">
                                 <div class="logo">
                                     <a href="{{ route('home') }}">
-                                        <img src="{{asset(setting('site_logo'))}}" alt="Brook Images">
+                                        <img src="{{asset(setting('site_logo'))}}" id="logowid" alt="Brook Images">
                                     </a>
                                 </div>
                             </div>

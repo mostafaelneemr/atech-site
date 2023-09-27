@@ -72,7 +72,7 @@
                                     <div class="post-category"><a href="#">Life Style</a></div>
                                 </div>
                                 <h5 class="heading heading-h5 line-height-1-39"><a href="{{url('blog/' . $blog->slug)}}">{{ $blog->title }}</a></h5>
-                                <a href="{{url('blog/' . $blog->slug)}}" class="post-read-more" style="color:#fff"></a>
+                                <a href="{{url('blog/' . $blog->slug)}}" class="post-read-more text-white"></a>
                             </div>
                         </div>
                     </div>

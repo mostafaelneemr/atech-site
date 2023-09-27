@@ -1,10 +1,19 @@
 @extends('layouts.web.master')
 
-@section('title')
-    About-US - Atech
+@section('title') About-US - Atech @endsection
+
+@section('style')
+    <style>
+        .testimabout{
+            background-image: url('{{asset('test.jpg')}}');
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-position: center center;
+        }
+    </style>
 @endsection
 
-@section('content')
+ @section('content')
 
   {{-- @foreach($sliders as $slider)
   <div class="breadcaump-area pt--400 pt_lg--300 pt_md--250 pt_sm--200 pb--100 breadcaump-title-bar breadcaump-title-white" style="background-image: url('{{ asset($slider->image) }}');
@@ -31,7 +40,7 @@
   @endforeach --}}
 
   <!-- Start Testimonial Area -->
-  <div class="brook-testimonial-area ptb--100 ptb-md--80 ptb-sm--60" style="background-image: url('{{asset('test.jpg')}}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
+  <div class="brook-testimonial-area testimabout ptb--100 ptb-md--80 ptb-sm--60" >
     <div class="container">
       <div class="row">
         <!-- Start Single Testimonial -->
@@ -42,7 +51,7 @@
                       <p class="bk_pra">{!! $testimonial->desc !!}</p>
                     <div class="testimonial-info">
                           <div class="post-thumbnail">
-                              <img src="{{ $testimonial->image }}" alt="client image">
+                              <img src="{{ $testimonial->image }}" alt="testimonial image">
                           </div>
                           <div class="clint-info">
                               <h6>{{ $testimonial->name }}</h6>
@@ -61,8 +70,7 @@
     </div>
   </div>
   <!-- End Testimonial Area -->
-
-
+  
 
       <!-- Start Counterup Area -->
       <div class="brook-counterup-area poss_relative wavify-activation ptb--80 ptb-md--80 ptb-sm--60 bg_color--1">
@@ -99,7 +107,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="brook-counter text-center">
                         <div class="icon">
-                            <img src="{{asset($client->image)}}" alt="Clients Image">
+                            <img src="{{asset($client->image)}}" alt="Client Image">
                         </div>
                     </div>
                 </div>
