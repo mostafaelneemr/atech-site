@@ -100,39 +100,16 @@
             background-color: #F0F4F9;
         }
         .blogflex{
-            display: flex;
-            
-        }
-        .blogpad{
-            padding: 31px 20px 10px;
+            /* display: flex; */
+
+            min-height: 220px;
         }
     </style>
+    
 
 @endsection
 
 @section('slider')
-    <!-- Start Breadcaump Area -->
-    {{-- @foreach($sliders as $slider)
-    <div class="brook-breadcaump-area fullscreen breadcaump-title-bar breadcaump-title-white d-flex align-items-center pt_md--70 pt_sm--100 pb_sm--50"
-        data-black-overlay="6" style="background-image: url('{{ $slider->image }}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
-
-        <div class="container-fluid plr--180 plr_lg--100 plr_md--50 plr_sm--50">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="breadcaump-inner text-start">
-                        <h1 class="heading heading-h1 font-60 text-white">{{ $slider->title }}</h1>
-                        <div class="bkseparator--25"></div>
-                        <div class="title-separator w--200 color-red"></div>
-                        <div class="bkseparator--25"></div>
-                        <p class="bk_pra font-16 line-height-1-87 text-white">{{ $slider->sub_title }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach --}}
-    <!-- End Breadcaump Area -->
-
 
     <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container firstdiv" data-alias="home-authentic-studio"
          data-source="gallery">
@@ -280,7 +257,7 @@
             
             <div class="row mt--30">
                 @foreach($activities as $active)
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 ">
                     <div class="icon-box text-center mt--30 ">
                         <div class="inner mh-100 d-inline-block activeinner">
                             <div class="services-icon mb-3 activeserv">
@@ -475,14 +452,14 @@
             <div class="row">
                 <!-- Start Single Blog -->
                 @foreach($blogs as $blog)
-                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt--70 blogflex">
-                    <div class="blog-grid blog-grid--modern blog-standard blog-yellow-color">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt--70 ">
+                    <div class="blog-grid blog-grid--modern blog-standard blog-yellow-color blogflex">
                         <div class="post-thumb">
                             <a href="{{url('blog/' . $blog->slug)}}">
                                 <img src="{{ $blog->thumbnail }}" alt="Multipurpose template">
                             </a>
                         </div>
-                        <div class="post-content text-center blogpad">
+                        <div class="post-content text-center">
                             <div class="post-inner">
                                 <div class="post-meta mb--10">
                                     <div class="post-date">{{ date('d-m-Y', strtotime($blog->created_at)) }}</div>

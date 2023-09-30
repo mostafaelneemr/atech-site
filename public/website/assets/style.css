@@ -16723,7 +16723,8 @@ Pricing Box
     border: 1px solid #eee;
     opacity: 1;
     visibility: visible;
-    z-index: -1; }
+    z-index: -1;
+   }
   .icon-box .inner .icon {
     font-size: 80px;
     margin-bottom: 22px;
