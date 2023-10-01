@@ -45,7 +45,7 @@ class HomeSliderController extends SystemController
             $this->viewData['pageTitle'] = __('Sliders');
         }
         $this->viewData['breadcrumb'][] = [ 'text'=> __('slider') ];
-        if (Slider::where('slider_type', self::SLIDER_TYPE)->count() < 1) {
+        if (Slider::where('slider_type', self::SLIDER_TYPE)->count() < 3) {
             $this->viewData['add_new'] = [ 'text'=> __('Add Slider'), 'route'=> 'home-slider.create'];
         }
         
@@ -54,6 +54,9 @@ class HomeSliderController extends SystemController
 
     public function create()
     {
+        if (Slider::where('slider_type', self::SLIDER_TYPE)->count() >= 3){
+            return back();
+        }
         $this->viewData['pageTitle'] = __('Create Slider');
         $this->viewData['breadcrumb'][] = [ 'text'=> __('slider') ];
         return $this->view('home.slider.create', $this->viewData);

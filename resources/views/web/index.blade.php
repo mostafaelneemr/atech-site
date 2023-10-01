@@ -131,26 +131,38 @@
                     <!-- LAYERS -->
 
                     <!-- LAYER NR. 1 -->
-                    <div class="tp-caption tp-resizeme mx-5 divtitle" id="slide-16-layer-1" data-x="['left','center','center','center']"
-                    data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
-                    data-voffset="['0','0','0','0']" data-fontsize="['60','60','45','30']"
-                    data-lineheight="['90','67','50','34']" data-width="['1180','817','620','380']"
-                    data-height="['none','135','none','none']" data-whitespace="normal" data-type="text"
-                    data-responsive_offset="on" data-frames='[{"delay":700,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                    data-textAlign="['left','center','center','center']" data-paddingtop="[0,0,0,0]"
-                    data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">{{ $slider->title }} 
-                    </div>
+                    <h6 class="tp-caption   tp-resizeme" id="slide-16-layer-26" data-x="['center','center','center','center']"
+                        data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
+                        data-voffset="['-160','-160','-160','-100']" data-fontsize="['18','18','16','14']"
+                        data-width="['470','470','400','360']" data-height="none" data-whitespace="normal"
+                        data-type="text" data-responsive_offset="on" data-frames='[{"delay":400,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                        data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                        style="z-index: 5; min-width: 470px; max-width: 470px; white-space: normal; font-size: 18px; line-height: 33px; font-weight: 700; color: #ffffff; letter-spacing: 3px;text-transform:uppercase;">WE
+                        {{ $slider->title }} </h6>
+
+                    <!-- LAYER NR. 2 -->
+                    <div class="tp-caption   tp-resizeme" id="slide-16-layer-1" data-x="['center','center','center','center']"
+                        data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
+                        data-voffset="['0','-28','-28','-10']" data-fontsize="['80','60','45','30']"
+                        data-lineheight="['90','67','50','34']" data-width="['1180','817','620','380']"
+                        data-height="['none','135','none','none']" data-whitespace="normal" data-type="text"
+                        data-responsive_offset="on" data-frames='[{"delay":700,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                        data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                        style="z-index: 6; min-width: 1180px; max-width: 1180px; white-space: normal; font-size: 80px; line-height: 90px; font-weight: 700; color: #ffffff; letter-spacing: 0px;">
+                        {{ $slider->sub_title }}. </div>
 
                     <!-- LAYER NR. 3 -->
-                    <a class="tp-caption rev-btn smooth-scroll-link mx-5" href="{{ setting('slider_link') }}" target="_self" id="slide-16-layer-24"
-                       data-x="['left','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
-                       data-voffset="['140','140','140','100']" data-width="160" data-height="55"
-                       data-whitespace="normal" data-type="button" data-actions='' data-responsive_offset="on"
-                       data-responsive="off" data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(255,255,255);bg:rgb(34,34,34);transform:translateY(-3px);"}]'
-                       data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
-                       data-paddingright="[20,20,20,20]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[20,20,20,20]"
-                       style="z-index: 7; margin-top:100px;min-width: 160px; max-width: 160px; max-width: 55px; max-width: 55px; white-space: normal; font-size: 16px; line-height: 55px; font-weight: 700; color: #222222; letter-spacing: 0px;background-color:rgb(255,255,255);border-radius:5px 5px 5px 5px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;text-decoration: none;">{{ setting('slider_button') }} </a>
-
+                    {{-- <a class="tp-caption rev-btn   smooth-scroll-link" href="#section-about" target="_self" id="slide-16-layer-24"
+                        data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
+                        data-voffset="['140','140','140','100']" data-width="160" data-height="55"
+                        data-whitespace="normal" data-type="button" data-actions='' data-responsive_offset="on"
+                        data-responsive="off" data-frames='[{"delay":1000,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(255,255,255);bg:rgb(34,34,34);transform:translateY(-3px);"}]'
+                        data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
+                        data-paddingright="[20,20,20,20]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[20,20,20,20]"
+                        style="z-index: 7; min-width: 160px; max-width: 160px; max-width: 55px; max-width: 55px; white-space: normal; font-size: 16px; line-height: 55px; font-weight: 700; color: #222222; letter-spacing: 0px;background-color:rgb(255,255,255);border-radius:5px 5px 5px 5px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;text-decoration: none;">
+                        {{ setting('') }} </a> --}}
                     </li>
                 @endforeach
             </ul>
