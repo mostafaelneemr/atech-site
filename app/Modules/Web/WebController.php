@@ -40,23 +40,23 @@ class WebController extends Controller{
         $this->viewData['activities'] = OurActive::orderBy('id', 'ASC')->paginate(8); 
 
         $this->viewData['categories'] = Project::distinct('category')->pluck('category');
-        $this->viewData['items'] = Project::orderBy('id', 'DESC')->paginate(6);
+        $this->viewData['items'] = Project::orderBy('id', 'ASC')->paginate(6);
         
         return $this->view('index', $this->viewData);
     }
 
     public function about()
     {
+        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         $this->viewData['testimonials'] = Testimonial::get(); 
         $this->viewData['clients'] = Client::get(); 
-        $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
 
         return $this->view('about', $this->viewData);
     }
 
     public function service()
     {
-        $this->viewData['items'] = Project::orderBy('id', 'DESC')->get();
+        $this->viewData['items'] = Project::orderBy('id', 'ASC')->get();
         $this->viewData['activities'] = OurActive::orderBy('id', 'ASC')->get(); 
         return $this->view('service',$this->viewData);
     }
