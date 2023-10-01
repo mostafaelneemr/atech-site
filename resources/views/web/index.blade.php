@@ -106,7 +106,17 @@
         }
     </style>
     
+    <style>
+        .icon-box .inner:hover{background-color: #222933;color: #fff};
+    </style>
 
+    <style>
+        .icon-box .inner:hover .content h5.heading {color:#fff};
+    </style>
+
+    <style>
+        .icon-box .inner:hover .services-icon i{color:#fff};
+    </style>
 @endsection
 
 @section('slider')
@@ -133,7 +143,7 @@
                     <!-- LAYER NR. 1 -->
                     <h6 class="tp-caption   tp-resizeme" id="slide-16-layer-26" data-x="['center','center','center','center']"
                         data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
-                        data-voffset="['-160','-160','-160','-100']" data-fontsize="['18','18','16','14']"
+                        data-voffset="['-160','-160','-160','-100']" data-fontsize="['20','18','16','14']"
                         data-width="['470','470','400','360']" data-height="none" data-whitespace="normal"
                         data-type="text" data-responsive_offset="on" data-frames='[{"delay":400,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
                         data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
@@ -144,7 +154,7 @@
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption   tp-resizeme" id="slide-16-layer-1" data-x="['center','center','center','center']"
                         data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
-                        data-voffset="['0','-28','-28','-10']" data-fontsize="['80','60','45','30']"
+                        data-voffset="['0','-28','-28','-10']" data-fontsize="['70','60','45','30']"
                         data-lineheight="['90','67','50','34']" data-width="['1180','817','620','380']"
                         data-height="['none','135','none','none']" data-whitespace="normal" data-type="text"
                         data-responsive_offset="on" data-frames='[{"delay":700,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
@@ -154,7 +164,7 @@
                         {{ $slider->sub_title }}. </div>
 
                     <!-- LAYER NR. 3 -->
-                    {{-- <a class="tp-caption rev-btn   smooth-scroll-link" href="#section-about" target="_self" id="slide-16-layer-24"
+                    {{-- <a class="tp-caption rev-btn   smooth-scroll-link" href="{{ setting('slider_link') }}" target="_self" id="slide-16-layer-24"
                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
                         data-voffset="['140','140','140','100']" data-width="160" data-height="55"
                         data-whitespace="normal" data-type="button" data-actions='' data-responsive_offset="on"
@@ -162,7 +172,7 @@
                         data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
                         data-paddingright="[20,20,20,20]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[20,20,20,20]"
                         style="z-index: 7; min-width: 160px; max-width: 160px; max-width: 55px; max-width: 55px; white-space: normal; font-size: 16px; line-height: 55px; font-weight: 700; color: #222222; letter-spacing: 0px;background-color:rgb(255,255,255);border-radius:5px 5px 5px 5px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;text-decoration: none;">
-                        {{ setting('') }} </a> --}}
+                        {{ setting('slider_button') }} </a> --}}
                     </li>
                 @endforeach
             </ul>
@@ -262,7 +272,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="brook-section-title text-center">
-                        <h1 class="heading heading-h3">Our Activities</h1>
+                        <h1 class="heading heading-h3">{{ setting('title_ouractive') }}</h1>
                     </div>
                 </div>
             </div>
@@ -297,7 +307,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="brook-section-title text-center mb--60">
-                        <h3 class="heading heading-h3 text-white">Our works</h3>
+                        <h3 class="heading heading-h3 text-white">{{ setting('title_projects') }}</h3>
                     </div>
                 </div>
             </div>
@@ -359,7 +369,7 @@
             <div class="row">
                 <div class="col-lg-12 mb--30">
                     <div class="brook-section-title text-center">
-                        <h3 class="heading heading-h3">Some of our Certificates </h3>
+                        <h3 class="heading heading-h3">{{ setting('title_certificate') }}</h3>
                     </div>
                 </div>
     
@@ -452,7 +462,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 col-xl-6 col-sm-12 col-12">
                     <div class="brook-section-title">
-                        <h2 class="heading heading-h2">Our Insights & Articles</h2>
+                        <h2 class="heading heading-h2">{{ setting('title_blog') }}</h2>
                     </div>
                 </div>
                 <div class="col-lg-7 col-xl-6 col-sm-12 col-12">

@@ -5,15 +5,25 @@
 @endsection
 
 @section('style')
-<style>
-    .activeinner{
-        height:300px;
-    }
+    <style>
+        .activeinner{
+            height:300px;
+        }
+    
+        .activeserv{
+            color: #4d5e75; font-size: 40px;
+        }
+    </style>
 
-    .activeserv{
-        color: #4d5e75; font-size: 40px;
-    }
-</style>
+    <style>
+        .icon-box .inner:hover{background-color: #222933;color: #fff};
+    </style>
+    <style>
+        .icon-box .inner:hover .content h5.heading {color:#fff};
+    </style>
+    <style>
+        .icon-box .inner:hover .services-icon i{color:#fff};
+    </style>
 @endsection
 
 @section('content')
