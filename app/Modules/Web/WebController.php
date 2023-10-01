@@ -32,11 +32,11 @@ class WebController extends Controller{
 
     public function index(){
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
-        $this->viewData['testimonials'] = Testimonial::get(); 
+        $this->viewData['testimonials'] = Testimonial::orderBy('id', 'ASC')->get(); 
         $this->viewData['brands'] = Brand::get(); 
         $this->viewData['certificates'] = Certificate::get(); 
         $this->viewData['blogs'] = Blog::paginate(3); 
-        $this->viewData['clients'] = Client::paginate(18); 
+        $this->viewData['clients'] = Client::orderBy('id', 'ASC')->paginate(18); 
         $this->viewData['activities'] = OurActive::orderBy('id', 'ASC')->paginate(8); 
 
         $this->viewData['categories'] = Project::distinct('category')->pluck('category');

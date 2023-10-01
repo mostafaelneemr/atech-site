@@ -117,6 +117,12 @@
     <style>
         .icon-box .inner:hover .services-icon i{color:#fff};
     </style>
+
+    <style>
+        .post-read-more{
+            background-color: #222933 !important
+        }
+    </style>
 @endsection
 
 @section('slider')
@@ -467,7 +473,7 @@
                 </div>
                 <div class="col-lg-7 col-xl-6 col-sm-12 col-12">
                     <div class="blog-btn text-md-end text-start view-more-btn heding-color font-700 mt_sm--30">
-                        <a href="{{ route('blogs') }}"><span>View all blogs</span><span class="btn-arrow"></span></a>
+                        <a href="{{ route('blogs') }}"><span>View all blogs</span><span class="post-read-more btn-arrow"></span></a>
                     </div>
                 </div>
             </div>
