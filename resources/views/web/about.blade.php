@@ -11,6 +11,16 @@
             background-position: center center;
         }
     </style>
+
+<style>
+    .testimonial_style--1:hover{
+        background-color: #222933 !important
+    }
+    #quote{
+        color: #222933;
+    }
+
+</style>
 @endsection
 
  @section('content')
@@ -59,7 +69,7 @@
                           </div>
                       </div>
                       <div class="testimonial-quote">
-                          <span class="fa fa-quote-right"></span>
+                          <span class="fa fa-quote-right" id="quote"></span>
                       </div>
                   </div>
               </div>

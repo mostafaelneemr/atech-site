@@ -22,6 +22,23 @@
     <meta property="og:description" content="{{ $meta_description }}" />
 @endsection
 
+@section('style')
+
+    <style>
+        .blogbg{
+            background-color: #F0F4F9;
+        }
+        .blogflex{
+            /* display: flex; */
+            min-height: 220px;
+        }
+        .post-read-more{
+            background-color: #222933 !important
+        } 
+    </style>
+
+@endsection
+
 {{-- @section('slider') --}}
 
     <!-- Start Breadcaump Area -->
@@ -51,7 +68,7 @@
 @section('content')
 
     <!-- Start Blog Grid Area -->
-    <div class="bk-blog-grid-area pt--70 pb--100 pt_md--5 pt_sm--5 pb_md--80 pb_sm--80 bg_color--5">
+    <div class="bk-blog-grid-area pt--70 pb--100 pt_md--5 pt_sm--5 pb_md--80 pb_sm--80 bg_color--5 blogbg">
         <div class="container">
 
             <div class="row">
@@ -59,7 +76,7 @@
                 <!-- Start Single Blog -->
                 @foreach($blogs as $blog)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12 move-up wow mt--100">
-                    <div class="blog-grid blog-grid--modern blog-standard">
+                    <div class="blog-grid blog-grid--modern blog-standard blog-yellow-color blogflex">
                         <div class="post-thumb">
                             <a href="{{url('blog/' . $blog->slug)}}">
                                 <img src="{{ $blog->thumbnail }}" alt="Multipurpose template">
@@ -72,7 +89,7 @@
                                     <div class="post-category"><a href="#">Life Style</a></div>
                                 </div>
                                 <h5 class="heading heading-h5 line-height-1-39"><a href="{{url('blog/' . $blog->slug)}}">{{ $blog->title }}</a></h5>
-                                <a href="{{url('blog/' . $blog->slug)}}" class="post-read-more text-white"></a>
+                                <a href="{{url('blog/' . $blog->slug)}}" class="post-read-more"></a>
                             </div>
                         </div>
                     </div>

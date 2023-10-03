@@ -101,8 +101,10 @@
         }
         .blogflex{
             /* display: flex; */
-
             min-height: 220px;
+        }
+        .post-read-more{
+            background-color: #222933 !important
         }
     </style>
     
@@ -119,7 +121,16 @@
     </style>
 
     <style>
-        .post-read-more{
+
+    </style>
+    <style>
+        .testimonial_style--1:hover{
+            background-color: #222933 !important
+        }
+        #quote{
+            color: #222933;
+        }
+        body.template-color-26 .slick-dots-bottom .slick-dots li.slick-active button{
             background-color: #222933 !important
         }
     </style>
@@ -237,7 +248,7 @@
                         <!-- Start Single Popup -->
                         <div class="video-btn position--center">
                             <a class="play__btn" href="{{ setting('video_link') }}">
-                                <div class="video-icon second-icon"></div>
+                                <div class="video-icon second-icon post-read-more"></div>
                             </a>
                         </div>
                         <!-- End Single Popup -->
@@ -445,7 +456,7 @@
                                         </div>
                                     </div>
                                     <div class="testimonial-quote">
-                                        <span class="fa fa-quote-right"></span>
+                                        <span class="fa fa-quote-right" id="quote"></span>
                                     </div>
                                 </div>
                             </div>

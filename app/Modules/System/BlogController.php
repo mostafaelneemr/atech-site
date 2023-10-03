@@ -152,13 +152,19 @@ class BlogController extends SystemController
             'desc' => $request->desc,
         ]);
 
+        // $notification = array(
+        //     'message' => 'Data Updated successfully',
+        //     'message-alert' => 'info'
+        // );
+        // return redirect::route('blogs.index')->with($notification);
+
         if($insertData){
             return $this->response(
                 true,
                 200,
-                __('Data added successfully'),
+                __('Data Updated successfully'),
                 [
-                    'url'=> route('blogs.index',$insertData->id)
+                    'url'=> route('blogs.index')
                 ]
             );
         }else{
@@ -168,7 +174,6 @@ class BlogController extends SystemController
                 __('Sorry, we could not add the data')
             );
         }
-        // return redirect::route('blogs.index')->with($notification);
     }
 
 
@@ -190,9 +195,9 @@ class BlogController extends SystemController
         return $this->response(true, 200, $message );
     }
 
-    public function inActiveTestimonial($id)
+    public function inActiveBlog($id)
     {
-        Brand::findOrFail($id)->update(['is_publish' => 'in-active']);
+        Blog::findOrFail($id)->update(['is_publish' => 'in-active']);
         $notification = array(
             'message' => 'Testimonial is Inactive',
             'alert-type' => 'success',
@@ -201,9 +206,9 @@ class BlogController extends SystemController
         return redirect()->back()->with($notification);
     }
 
-    public function ActiveTestimonial($id)
+    public function ActiveBlog($id)
     {
-        Brand::findOrFail($id)->update(['is_publish' => 'active']);
+        Blog::findOrFail($id)->update(['is_publish' => 'active']);
         $notification = array(
             'message' => 'Testimonial is Active',
             'alert-type' => 'success',
