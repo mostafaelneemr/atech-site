@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Fontawsome extends Model
 {
     use HasFactory;
-    protected $table = "Fontawsomes";
+    protected $table = "fontawsomes";
 
     protected $fillable = ['name'];
 
