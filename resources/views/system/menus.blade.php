@@ -109,6 +109,13 @@
         'text'=>__('SEO Settings'),
     ];
 
+    $menu['Icons'] = [
+        'permission'=> ['fontawsome.index'],
+        'url'=> route('fontawsome.index'),
+        'icon'=>'<i class="fas fa-icons"></i>',
+        'text'=>__('Icons'),
+    ];
+
 
 //     $menu['ActivityLog'] = [
 //         'permission'=> ['system.activity-log.index'],

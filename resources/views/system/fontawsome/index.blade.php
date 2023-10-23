@@ -1,33 +1,28 @@
 @extends('system.layout')
 
-@section('style')
-    <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
-@endsection
-
 @section('content')
-
+    @include('system.message')
     <div class="row">
-        <div class="col-md-12 ">
-            @include('system.message')
-
-            <div class="card">
-
-                <div class="card-body ">
-                    <div class="table-responsive">
-                        <table id="datatable" class="table table-striped table-hover fixTableHead">
-                        <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-
-                        </tbody>
-
-                    </table>
+        <div class="col-md-12">
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3 class="card-label">Fontawesome Icons</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach($fontawsomes as $fontawsome)
+                        <div class="col-md-2 d-flex align-items-stretch">
+                            <div class="d-flex flex-grow-1 align-items-center bg-hover-light p-4 rounded">
+                                <div class="mr-4 flex-shrink-0 text-center" style="width: 40px;">
+                                    <i class="{{ $fontawsome->name }}"></i>
+                                </div>
+                                <div class="text-muted">{{ $fontawsome->name }}</div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

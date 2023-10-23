@@ -121,9 +121,6 @@
     </style>
 
     <style>
-
-    </style>
-    <style>
         .testimonial_style--1:hover{
             background-color: #222933 !important
         }
@@ -134,6 +131,7 @@
             background-color: #222933 !important
         }
     </style>
+
 @endsection
 
 @section('slider')
@@ -158,7 +156,7 @@
                     <!-- LAYERS -->
 
                     <!-- LAYER NR. 1 -->
-                    <h6 class="tp-caption   tp-resizeme" id="slide-16-layer-26" data-x="['center','center','center','center']"
+                    {{-- <h6 class="tp-caption   tp-resizeme" id="slide-16-layer-26" data-x="['center','center','center','center']"
                         data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
                         data-voffset="['-160','-160','-160','-100']" data-fontsize="['20','18','16','14']"
                         data-width="['470','470','400','360']" data-height="none" data-whitespace="normal"
@@ -166,10 +164,11 @@
                         data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
                         data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
                         style="z-index: 5; min-width: 470px; max-width: 470px; white-space: normal; font-size: 18px; line-height: 33px; font-weight: 700; color: #ffffff; letter-spacing: 3px;text-transform:uppercase;">WE
-                        {{ $slider->title }} </h6>
+                        {{ $slider->title }} </h6> --}}
 
+                    
                     <!-- LAYER NR. 2 -->
-                    <div class="tp-caption   tp-resizeme" id="slide-16-layer-1" data-x="['center','center','center','center']"
+                    {{-- <div class="tp-caption   tp-resizeme" id="slide-16-layer-1" data-x="['center','center','center','center']"
                         data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
                         data-voffset="['0','-28','-28','-10']" data-fontsize="['70','60','45','30']"
                         data-lineheight="['90','67','50','34']" data-width="['1180','817','620','380']"
@@ -178,8 +177,9 @@
                         data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
                         data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
                         style="z-index: 6; min-width: 1180px; max-width: 1180px; white-space: normal; font-size: 80px; line-height: 90px; font-weight: 700; color: #ffffff; letter-spacing: 0px;">
-                        {{ $slider->sub_title }}. </div>
+                        {{ $slider->sub_title }}. </div> --}}
 
+                    
                     <!-- LAYER NR. 3 -->
                     {{-- <a class="tp-caption rev-btn   smooth-scroll-link" href="{{ setting('slider_link') }}" target="_self" id="slide-16-layer-24"
                         data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
@@ -300,7 +300,12 @@
                     <div class="icon-box text-center mt--30 ">
                         <div class="inner mh-100 d-inline-block activeinner">
                             <div class="services-icon mb-3 activeserv">
-                                <i class="{{ $active->icon }}"></i>
+                                @if ($active->fontawsome)
+                                    <i class="{{ $active->fontawsome->name }}"></i>
+                                @else
+                                    <!-- Handle the case where there's no related FontAwesome model -->
+                                    <i class="default-icon-class"></i>
+                                @endif
                             </div> 
                             <div class="content">
                                 <h5 class="heading heading-h5">{{ $active->title }}</h5>

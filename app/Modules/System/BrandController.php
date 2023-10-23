@@ -90,11 +90,11 @@ class BrandController extends SystemController
 
     public function destroy($id)
     {
-        $testimonial = Brand::findOrFail($id);
-        $image = Str::after($testimonial->image, 'upload/about/');
+        $brand = Brand::findOrFail($id);
+        $image = Str::after($brand->image, 'upload/about/');
         $image = public_path('upload/about/' . $image);
         unlink($image);
-        $testimonial->delete();
+        $brand->delete();
 
         $message = __( 'brand is deleted successfully' );
         return $this->response(true, 200, $message );

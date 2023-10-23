@@ -16,13 +16,18 @@
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
-                                    <label>Icon </label>
-                                    <input type="text" name="icon" class="form-control @error('icon') is-invalid @enderror" value="{{ old('icon') }}" required>
-                                    @error('icon') <div class="alert alert-danger">{{ $message }}</div> @enderror
+                                    <label for="Selectd">Icon</label>
+                                    <select class="form-control" id="fontawsome_id-form-input" name="fontawsome_id">
+                                        <option selected disabled>selected </option>
+                                        @foreach($fontawsomes as $fontawsome)
+                                            <option value="{{$fontawsome->id}}">{{$fontawsome->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('fontawsome_id') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Title </label>
+                                    <label>Title<span class="text-danger">*</span></label>
                                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" required>
                                     @error('title') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
@@ -31,7 +36,7 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label>Description</label>
+                                    <label>Description<span class="text-danger">*</span></label>
                                     <textarea name="desc" class="form-control" id="desc" rows="5"></textarea>
                                     @error('desc') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
@@ -52,24 +57,32 @@
 
 @section('script')
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-    <script>
-        $(document).ready(function () {
-            CKEDITOR.replace('desc');
+    <script type="text/javascript">
+        $('select').select2({
+            placeholder: "{{__('Select Icon')}}",
+            allowClear: true,
+            width:"100%",
         });
     </script>
 
-<script type="text/javascript">
-    function imageUrl(input) {
-        if(input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e){
-                $('#image').attr('src',e.target.result).width(100).height(80);
-            };
-            reader.readAsDataURL(input.files[0]);
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+        <script>
+            $(document).ready(function () {
+                CKEDITOR.replace('desc');
+            });
+        </script>
+
+    <script type="text/javascript">
+        function imageUrl(input) {
+            if(input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e){
+                    $('#image').attr('src',e.target.result).width(100).height(80);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
         }
-    }
-</script>
+    </script>
 
 @endsection

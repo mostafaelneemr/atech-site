@@ -12,27 +12,31 @@ class SendEmailController extends SystemController
 {
     public function index(Request $request)
     {
-
-        //      Contact::create($request->validated());
-        //      Mail::to(setting('email'))->send(new ContactMail($request));
-        //      return redirect('/')->with('success', 'The message has been send successfully.');
-
-        $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'email|required|string',
-            'phone' => 'required|min:11|numeric',
-            'message' => 'nullable|string'
-        ]);
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'message' => $request->message,
-        ];
-        Mail::to('mostafa.elnemr50@gmail.com')->send(new ContactMail($data));
-
-        session()->flash('status', 'thank you for contact');
-        return redirect()->back();
+        try {
+            $this->validate($request, [
+                'name' => 'required|string|min:3',
+                'email' => 'email|required|string',
+                'phone' => 'required|min:11|numeric',
+                'message' => 'nullable|string'
+            ]);
+            $data = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'message' => $request->message,
+            ];
+            Mail::to('mostafa.elnemr50@gmail.com')->send(new ContactMail($data));
+        
+            $notification = array(
+                'message' => 'SEO Setting has been updated successfully',
+                'alert-type' => 'success',
+            );
+        
+            session()->flash('status', 'thank you for contact');
+            return redirect()->back();
+        }catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['errors' => $e->getMessage()]);
+        }
     }
 
 

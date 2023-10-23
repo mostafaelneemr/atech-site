@@ -78,6 +78,12 @@ return [
         'permissions' => [ 'manage-seosetting'  =>['seosetting.index','seosetting.update'] ]
     ],
 
+    [
+        'name' => __('Icons'),
+        'description' => __('Icons Permissions'),
+        'permissions' => [ 'fontawsome'  =>['fontawsome.index'] ]
+    ],
+
 
     // [
     //     'name' => __('Activity Log'),

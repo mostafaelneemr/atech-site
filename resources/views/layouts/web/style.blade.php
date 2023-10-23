@@ -14,6 +14,8 @@
 
 <title>@yield('meta_title', $title)</title>
 <meta name="description" content="@yield('meta_description', $seosetting->description)" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <meta name="keywords" content="@yield('meta_keywords', $keyword)">
 
 <meta name="author" content="{{ $seosetting->author }}">

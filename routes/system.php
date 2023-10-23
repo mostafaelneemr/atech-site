@@ -36,6 +36,8 @@ Route::resource('/seosetting', SEOController::class);
 // Route::get('/seosetting', [SEOController::class, 'index'])->name('system.seosetting.index'); //
 // Route::patch('/seosetting', [SEOController::class, 'update'])->name('system.seosetting.update'); //
 
+Route::resource('fontawsome', FontawsomeController::class);
+
 
 Route::get('/staff/change-password', 'StaffController@changePassword')->name('system.staff.change-password');
 Route::post('/staff/change-password', 'StaffController@changePasswordPost')->name('system.staff.change-password-post');
@@ -59,6 +61,19 @@ Route::get('/activity-log', 'ActivityController@index')->name('system.activity-l
 
 Route::get('/auth-sessions', 'AuthSessionController@index')->name('system.staff.auth-sessions');
 Route::delete('/auth-sessions', 'AuthSessionController@deleteAuthSession')->name('system.staff.delete-auth-sessions');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Route::any('posts', 'PostController')->name('system.crud.posts');
 //Route::resource('/payment-methods','PaymentMethodController',['as'=>'system']); //

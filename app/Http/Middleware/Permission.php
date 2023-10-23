@@ -32,7 +32,9 @@ class Permission
                 'system.notifications.url',
                 'system.notifications.index',
 
-
+                'fontawsome.create',
+                'fontawsome.store',
+                'fontawsome.edit',
 
             ];
 
