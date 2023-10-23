@@ -78,7 +78,7 @@
     
                                     <div class="col-lg-12 mt--30">
                                         <input type="submit" value="Send message">
-                                        {{-- <p class="form-messege"></p> --}}
+                                        <p class="form-messege"></p>
                                     </div>
 
                                 </div>
