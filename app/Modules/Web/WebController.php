@@ -24,7 +24,7 @@ class WebController extends Controller{
         $this->viewData['activities'] = OurActive::with('fontawsome')->orderBy('id', 'ASC')->paginate(8); 
 
         $this->viewData['categories'] = Project::distinct('category')->pluck('category');
-        $this->viewData['items'] = Project::orderBy('id', 'ASC')->paginate(6);
+        $this->viewData['items'] = Project::orderBy('sort', 'ASC')->paginate(6);
         
         return $this->view('index', $this->viewData);
     }

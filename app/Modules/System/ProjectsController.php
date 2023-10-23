@@ -26,7 +26,7 @@ class ProjectsController extends SystemController
                             <a href="#" class="btn btn-md btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">
                               <i class="la la-gear"></i>
                             </a>
-                            <div class="dropdown-menu '.( (\App::getLocale() == 'ar') ? 'dropdown-menu-left' : 'dropdown-menu-right').'" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
+                            <div class="dropdown-menu dropdown-menu-left" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
                                 <a class="dropdown-item" href="'.route('projects.edit',$data->id).'"><i class="la la-edit"></i> '.__('Edit').'</a>       
                                 <a class="dropdown-item" href="javascript:void(0);" onclick="deleteProject(\'' . route( 'projects.destroy', $data->id ) . '\')"><i class="la la-trash"></i> '.__('Delete').'</a>
                             </div>
@@ -96,6 +96,7 @@ class ProjectsController extends SystemController
             'type' => $request->type,
             'category' => $request->category,
             'desc' => $request->desc,
+            'sort' => 10,
         ]);
 
         $notification = array(
@@ -104,13 +105,6 @@ class ProjectsController extends SystemController
         );
         return redirect::route('projects.index')->with($notification);
     }
-
-
-    public function show($id)
-    {
-        return back();
-    }
-
 
     public function edit($id)
     {
@@ -120,58 +114,61 @@ class ProjectsController extends SystemController
         return $this->view('project.edit', $this->viewData);
     }
 
-
     public function update(Request $request, $id)
     {
-
-        $this->validate($request, [
-            'image' => 'image|mimes:jpeg,png,jpg,',
-            'image_desc' => 'image|mimes:jpeg,png,jpg,',
-            'title' => 'required|string|max:100',
-            'type' => 'required|string',
-            'desc' => 'required|string',
-            
-        ],
-        [
-            'image.mimes' => 'image should be extension one of jpg , png or jpeg',
-            'image.image' => 'image should be extension one of jpg , png or jpeg',
-            'image_desc.mimes' => 'image should be extension one of jpg , png or jpeg',
-            'image_desc.image' => 'image should be extension one of jpg , png or jpeg',
-        ]);
-
-        $oldImage = $request->oldImage;
-        $oldImageDesc = $request->oldImageDesc;
-
-        if ($request->file('image')) {
-            unlink($oldImage);
-            $image = $request->file('image');
-            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
-            $save_url = 'upload/about/' . $name_gen;
-            Project::where('id', $id)->update(['image' => $save_url]);
+        try {
+            $this->validate($request, [
+                'image' => 'image|mimes:jpeg,png,jpg,',
+                'image_desc' => 'image|mimes:jpeg,png,jpg,',
+                'title' => 'required|string|max:100',
+                'type' => 'required|string',
+                'desc' => 'required|string',
+                'sort' => 'required',
+            ],
+            [
+                'image.mimes' => 'image should be extension one of jpg , png or jpeg',
+                'image.image' => 'image should be extension one of jpg , png or jpeg',
+                'image_desc.mimes' => 'image should be extension one of jpg , png or jpeg',
+                'image_desc.image' => 'image should be extension one of jpg , png or jpeg',
+            ]);
+    
+            $oldImage = $request->oldImage;
+            $oldImageDesc = $request->oldImageDesc;
+    
+            if ($request->file('image')) {
+                unlink($oldImage);
+                $image = $request->file('image');
+                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+                Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
+                $save_url = 'upload/about/' . $name_gen;
+                Project::where('id', $id)->update(['image' => $save_url]);
+            }
+    
+            if ($request->file('image_desc')) {
+                unlink($oldImageDesc);
+                $image = $request->file('image_desc');
+                $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+                Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
+                $path_url = 'upload/about/' . $name_gen;
+                Project::where('id', $id)->update(['image_desc' => $path_url]);
+            }
+    
+            Project::where('id', $id)->update([
+                'title' => $request->title,
+                'type' => $request->type,
+                'category' => $request->category,
+                'desc' => $request->desc,
+                'sort' => $request->sort,
+            ]);
+    
+            $notification = array(
+                'message' => 'Project Inserted Successfully',
+                'alert-type' => 'success',
+            );
+            return redirect::route('projects.index')->with($notification);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['errors' => $e->getMessage()]);
         }
-
-        if ($request->file('image_desc')) {
-            unlink($oldImageDesc);
-            $image = $request->file('image_desc');
-            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
-            $path_url = 'upload/about/' . $name_gen;
-            Project::where('id', $id)->update(['image_desc' => $path_url]);
-        }
-
-        Project::where('id', $id)->update([
-            'title' => $request->title,
-            'type' => $request->type,
-            'category' => $request->category,
-            'desc' => $request->desc,
-        ]);
-
-        $notification = array(
-            'message' => 'Project Inserted Successfully',
-            'alert-type' => 'success',
-        );
-        return redirect::route('projects.index')->with($notification);
     }
 
 
