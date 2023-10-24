@@ -1,0 +1,107 @@
+@import 'bootstrap/bootstrap';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+
+$font-primary: 'Lato',Arial, sans-serif;
+$primary: #7e0cf5;
+
+body{
+	font-family: $font-primary;
+	font-size: 16px;
+	line-height: 1.8;
+	font-weight: normal;
+	background: #f8f9fd;
+	color: lighten($black,50%);
+}
+a {
+	transition: .3s all ease;
+	color: $primary;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none;
+	}
+}
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+	line-height: 1.5;
+	font-weight: 400;
+	font-family: $font-primary;
+	color: $black;
+}
+
+.bg-primary{
+	background: $primary !important;
+}
+
+.ftco-section{
+	padding: 7em 0;
+}
+
+.ftco-no-pt{
+	padding-top: 0;
+}
+.ftco-no-pb{
+	padding-bottom: 0;
+}
+//HEADING SECTION
+.heading-section{
+	font-size: 28px;
+	color: $black;
+}
+
+//COVER BG
+.img{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+.box {
+  width: 1005;
+  margin: 0 auto;
+  position: relative;
+}
+.calendar {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+  color: white;
+  .year, .month, .day {
+    width: 33.333%;
+    float: left;
+    .previous, .next, .current {
+      p {
+        font-size: 40px;
+        margin: 0;
+      }
+      span {
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
+    .previous, .next {
+      background-color: rgba(0,0,0,0.5);
+      padding: 2.6em 0;
+      p {
+        opacity: 0.3;
+      }
+    }
+    .current {
+      padding: 2em 0;
+    }
+  }
+  .year {
+    background-color: $primary;
+  }
+  .month {
+    background-color: lighten($primary,10%);
+    // background-color: $primary;
+  }
+  .day {
+    background-color: lighten($primary,15%);
+    // background-color: $primary;
+  }
+}

@@ -2,6 +2,11 @@
 
 
 @section('style')
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('calender_template/css/style.css')}}">
+
     <style>
         .body {
             margin: 0;
@@ -97,20 +102,51 @@
 
         <div class="card-body d-flex flex-column">
 
-            {{-- clock at dashboard --}}
-            <div class="body">
-                <div class="clock">
-                    <div class="clock-face">
-                      <div class="hand hour-hand"></div>
-                      <div class="hand min-hand"></div>
-                      <div class="hand second-hand"></div>
+            <div class="row">
+
+                {{-- clock at dashboard --}}
+                <div class="body col-6">
+                    <div class="clock">
+                        <div class="clock-face">
+                            <div class="hand hour-hand"></div>
+                            <div class="hand min-hand"></div>
+                            <div class="hand second-hand"></div>
+                        </div>
                     </div>
-                  </div>
+                </div>
+            
+                <section class="ftco-section col-6">
+                    <div class="container">
+
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="box">
+                                    <div class="calendar">
+                                        <div class="year">
+                                            <div class="previous"><p id="prevYear"></p></div>
+                                            <div class="current"><p id="currentYear"></p><span>Year</span></div>
+                                            <div class="next"><p id="nextYear"></p></div>
+                                        </div>
+                                  <div class="month">
+                                    <div class="previous"><p id="prevMonth"></p></div>
+                                    <div class="current"><p id="currentMonth"></p><span>Month</span></div>
+                                    <div class="next"><p id="nextMonth"></p></div>
+                                  </div>
+                                  <div class="day">
+                                      <div class="previous"><p id="prevDay"></p></div>
+                                    <div class="current"><p id="currentDay"></p><span>Day</span></div>
+                                    <div class="next"><p id="nextDay"></p></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-
-
-            <div class="mt-12 mb-5">
-                <div class="row row-paddingless mb-10">
+            
+            {{-- <div class="mt-12 mb-5">
+                <div class="row row-paddingless mb-10"> --}}
 
                     <!--begin::Item-->
                     {{-- <div class="col" style="max-width: 20%;">
@@ -172,11 +208,11 @@
                 </div> --}}
 
             
-                </div>
-            </div>                    
+                {{-- </div>
+            </div>                     --}}
                                     
-            <div class="mt-12 mb-5">
-               <div class="row row-paddingless mb-10">
+            {{-- <div class="mt-12 mb-5">
+               <div class="row row-paddingless mb-10"> --}}
             
                     {{-- <div class="col" style="max-width: 20%;">
                         <div class="d-flex align-items-center mr-2"><i style="font-size: 50px" class="la la-store-alt text-success mr-5"></i>
@@ -234,13 +270,10 @@
                         </div>
                     </div> --}}
                 
-               </div>
-            </div>
+               {{-- </div>
+            </div> --}}
 
-            <div class="mt-12 mb-5">
-                <div class="row row-paddingless mb-10">
-                </div>
-            </div>
+
 
        </div>
    </div>
@@ -249,78 +282,78 @@
     </div>
 
 
-                {{-- <div class="row">--}}
-                {{--     <h2>{{__('Orders Status')}}</h2>--}}
-                {{-- </div>--}}
-                {{-- <div class="row">--}}
-                {{--     <div class="col-lg-3 col-xl-3 order-lg-1 order-xl-1">--}}
-                {{--         <!--begin::Portlet-->--}}
-                {{--         <div class="k-portlet k-portlet--fit k-portlet--height-fluid">--}}
-                {{--             <div class="k-portlet__body k-portlet__body--fluid">--}}
-                {{--                 <div class="k-widget-3 k-widget-3--brand">--}}
-                {{--                     <div class="k-widget-3__content">--}}
-                {{--                         <div class="k-widget-3__content-info">--}}
-                {{--                             <div class="k-widget-3__content-section">--}}
-                {{--                                 <div class="k-widget-3__content-title">--}}
-                {{--                                     <i class="k-menu__link-icon flaticon-business"></i>--}}
-                {{--                                     {{__('New')}}--}}
-                {{--                                 </div>--}}
-                {{--                             </div>--}}
-                {{--                         </div>--}}
-                {{--                         <div class="k-widget-3__content-info">--}}
+    {{-- <div class="row">--}}
+    {{--     <h2>{{__('Orders Status')}}</h2>--}}
+    {{-- </div>--}}
+    {{-- <div class="row">--}}
+    {{--     <div class="col-lg-3 col-xl-3 order-lg-1 order-xl-1">--}}
+    {{--         <!--begin::Portlet-->--}}
+    {{--         <div class="k-portlet k-portlet--fit k-portlet--height-fluid">--}}
+    {{--             <div class="k-portlet__body k-portlet__body--fluid">--}}
+    {{--                 <div class="k-widget-3 k-widget-3--brand">--}}
+    {{--                     <div class="k-widget-3__content">--}}
+    {{--                         <div class="k-widget-3__content-info">--}}
+    {{--                             <div class="k-widget-3__content-section">--}}
+    {{--                                 <div class="k-widget-3__content-title">--}}
+    {{--                                     <i class="k-menu__link-icon flaticon-business"></i>--}}
+    {{--                                     {{__('New')}}--}}
+    {{--                                 </div>--}}
+    {{--                             </div>--}}
+    {{--                         </div>--}}
+    {{--                         <div class="k-widget-3__content-info">--}}
 
-                {{--                         <div class="k-widget-3__content-section">--}}
-                {{--                             <span class="k-widget-3__content-number">{{$new_orders}}</span>--}}
-                {{--                         </div>--}}
-                {{--                     </div>--}}
-                {{--                 </div>--}}
-                {{--             </div>--}}
-                {{--         </div>--}}
-                {{--     </div>--}}
-                {{--     <!--end::Portlet-->--}}
-                {{-- </div>--}}
-                {{-- <div class="col-lg-3 col-xl-3 order-lg-1 order-xl-1">--}}
-                {{--     <!--begin::Portlet-->--}}
-                {{--     <div class="k-portlet k-portlet--fit k-portlet--height-fluid">--}}
-                {{--         <div class="k-portlet__body k-portlet__body--fluid">--}}
-                {{--             <div class="k-widget-3 k-widget-3--brand">--}}
-                {{--                 <div class="k-widget-3__content">--}}
-                {{--                     <div class="k-widget-3__content-info">--}}
-                {{--                         <div class="k-widget-3__content-section">--}}
-                {{--                             <div class="k-widget-3__content-title">--}}
-                {{--                                 <i class="k-menu__link-icon flaticon-business"></i>--}}
-                {{--                                 {{__('Assigned')}}--}}
-                {{--                             </div>--}}
-                {{--                         </div>--}}
-                {{--                     </div>--}}
-                {{--                     <div class="k-widget-3__content-info">--}}
+    {{--                         <div class="k-widget-3__content-section">--}}
+    {{--                             <span class="k-widget-3__content-number">{{$new_orders}}</span>--}}
+    {{--                         </div>--}}
+    {{--                     </div>--}}
+    {{--                 </div>--}}
+    {{--             </div>--}}
+    {{--         </div>--}}
+    {{--     </div>--}}
+    {{--     <!--end::Portlet-->--}}
+    {{-- </div>--}}
+    {{-- <div class="col-lg-3 col-xl-3 order-lg-1 order-xl-1">--}}
+    {{--     <!--begin::Portlet-->--}}
+    {{--     <div class="k-portlet k-portlet--fit k-portlet--height-fluid">--}}
+    {{--         <div class="k-portlet__body k-portlet__body--fluid">--}}
+    {{--             <div class="k-widget-3 k-widget-3--brand">--}}
+    {{--                 <div class="k-widget-3__content">--}}
+    {{--                     <div class="k-widget-3__content-info">--}}
+    {{--                         <div class="k-widget-3__content-section">--}}
+    {{--                             <div class="k-widget-3__content-title">--}}
+    {{--                                 <i class="k-menu__link-icon flaticon-business"></i>--}}
+    {{--                                 {{__('Assigned')}}--}}
+    {{--                             </div>--}}
+    {{--                         </div>--}}
+    {{--                     </div>--}}
+    {{--                     <div class="k-widget-3__content-info">--}}
 
-                {{--                         <div class="k-widget-3__content-section">--}}
-                {{--                             <span class="k-widget-3__content-number">{{$assigned_orders}}</span>--}}
-                {{--                         </div>--}}
-                {{--                     </div>--}}
-                {{--                 </div>--}}
-                {{--             </div>--}}
-                {{--         </div>--}}
-                {{--     </div>--}}
-                {{--     <!--end::Portlet-->--}}
-                {{-- </div>--}}
-                {{-- <div class="col-lg-3 col-xl-3 order-lg-1 order-xl-1">--}}
-                {{--     <!--begin::Portlet-->--}}
-                {{--     <div class="k-portlet k-portlet--fit k-portlet--height-fluid">--}}
-                {{--         <div class="k-portlet__body k-portlet__body--fluid">--}}
-                {{--             <div class="k-widget-3 k-widget-3--brand">--}}
-                {{--                 <div class="k-widget-3__content">--}}
-                {{--                     <div class="k-widget-3__content-info">--}}
-                {{--                         <div class="k-widget-3__content-section">--}}
-                {{--                             <div class="k-widget-3__content-title">--}}
-                {{--                                 <i class="k-menu__link-icon flaticon-business"></i>--}}
-                {{--                                 {{__('Accepted')}}--}}
-                {{--                             </div>--}}
-                {{--                         </div>--}}
-                {{--                     </div>--}}
-                {{--                     <div class="k-widget-3__content-info">--}}
-                
+    {{--                         <div class="k-widget-3__content-section">--}}
+    {{--                             <span class="k-widget-3__content-number">{{$assigned_orders}}</span>--}}
+    {{--                         </div>--}}
+    {{--                     </div>--}}
+    {{--                 </div>--}}
+    {{--             </div>--}}
+    {{--         </div>--}}
+    {{--     </div>--}}
+    {{--     <!--end::Portlet-->--}}
+    {{-- </div>--}}
+    {{-- <div class="col-lg-3 col-xl-3 order-lg-1 order-xl-1">--}}
+    {{--     <!--begin::Portlet-->--}}
+    {{--     <div class="k-portlet k-portlet--fit k-portlet--height-fluid">--}}
+    {{--         <div class="k-portlet__body k-portlet__body--fluid">--}}
+    {{--             <div class="k-widget-3 k-widget-3--brand">--}}
+    {{--                 <div class="k-widget-3__content">--}}
+    {{--                     <div class="k-widget-3__content-info">--}}
+    {{--                         <div class="k-widget-3__content-section">--}}
+    {{--                             <div class="k-widget-3__content-title">--}}
+    {{--                                 <i class="k-menu__link-icon flaticon-business"></i>--}}
+    {{--                                 {{__('Accepted')}}--}}
+    {{--                             </div>--}}
+    {{--                         </div>--}}
+    {{--                     </div>--}}
+    {{--                     <div class="k-widget-3__content-info">--}}
+    
                 {{--                         <div class="k-widget-3__content-section">--}}
                 {{--                             <span class="k-widget-3__content-number">{{$accepted_orders}}</span>--}}
                 {{--                         </div>--}}
@@ -459,6 +492,11 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('calender_template/js/jquery.min.j')}}s"></script>
+    <script src="{{asset('calender_template/js/popper.js')}}"></script>
+    <script src="{{asset('calender_template/js/bootstrap.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="{{asset('calender_template/js/main.js')}}"></script>
 
     <Script>
         let hr_hand = document.querySelector(".hour-hand");
