@@ -46,12 +46,6 @@ class ClientController extends SystemController
         return $this->view('clients.index', $this->viewData);
     }
 
-    public function create()
-    {
-        // 
-    }
-
-
     public function store(ImageFormRequest $request)
     {
 
@@ -80,25 +74,6 @@ class ClientController extends SystemController
         return redirect::back();
 
     }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
 
     public function destroy($id)
     {

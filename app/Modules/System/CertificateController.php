@@ -46,43 +46,24 @@ class CertificateController extends SystemController
         return $this->view('certificate.index', $this->viewData);
     }
 
-    public function create()
-    {
-        // 
-    }
-
 
     public function store(ImageFormRequest $request)
     {
-        $image = $request->file('image');
-        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
-        $save_url = 'upload/about/' . $name_gen;
-        Certificate::create(['image' => $save_url]);
-
-        $notification = array(
-            'message' => 'Certificate Inserted Successfully',
-            'alert-type' => 'success',
-        );
-        return redirect::route('certificates.index')->with($notification);
-    }
-
-
-    public function show($id)
-    {
-        return back();
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
+        try {
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
+            $save_url = 'upload/about/' . $name_gen;
+            Certificate::create(['image' => $save_url, 'sort' => $request->sort ]);
+            
+            $notification = array(
+                'message' => 'Certificate Inserted Successfully',
+                'alert-type' => 'success',
+            );
+            return redirect::route('certificates.index')->with($notification);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['errors' => $e->getMessage()]);
+        }
     }
 
 

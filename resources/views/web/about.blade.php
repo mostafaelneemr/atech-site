@@ -10,6 +10,10 @@
             background-size: cover; 
             background-position: center center;
         }
+
+        .testimonialhei{
+            height:350px;
+        }
     </style>
 
 <style>
@@ -23,32 +27,7 @@
 </style>
 @endsection
 
- @section('content')
-
-  {{-- @foreach($sliders as $slider)
-  <div class="breadcaump-area pt--400 pt_lg--300 pt_md--250 pt_sm--200 pb--100 breadcaump-title-bar breadcaump-title-white" style="background-image: url('{{ asset($slider->image) }}');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="breadcaump-inner text-center">
-                      <h2 class="heading">A B O U T - U S</h2>
-                      <div class="breadcrumb-insite">
-                          <ul class="core-breadcaump">
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="elements.html">Elements</a></li>
-                              <li class="current">Grid Classic</li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  @endforeach --}}
-
+@section('content')
   <!-- Start Testimonial Area -->
   <div class="brook-testimonial-area testimabout ptb--100 ptb-md--80 ptb-sm--60" >
     <div class="container">
@@ -56,7 +35,7 @@
         <!-- Start Single Testimonial -->
           @foreach($testimonials as $testimonial)
           <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up mt--60">
-            <div class="testimonial testimonial_style--1">
+            <div class="testimonial testimonial_style--1 d-inline-block testimonialhei">
               <div class="content">
                       <p class="bk_pra">{!! $testimonial->desc !!}</p>
                     <div class="testimonial-info">

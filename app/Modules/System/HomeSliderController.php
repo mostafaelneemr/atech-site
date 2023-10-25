@@ -85,11 +85,6 @@ class HomeSliderController extends SystemController
 
     }
 
-    public function show($id)
-    {
-        return back();
-    }
-
     public function edit($id)
     {
         $this->viewData['sliders'] = Slider::findOrFail($id);

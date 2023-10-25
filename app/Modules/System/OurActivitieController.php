@@ -65,10 +65,11 @@ class OurActivitieController extends SystemController
             'fontawsome_id' => $request->fontawsome_id,
             'title' => $request->title,
             'desc' => $request->desc,
+            'sort' => 10,
         ]);
 
         $notification = array(
-            'message' => 'Project Inserted Successfully',
+            'message' => 'Service Is Added Successfully',
             'alert-type' => 'success',
         );
         return redirect::route('our-activities.index')->with($notification);
@@ -90,18 +91,19 @@ class OurActivitieController extends SystemController
                 // 'icon' => 'image|mimes:jpeg,png,jpg,',
                 'title' => 'required|string|max:100',
                 'desc' => 'required|string',
-                
+                'sort' => 'required',                
             ]);
     
             OurActive::where('id', $id)->update([
                 'fontawsome_id' => $request->fontawsome_id,
                 'title' => $request->title,
                 'desc' => $request->desc,
+                'sort' => $request->sort,
             ]);
     
             $notification = array(
-                'message' => 'Project Inserted Successfully',
-                'alert-type' => 'success',
+                'message' => 'Service Is Updated Successfully',
+                'alert-type' => 'info',
             );
             return redirect::route('our-activities.index')->with($notification);
         } catch (\Exception $e) {

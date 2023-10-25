@@ -13,6 +13,10 @@
         .activeserv{
             color: #4d5e75; font-size: 40px;
         }
+
+        .projectbg{
+            background-image: url('{{asset('sbg.jpg')}}');
+        }
     </style>
 
     <style>
@@ -29,8 +33,8 @@
 @section('content')
 
     <!-- Start Activities Boxes -->
-    <div class="brook-icon-boxes-area poss_relative wavify-activation ptb--80 ptb-md--80 ptb-sm--60 bg_color--5">
-        <div class="wavify-wrapper">
+    <div class="brook-icon-boxes-area poss_relative wavify-activation ptb--80 ptb-md--80 ptb-sm--60 bg_color--5 projectbg">
+        {{-- <div class="wavify-wrapper">
             <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
                 data-wavify-height="140" data-wavify-background="rgb(196,220,250)" data-wavify-amplitude="80"
                 data-wavify-bones="4">
@@ -44,17 +48,17 @@
                 <path d="M 0 147.22020568980648 C 317.16666666666663 183.65559797623268 317.16666666666663 183.65559797623268 634.3333333333333 165.43790183301957 C 951.4999999999999 147.22020568980648 951.4999999999999 147.22020568980648 1268.6666666666665 200.09089320557024 C 1585.833333333333 252.96158072133412 1585.833333333333 252.96158072133412 1903 183.26276877337258 L 1903 7389 L 0 7389 Z"
                     fill="#f5f5f5"></path>
             </svg>
-        </div>
+        </div> --}}
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="brook-section-title text-center">
-                        <h1 class="heading heading-h3">Our Activities</h1>
+                    <div class="brook-section-title text-center mt-5">
+                        <h1 class="heading heading-h3 text-white">Our Activities</h1>
                     </div>
                 </div>
             </div>
             
-            <div class="row mt--30">
+            <div class="row mt--25">
                 @foreach($activities as $active)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12 ">
                     <div class="icon-box text-center mt--30 ">
@@ -81,8 +85,6 @@
         </div>
     </div>
     <!-- End Icon Boxes -->
-
-
 
 @endsection
 

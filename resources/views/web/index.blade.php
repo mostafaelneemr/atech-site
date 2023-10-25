@@ -147,7 +147,7 @@
                 <li data-slotamount="default,default,default,default" data-hideafterloop="0"
                     data-hideslideonmobile="off" data-easein="default,default,default,default" data-easeout="default,default,default,default"
                     data-masterspeed="default,default,default,default" data-thumb="img/revoulation/100x50_slider-authentic-studio-slide-02-bg.jpg"
-                    data-rotate="0,0,0,0" data-saveperformance="off" data-title="Slide" data-param1="{{ $loop->iteration }}"
+                    data-rotate="0,0,0,0" data-saveperformance="off" data-title="Slide" data-param1=""
                     data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
                     data-param8="" data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->

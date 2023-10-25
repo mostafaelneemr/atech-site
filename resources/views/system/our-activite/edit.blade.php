@@ -45,6 +45,14 @@
                                 </div>
                             </div>
 
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Sort</label>
+                                    <input type="number" class="form-control" name="sort" value="{{ $activities->sort }}" required>
+                                    @error('sort') <div class="alert alert-danger">{{ $message }}</div> @enderror
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="form-actions">

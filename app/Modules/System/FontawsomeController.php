@@ -12,6 +12,8 @@ class FontawsomeController extends SystemController
 {
     public function index()
     {
+        $this->viewData['pageTitle'] = __('Icons');
+        $this->viewData['breadcrumb'][] = [ 'text'=> __('fontawsome') ];
         $this->viewData['fontawsomes'] = Fontawsome::all();
         return $this->view('fontawsome.index', $this->viewData);
     }

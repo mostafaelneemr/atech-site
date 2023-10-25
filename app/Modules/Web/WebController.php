@@ -18,10 +18,10 @@ class WebController extends Controller{
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         $this->viewData['testimonials'] = Testimonial::orderBy('id', 'ASC')->get(); 
         $this->viewData['brands'] = Brand::get(); 
-        $this->viewData['certificates'] = Certificate::get(); 
-        $this->viewData['blogs'] = Blog::paginate(3); 
+        $this->viewData['certificates'] = Certificate::orderBy('sort' , 'ASC')->paginate(6); 
+        $this->viewData['blogs'] = Blog::orderBy('id' , 'DESC')->paginate(3); 
         $this->viewData['clients'] = Client::orderBy('id', 'ASC')->paginate(18); 
-        $this->viewData['activities'] = OurActive::with('fontawsome')->orderBy('id', 'ASC')->paginate(8); 
+        $this->viewData['activities'] = OurActive::with('fontawsome')->orderBy('sort', 'ASC')->paginate(8); 
 
         $this->viewData['categories'] = Project::distinct('category')->pluck('category');
         $this->viewData['items'] = Project::orderBy('sort', 'ASC')->paginate(6);

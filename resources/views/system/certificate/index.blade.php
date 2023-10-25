@@ -25,6 +25,14 @@
                             @error('image') <span class="text-danger">{{$message}}</span> @enderror
                             <img src="" id="image" >
                         </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label>Sort</label>
+                                <input type="number" class="form-control" name="sort" required>
+                                @error('sort') <div class="alert alert-danger">{{ $message }}</div> @enderror
+                            </div>
+                        </div>
                         
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success"><i class="la la-check-square-o"></i>save</button>
@@ -32,19 +40,20 @@
                     </form>
                 </div>
 
+                <hr>
+
                 <div class="card-body ">
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped table-bordered p-0 text-center table-hover">
                         <thead>
                         <tr>
                             <th>Image</th>
-                            <th>Publish</th>
+                            <th>Sort</th>
                             <th>Action</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        
                         </tbody>
 
                     </table>
@@ -72,7 +81,7 @@
                 ajax: "{{ Route('certificates.index', ['datatable' => true]) }}",
                 columns: [
                     {data: 'image',},
-                    {data: 'is_publish',},
+                    {data: 'sort',},
                     {data: 'action',},
                 ],
             });

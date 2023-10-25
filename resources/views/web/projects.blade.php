@@ -29,32 +29,6 @@
         }
     </style>
 @endsection
-    
-{{-- @section('slider') --}}
-
-    <!-- Start Breadcaump Area -->
-    {{-- @foreach($sliders as $slider)
-    <div class="brook-breadcaump-area fullscreen breadcaump-title-bar breadcaump-title-white d-flex align-items-center pt_md--70 pt_sm--100 pb_sm--50"
-        data-black-overlay="6" style="background-image: url('{{ $slider->image }}');background-repeat: no-repeat; background-size: cover; background-position: center center;">
-
-        <div class="container-fluid plr--180 plr_lg--100 plr_md--50 plr_sm--50">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="breadcaump-inner text-start">
-                        <h1 class="heading heading-h1 font-60 text-white">{{ $slider->title }}</h1>
-                        <div class="bkseparator--25"></div>
-                        <div class="title-separator w--200 color-red"></div>
-                        <div class="bkseparator--25"></div>
-                        <p class="bk_pra font-16 line-height-1-87 text-white">{{ $slider->sub_title }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach --}}
-    <!-- End Breadcaump Area -->
-
-{{-- @endsection --}}
 
 @section('content')
 
@@ -64,7 +38,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="brook-section-title text-center mb--60 mt--80">
-                            <h3 class="heading heading-h3 text-white">Our works</h3>
+                            <h3 class="heading heading-h3 text-white">{{ setting('title_projects') }}</h3>
                         </div>
                     </div>
                 </div>
