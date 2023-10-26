@@ -16,53 +16,89 @@
         }
     </style>
 
-<style>
-    .testimonial_style--1:hover{
-        background-color: #222933 !important
-    }
-    #quote{
-        color: #222933;
-    }
+    <style>
+        .testimonial_style--1:hover{
+            background-color: #222933 !important
+        }
+        #quote{
+            color: #222933;
+        }
 
-</style>
+    </style>
 @endsection
 
 @section('content')
-  <!-- Start Testimonial Area -->
-  <div class="brook-testimonial-area testimabout ptb--100 ptb-md--80 ptb-sm--60" >
-    <div class="container">
-      <div class="row">
-        <!-- Start Single Testimonial -->
-          @foreach($testimonials as $testimonial)
-          <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up mt--60">
-            <div class="testimonial testimonial_style--1 d-inline-block testimonialhei">
-              <div class="content">
-                      <p class="bk_pra">{!! $testimonial->desc !!}</p>
-                    <div class="testimonial-info">
-                          <div class="post-thumbnail">
-                              <img src="{{ $testimonial->image }}" alt="testimonial image">
-                          </div>
-                          <div class="clint-info">
-                              <h6>{{ $testimonial->name }}</h6>
-                              <span>{{ $testimonial->title }}</span>
-                          </div>
-                      </div>
-                      <div class="testimonial-quote">
-                          <span class="fa fa-quote-right" id="quote"></span>
-                      </div>
-                  </div>
-              </div>
+
+    <!-- Start Story Area -->
+    <div class="brook-story-area ptb--120 ptb-md--80 ptb-sm--60  bg_color--9">
+        <div class="row">
+            <div class="col-lg-6 col-xl-6 col-sm-12 col-12 pl--380 pr--80 pl_lp--80 pl_lg--50 pr_lg--20 pl_md--50 pr_md--20 pl_sm--30 pr_sm--20 mt-5">
+                <div class="architecture-story wow move-up">
+                    <h6 class="heading heading-h6 body-color text-white">{{ setting('head_about') }}</h6>
+                    <div class="bkseparator--25"></div>
+                
+                    <h2 class="heading heading-h2 line-height-1-25 text-white">{{ setting('title_about') }}</h2>
+                
+                    <div class="bkseparator--45"></div>
+                
+                    <h5 class="heading heading-h5 line-height-1-62 text-white">{{ setting('sub_title_about') }}
+                    </h5>
+                    <div class="bkseparator--20"></div>
+                    <p class="bk_pra text-white">{{ setting('desc_about') }}</p>
+                    <div class="bkseparator--55"></div>
+                    {{-- <div class="signeture-image">
+                        <img src="img/icons/singneture.png" alt="Multipurpose">
+                    </div> --}}
+                
+                </div>
             </div>
-          @endforeach
-        <!-- End Single Testimonial -->
+            <div class="col-lg-6 col-xl-6 col-sm-12 col-12 mt_md--40 mt_sm--40 mt-5">
+                <div class="architecture-story">
+                    <div class="thumb wow move-up">
+                        <img src="{{ setting('image_about_section') }}" alt="Multipurpose">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Story Area -->
+
+
+    <!-- Start Testimonial Area -->
+    <div class="brook-testimonial-area testimabout ptb--100 ptb-md--80 ptb-sm--60" >
+      <div class="container">
+        <div class="row">
+          <!-- Start Single Testimonial -->
+            @foreach($testimonials as $testimonial)
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up mt--60">
+              <div class="testimonial testimonial_style--1 d-inline-block testimonialhei">
+                <div class="content">
+                        <p class="bk_pra">{!! $testimonial->desc !!}</p>
+                      <div class="testimonial-info">
+                            <div class="post-thumbnail">
+                                <img src="{{ $testimonial->image }}" alt="testimonial image">
+                            </div>
+                            <div class="clint-info">
+                                <h6>{{ $testimonial->name }}</h6>
+                                <span>{{ $testimonial->title }}</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-quote">
+                            <span class="fa fa-quote-right" id="quote"></span>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            @endforeach
+          <!-- End Single Testimonial -->
+        </div>
       </div>
     </div>
-  </div>
-  <!-- End Testimonial Area -->
+    <!-- End Testimonial Area -->
   
 
-      <!-- Start Counterup Area -->
-      <div class="brook-counterup-area poss_relative wavify-activation ptb--80 ptb-md--80 ptb-sm--60 bg_color--1">
+    <!-- Start Counterup Area -->
+    <div class="brook-counterup-area poss_relative wavify-activation ptb--80 ptb-md--80 ptb-sm--60 bg_color--1">
         
         <div class="wavify-wrapper">
             <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
