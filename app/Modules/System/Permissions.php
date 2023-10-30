@@ -73,6 +73,12 @@ return [
     ],
 
     [
+        'name' => __('Activation'),
+        'description' => __('Activation Permissions'),
+        'permissions' => [ 'manage-activation'  =>['activation.index','activation.update'] ]
+    ],
+
+    [
         'name' => __('SEO Setting'),
         'description' => __('SEO Setting Permissions'),
         'permissions' => [ 'manage-seosetting'  =>['seosetting.index','seosetting.update'] ]

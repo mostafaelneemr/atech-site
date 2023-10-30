@@ -98,5 +98,4 @@
 @endsection
 
 @push('js')
-
 @endpush

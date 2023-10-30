@@ -102,6 +102,13 @@
         'text'=>__('Settings'),
     ];
 
+    $menu['Activation'] = [
+        'permission'=> ['activation.index','activation.update'],
+        'url'=> route('activation.index'),
+        'icon'=>'<i class="fas fa-plus"></i>',
+        'text'=>__('Activation'),
+    ];
+
     $menu['SEO Settings'] = [
         'permission'=> ['seosetting.index','seosetting.update'],
         'url'=> route('seosetting.index'),

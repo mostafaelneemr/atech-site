@@ -94,11 +94,6 @@ class BlogController extends SystemController
         return redirect::route('blogs.index');
     }
 
-    public function show($id)
-    {
-        return back();
-    }
-
     public function edit($id)
     {
         $this->viewData['blogs'] = Blog::FindOrFail($id);

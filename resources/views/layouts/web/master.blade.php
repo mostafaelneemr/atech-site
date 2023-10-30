@@ -50,10 +50,21 @@
                                     <ul class="mainmenu">
 
                                         <li class="lavel-1"><a href="{{ route('home') }}"><span>Home</span></a></li>
+                                        @if (\App\Models\admin\Active_section::where('name', 'about_page')->first()->value == 1)
                                         <li class="lavel-1"><a href="{{ route('about') }}"><span>About</span></a></li>
+                                        @endif
+
+                                        @if (\App\Models\admin\Active_section::where('name', 'service_page')->first()->value == 1)
                                         <li class="lavel-1"><a href="{{ route('service') }}"><span>Services</span></a></li>
+                                        @endif
+
+                                        @if (\App\Models\admin\Active_section::where('name', 'blog_page')->first()->value == 1)
                                         <li class="lavel-1"><a href="{{ route('blogs') }}"><span>Blogs</span></a></li>
+                                        @endif
+
+                                        @if (\App\Models\admin\Active_section::where('name', 'project_page')->first()->value == 1)
                                         <li class="lavel-1"><a href="{{ route('projects') }}"><span>Projects</span></a></li>
+                                        @endif
                                         {{-- <li class="lavel-1 with--drop slide-dropdown"><a href="#"><span>Pages</span></a> --}}
                                             <!-- Start Dropdown Menu -->
                                             {{-- <ul class="dropdown__menu">
@@ -123,10 +134,21 @@
                 <div class="menu-content">
                     <ul class="menulist object-custom-menu">
                         <li><a href="{{ route('home') }}"><span>Home</span></a></li>
+                        @if (\App\Models\admin\Active_section::where('name', 'about_page')->first()->value == 1)
                         <li><a href="{{ route('about') }}"><span>About</span></a></li>
+                        @endif
+
+                        @if (\App\Models\admin\Active_section::where('name', 'service_page')->first()->value == 1)
                         <li><a href="{{ route('service') }}"><span>Services</span></a></li>
+                        @endif
+
+                        @if (\App\Models\admin\Active_section::where('name', 'blog_page')->first()->value == 1)
                         <li><a href="{{ route('blogs') }}"><span>Blogs</span></a></li>
-                        <li><a href="{{ route('portfolio') }}"><span>Portfolio</span></a></li>
+                        @endif
+
+                        @if (\App\Models\admin\Active_section::where('name', 'project_page')->first()->value == 1)
+                        <li><a href="{{ route('projects') }}"><span>Projects</span></a></li>
+                        @endif
 
                         {{-- <li class="has-mega-menu"><a href="#"><span>Pages</span></a>
                             <!-- Start Dropdown Menu -->

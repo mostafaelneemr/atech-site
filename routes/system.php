@@ -11,6 +11,7 @@
 |
 */
 
+use App\Modules\System\ActiveSectionController;
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout'); //
 //Route::get('/login205025',function(){
@@ -37,6 +38,9 @@ Route::resource('/seosetting', SEOController::class);
 // Route::patch('/seosetting', [SEOController::class, 'update'])->name('system.seosetting.update'); //
 
 Route::resource('fontawsome', FontawsomeController::class);
+
+Route::get('activation', [ActiveSectionController::class, 'index'])->name('activation.index');
+Route::post('update/activation', [ActiveSectionController::class, 'update'])->name('activation.update');
 
 
 Route::get('/staff/change-password', 'StaffController@changePassword')->name('system.staff.change-password');

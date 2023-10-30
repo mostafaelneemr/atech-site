@@ -3,6 +3,7 @@
 namespace App\Modules\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Active_section;
 use App\Models\admin\Slider;
 use App\Models\admin\Testimonial;
 use App\Models\admin\Blog;
@@ -31,6 +32,9 @@ class WebController extends Controller{
 
     public function about()
     {
+        if (Active_section::where('name' , 'about_page')->first()->value == 0 ) {
+            abort(404);
+        }
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         $this->viewData['testimonials'] = Testimonial::get(); 
         $this->viewData['clients'] = Client::get(); 
@@ -40,6 +44,9 @@ class WebController extends Controller{
 
     public function service()
     {
+        if (Active_section::where('name' , 'service_page')->first()->value == 0 ) {
+            abort(404);
+        }
         $this->viewData['items'] = Project::orderBy('id', 'ASC')->get();
         $this->viewData['activities'] = OurActive::with('fontawsome')->orderBy('id', 'ASC')->get(); 
 
@@ -48,6 +55,9 @@ class WebController extends Controller{
 
     public function blogs()
     {
+        if (Active_section::where('name' , 'blog_page')->first()->value == 0 ) {
+            abort(404);
+        }
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         $this->viewData['blogs'] = Blog::all();
 
@@ -64,6 +74,9 @@ class WebController extends Controller{
 
     public function project()
     {
+        if (Active_section::where('name' , 'project_page')->first()->value == 0 ) {
+            abort(404);
+        }
         $this->viewData['categories'] = Project::distinct('category')->pluck('category');
         $this->viewData['items'] = Project::all();
 

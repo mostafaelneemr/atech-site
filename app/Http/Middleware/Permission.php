@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\AuthSession;
 use App\Models\Staff;
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +20,13 @@ class Permission
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        // return $next($request);
         if (Auth::guard('staff')->check()) {
+            $session = AuthSession::where([
+                ['guard_name', 'web'],
+                ['user_id', Auth::guard('web')->id()],
+            ])->first();
+            
             $ignoredRoutes = [
                 'system.dashboard',
                 'system.test',
