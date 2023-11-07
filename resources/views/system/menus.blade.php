@@ -98,7 +98,7 @@
   $menu['Settings'] = [
         'permission'=> ['system.setting.index','system.setting.update'],
         'url'=> route('system.setting.index'),
-        'icon'=>'<i class="fa fas fa-th"></i>',
+        'icon'=>'<i class="fas fa-tools"></i>',
         'text'=>__('Settings'),
     ];
 
@@ -126,7 +126,7 @@
     $menu['Message'] = [
         // 'permission'=> ['get.messages'],
         'url'=> route('get.messages'),
-        'icon'=>'<i class="fas fa-icons"></i>',
+        'icon'=>'<i class="far fa-envelope"></i>',
         'text'=>__('Messages'),
     ];
 
