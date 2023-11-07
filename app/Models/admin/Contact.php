@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class Contact extends Model
 {
     use HasFactory, Notifiable;
-    protected $table = "Contacts";
+    protected $table = "contacts";
     protected $fillable = ['name','email', 'phone', 'message', 'created_at', 'updated_at'];
 
     // protected $recipient;
