@@ -12,6 +12,7 @@
 */
 
 use App\Modules\System\ActiveSectionController;
+use App\Modules\System\SendEmailController;
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout'); //
 //Route::get('/login205025',function(){
@@ -41,6 +42,11 @@ Route::resource('fontawsome', FontawsomeController::class);
 
 Route::get('activation', [ActiveSectionController::class, 'index'])->name('activation.index');
 Route::post('update/activation', [ActiveSectionController::class, 'update'])->name('activation.update');
+
+
+Route::get('messages', [SendEmailController::class, 'adminindex'])->name('get.messages');
+Route::post('messages/{id}', [SendEmailController::class, 'deletemessage'])->name('deletemessage');
+
 
 
 Route::get('/staff/change-password', 'StaffController@changePassword')->name('system.staff.change-password');

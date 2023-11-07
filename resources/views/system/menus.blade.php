@@ -123,6 +123,13 @@
         'text'=>__('Icons'),
     ];
 
+    $menu['Message'] = [
+        // 'permission'=> ['get.messages'],
+        'url'=> route('get.messages'),
+        'icon'=>'<i class="fas fa-icons"></i>',
+        'text'=>__('Messages'),
+    ];
+
 
 //     $menu['ActivityLog'] = [
 //         'permission'=> ['system.activity-log.index'],

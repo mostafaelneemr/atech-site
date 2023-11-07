@@ -37,7 +37,8 @@ class Permission
                 'system.staff.change-password-post',
                 'system.notifications.url',
                 'system.notifications.index',
-
+                'get.messages',
+                'deletemessage',
             ];
 
             $canAccess = array_merge($ignoredRoutes,Staff::StaffPerms(Auth::guard('staff')->user()->id)->toArray());
