@@ -98,6 +98,21 @@
         <div class="col-lg-3 mb-2">
             <div class="card">
                 <div class="card-header">
+                    <h3 class="mb-0 h6 text-center">{{__('Team Section')}}</h3>
+                </div>
+
+                <div class="form-group row switch switch-outline switch-icon switch-primary text-center">
+                    <label class="col-form-label text-right col-lg-3 col-sm-12">
+                        <input data-switch="1" type="checkbox" onchange="updateSettings(this, 'team_section')" <?php if (\App\Models\admin\Active_section::where('name', 'team_section')->first()->value == 1) echo "checked"; ?>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 mb-2">
+            <div class="card">
+                <div class="card-header">
                     <h3 class="mb-0 h6 text-center">{{__('Blogs Section')}}</h3>
                 </div>
 

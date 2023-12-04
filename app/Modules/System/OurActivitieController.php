@@ -21,7 +21,7 @@ class OurActivitieController extends SystemController
                             <a href="#" class="btn btn-md btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">
                               <i class="la la-gear"></i>
                             </a>
-                            <div class="dropdown-menu '.( (\App::getLocale() == 'ar') ? 'dropdown-menu-left' : 'dropdown-menu-right').'" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
+                            <div class="dropdown-menu dropdown-menu-left" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
                                 <a class="dropdown-item" href="'.route('our-activities.edit',$data->id).'"><i class="la la-edit"></i> '.__('Edit').'</a>       
                                 <a class="dropdown-item" href="javascript:void(0);" onclick="deleteactivitie(\'' . route( 'our-activities.destroy', $data->id ) . '\')"><i class="la la-trash"></i> '.__('Delete').'</a>
                             </div>
@@ -118,27 +118,5 @@ class OurActivitieController extends SystemController
 
         $message = __( 'Activitie deleted successfully' );
         return $this->response(true, 200, $message );
-    }
-
-    public function inActiveOurActive($id)
-    {
-        // Client::findOrFail($id)->update(['is_publish' => 'in-active']);
-        // $notification = array(
-        //     'message' => 'Client is Inactive',
-        //     'alert-type' => 'success',
-        // );
-
-        // return redirect()->back()->with($notification);
-    }
-
-    public function ActiveOurActive($id)
-    {
-        // Client::findOrFail($id)->update(['is_publish' => 'active']);
-        // $notification = array(
-        //     'message' => 'Client is Active',
-        //     'alert-type' => 'success',
-        // );
-
-        // return redirect()->back()->with($notification);
     }
 }

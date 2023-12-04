@@ -12,7 +12,7 @@ use Form;
 use Auth;
 use Hash;
 use Illuminate\Support\Collection;
-use Datatables;
+use Yajra\DataTables\DataTables;
 
 class PermissionGroupsController extends SystemController
 {
@@ -37,8 +37,8 @@ class PermissionGroupsController extends SystemController
                 $eloquentData->onlyTrashed();
             }
 
-//            return datatables()->of($eloquentData)
-//                ->make(true);
+        //            return datatables()->of($eloquentData)
+        //                ->make(true);
 
             return Datatables::of($eloquentData)
                 ->addColumn('id','{{$id}}')

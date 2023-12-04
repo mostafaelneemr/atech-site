@@ -131,26 +131,4 @@ class HomeSliderController extends SystemController
         $message = __( 'Slider deleted successfully' );
         return $this->response(true, 200, $message );
     }
-
-    // public function InactiveSlider($id)
-    // {
-    //     Slider::findOrFail($id)->update(['is_publish' => 'in-active']);
-    //     $notification = array(
-    //         'message' => 'Slider is Inactive',
-    //         'alert-type' => 'info',
-    //     );
-
-    //     return redirect()->back()->with($notification);
-    // }
-
-    // public function ActiveSlider($id)
-    // {
-    //     Slider::findOrFail($id)->update(['is_publish' => 'active']);
-    //     $notification = array(
-    //         'message' => 'Slider is Active',
-    //         'alert-type' => 'success',
-    //     );
-
-    //     return redirect()->back()->with($notification);
-    // }
 }

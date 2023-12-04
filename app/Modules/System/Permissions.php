@@ -43,6 +43,10 @@ return [
             'create-testimonial' =>['testimonials.create', 'testimonials.store'],
             'Update-and-Delete-testimonial' =>['testimonials.edit','testimonials.update', 'testimonials.destroy'],
 
+            'view-all-teams' =>['teams.index'],
+            'create-teams' =>['teams.create', 'teams.store'],
+            'Update-and-Delete-teams' =>['teams.edit','teams.update', 'teams.destroy'],
+
             'view-all-blogs' =>['blogs.index'],
             'create-blogs' =>['blogs.create', 'blogs.store'],
             'Update-and-Delete-blogs' =>['blogs.edit','blogs.update', 'blogs.destroy'],

@@ -3,17 +3,13 @@
 namespace App\Modules\System;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
 use App\Models\admin\Contact;
-use App\Models\User;
-use App\Notifications\General;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 
-use Illuminate\Support\Facades\Notification;
 
 class SendEmailController extends SystemController
 {

@@ -99,6 +99,61 @@
         </div>
     @endif
     <!-- End Testimonial Area -->
+
+
+        <!-- Start Team Area -->
+    @if (App\Models\admin\Active_section::where('name', 'team_section')->first()->value == '1')
+        <div class="brook-team-area bg_color--1 pb--150 pt--120 pt_md--80 pt_sm--80  pb_md--80 pb_sm--80">
+            <div class="container">
+                <div class="row">
+                    <!-- Start Single Team -->
+                    @foreach ($teams as $team)
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="team team_style--1">
+                            <!-- Image Wrap -->
+                            <div class="image-wrap">
+                                <div class="thumb">
+                                    <img src="{{ asset($team->image) }}" alt="Team images">
+                                    <div class="overlay"></div>
+                                    <div class="shape">
+                                        <img class="shape-01" src="{{asset('website/assets/img/team/shape/team-shape-1.png')}}" alt="shape image">
+                                        <img class="shape-02" src="{{asset('website/assets/img/team/shape/team-shape-2.png')}}" alt="shape image">
+                                        <img class="shape-03" src="{{asset('website/assets/img/team/shape/team-shape-3.png')}}" alt="shape image">
+                                    </div>
+                                </div>
+                                <!-- Social Network -->
+                                <div class="social-networks">
+                                    <div class="inner">
+                                        <a class="hint--bounce hint--top hint--primary" href="{{ $team->link_one }}" target="_blank" aria-label="Facebook">
+                                            <i class="fab fa-facebook"></i>
+                                        </a>
+
+                                        <a class="hint--bounce hint--top hint--primary" href="{{ $team->link_two }}" target="_blank" aria-label="Twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+
+                                        <a class="hint--bounce hint--top hint--primary" href="{{ $team->link_three }}" target="_blank" aria-label="Instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Team Info -->
+                            <div class="info">
+                                <h6 class="name">{{ $team->name }}</h6>
+                                <span class="position">{{ $team->title }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    <!-- End Single Team -->
+
+                </div>
+            </div>
+        </div>
+    @endif
+        <!-- End Team Area -->
   
 
     <!-- Start Counterup Area -->

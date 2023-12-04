@@ -11,6 +11,7 @@ use App\Models\admin\Brand;
 use App\Models\admin\Certificate;
 use App\Models\admin\Client;
 use App\Models\admin\Project;
+use App\Models\admin\Team;
 use App\Models\OurActive;
 
 class WebController extends Controller{
@@ -37,6 +38,7 @@ class WebController extends Controller{
         }
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         $this->viewData['testimonials'] = Testimonial::get(); 
+        $this->viewData['teams'] = Team::get(); 
         $this->viewData['clients'] = Client::get(); 
 
         return $this->view('about', $this->viewData);

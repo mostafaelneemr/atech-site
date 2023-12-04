@@ -189,26 +189,4 @@ class ProjectsController extends SystemController
         $message = __( 'Project deleted successfully' );
         return $this->response(true, 200, $message );
     }
-
-    public function inActiveTestimonial($id)
-    {
-        // Client::findOrFail($id)->update(['is_publish' => 'in-active']);
-        // $notification = array(
-        //     'message' => 'Client is Inactive',
-        //     'alert-type' => 'success',
-        // );
-
-        // return redirect()->back()->with($notification);
-    }
-
-    public function ActiveTestimonial($id)
-    {
-        // Client::findOrFail($id)->update(['is_publish' => 'active']);
-        // $notification = array(
-        //     'message' => 'Client is Active',
-        //     'alert-type' => 'success',
-        // );
-
-        // return redirect()->back()->with($notification);
-    }
 }

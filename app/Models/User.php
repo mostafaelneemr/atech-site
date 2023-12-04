@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use  Notifiable;
+    use Notifiable;
     use SoftDeletes;
     protected $table = 'users';
     public $timestamps = true;
@@ -51,9 +51,9 @@ class User extends Authenticatable
     }
 
 
-//    public function findForPassport($username){
-//            return $this->where('username', $username)->first();
-//    }
+    //    public function findForPassport($username){
+    //            return $this->where('username', $username)->first();
+    //    }
 
 
     public function orders(){

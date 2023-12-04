@@ -3,12 +3,10 @@
 namespace App\Modules\System;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends SystemController
 {
-
-
     public function index(Request $request){
         if(isset($request->page)){
             $this->viewData['notifications'] = Auth::user()->notifications()->orderBy('created_at','DESC')->paginate(10);

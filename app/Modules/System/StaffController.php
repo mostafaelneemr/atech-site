@@ -6,20 +6,15 @@ use App\Models\{Staff,PermissionGroup};
 use Illuminate\Http\Request;
 use App\Http\Requests\StaffFormRequest;
 use Form;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\Models\Activity;
-use Datatables;
+use Yajra\DataTables\DataTables;
 use Intervention\Image\Facades\Image;
 
 
 class StaffController extends SystemController
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request){
 
         if($request->isDataTable){
@@ -105,8 +100,6 @@ class StaffController extends SystemController
 
 
 
-
-
             return Datatables::of($eloquentData)
                 ->addColumn('id','{{$id}}')
                 ->addColumn('firstname', function($data){
@@ -129,7 +122,7 @@ class StaffController extends SystemController
                             <a href="#" class="btn btn-md btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">
                               <i class="la la-gear"></i>
                             </a>
-                            <div class="dropdown-menu '.( (\App::getLocale() == 'ar') ? 'dropdown-menu-left' : 'dropdown-menu-right').'" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
+                            <div class="dropdown-menu dropdown-menu-left" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-36px, 25px, 0px);">
                                 <a class="dropdown-item" href="'.route('system.staff.show',$data->id).'" target="_blank"><i class="far fa-eye"></i> '.__('View').'</a>
                                 <a class="dropdown-item" href="'.route('system.staff.edit',$data->id).'"><i class="la la-edit"></i> '.__('Edit').'</a>
                                <!--  <a class="dropdown-item" href="javascript:void(0);" onclick="deleteRecord(\''.route('system.staff.destroy',$data->id).'\')"><i class="la la-trash-o"></i> '.__('Delete').'</a> -->
@@ -183,11 +176,6 @@ class StaffController extends SystemController
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(){
         // Main View Vars
         $this->viewData['breadcrumb'][] = [
@@ -206,12 +194,6 @@ class StaffController extends SystemController
         return $this->view('staff.create',$this->viewData);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StaffFormRequest $request){
         $requestData = $request->all();
         $requestData['password'] = bcrypt($requestData['password']);
@@ -249,12 +231,6 @@ class StaffController extends SystemController
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function show(Staff $staff,Request $request){
 
 
@@ -276,12 +252,6 @@ class StaffController extends SystemController
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Staff $staff,Request $request){
 
         // Main View Vars
@@ -302,13 +272,6 @@ class StaffController extends SystemController
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function update(StaffFormRequest $request, Staff $staff)
     {
 
@@ -401,13 +364,6 @@ class StaffController extends SystemController
         }
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Staff $staff,Request $request)
     {
         $message = __('Staff deleted successfully');

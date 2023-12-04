@@ -42,6 +42,11 @@
                     'text'=> __('Testimonials')
                 ],
                 [
+                    'permission'=> 'teams.index',
+                    'url'=> route('teams.index'),
+                    'text'=> __('Teams')
+                ],
+                [
                     'permission'=> 'blogs.index',
                     'url'=> route('blogs.index'),
                     'text'=> __('Blogs')

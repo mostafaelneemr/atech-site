@@ -52,8 +52,6 @@ class Staff extends Authenticatable
             ->orderByDesc('date_time');
     }
 
-
-
     public function calls(){
         return $this->hasMany('App\Models\Call','created_by_staff_id')
             ->select([
