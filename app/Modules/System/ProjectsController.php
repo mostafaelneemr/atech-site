@@ -77,15 +77,15 @@ class ProjectsController extends SystemController
         if ($request->file('image')) {
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
-            $save_url = 'upload/about/' . $name_gen;
+            Image::make($image)->resize(481, 325)->save('upload/project/' . $name_gen);
+            $save_url = 'upload/project/' . $name_gen;
         }
 
         if ($request->file('image_desc')) {
             $image = $request->file('image_desc');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
-            $path_url = 'upload/about/' . $name_gen;
+            Image::make($image)->resize(770, 510)->save('upload/project/' . $name_gen);
+            $path_url = 'upload/project/' . $name_gen;
         }
 
         Project::create([
@@ -139,8 +139,8 @@ class ProjectsController extends SystemController
                 unlink($oldImage);
                 $image = $request->file('image');
                 $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(481, 325)->save('upload/about/' . $name_gen);
-                $save_url = 'upload/about/' . $name_gen;
+                Image::make($image)->resize(481, 325)->save('upload/project/' . $name_gen);
+                $save_url = 'upload/project/' . $name_gen;
                 Project::where('id', $id)->update(['image' => $save_url]);
             }
     
@@ -148,8 +148,8 @@ class ProjectsController extends SystemController
                 unlink($oldImageDesc);
                 $image = $request->file('image_desc');
                 $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
-                $path_url = 'upload/about/' . $name_gen;
+                Image::make($image)->resize(770, 510)->save('upload/project/' . $name_gen);
+                $path_url = 'upload/project/' . $name_gen;
                 Project::where('id', $id)->update(['image_desc' => $path_url]);
             }
     
@@ -176,11 +176,11 @@ class ProjectsController extends SystemController
     {
         $projeact = Project::findOrFail($id);
 
-        $image = Str::after($projeact->image, 'upload/about/');
-        $image = public_path('upload/about/' . $image);
+        $image = Str::after($projeact->image, 'upload/project/');
+        $image = public_path('upload/project/' . $image);
 
-        $image_desc = Str::after($projeact->image_desc, 'upload/about/');
-        $image_desc = public_path('upload/about/' . $image_desc);
+        $image_desc = Str::after($projeact->image_desc, 'upload/project/');
+        $image_desc = public_path('upload/project/' . $image_desc);
         unlink($image);
         unlink($image_desc);
 

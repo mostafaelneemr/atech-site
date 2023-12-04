@@ -74,13 +74,13 @@ class BlogController extends SystemController
 
         $image = $request->file('thumbnail');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(350, 230)->save('upload/about/' . $name_gen);
-        $thumbnail = 'upload/about/' . $name_gen;
+        Image::make($image)->resize(350, 230)->save('upload/blog/' . $name_gen);
+        $thumbnail = 'upload/blog/' . $name_gen;
 
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
-        $save_url = 'upload/about/' . $name_gen;
+        Image::make($image)->resize(770, 510)->save('upload/blog/' . $name_gen);
+        $save_url = 'upload/blog/' . $name_gen;
 
         Blog::create([
             'image' => $save_url,
@@ -127,8 +127,8 @@ class BlogController extends SystemController
             unlink($old_thumbnail);
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(350, 230)->save('upload/about/' . $name_gen);
-            $thumbnail = 'upload/about/' . $name_gen;
+            Image::make($image)->resize(350, 230)->save('upload/blog/' . $name_gen);
+            $thumbnail = 'upload/blog/' . $name_gen;
             Blog::where('id', $id)->update(['thumbnail' => $thumbnail]);
         }
 
@@ -136,8 +136,8 @@ class BlogController extends SystemController
             unlink($old_image);
             $image = $request->file('image_desc');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(770, 510)->save('upload/about/' . $name_gen);
-            $path_url = 'upload/about/' . $name_gen;
+            Image::make($image)->resize(770, 510)->save('upload/blog/' . $name_gen);
+            $path_url = 'upload/blog/' . $name_gen;
             Blog::where('id', $id)->update(['image' => $path_url]);
         }
 
@@ -170,11 +170,11 @@ class BlogController extends SystemController
     {
         $blogs = Blog::findOrFail($id);
 
-        $image = Str::after($blogs->image, 'upload/about/');
-        $image = public_path('upload/about/' . $image);
+        $image = Str::after($blogs->image, 'upload/blog/');
+        $image = public_path('upload/blog/' . $image);
 
-        $thumbnail = Str::after($blogs->thumbnail, 'upload/about/');
-        $thumbnail = public_path('upload/about/' . $thumbnail);
+        $thumbnail = Str::after($blogs->thumbnail, 'upload/blog/');
+        $thumbnail = public_path('upload/blog/' . $thumbnail);
 
         unlink($image);
         unlink($thumbnail);
@@ -188,7 +188,7 @@ class BlogController extends SystemController
     {
         Blog::findOrFail($id)->update(['is_publish' => 'in-active']);
         $notification = array(
-            'message' => 'Testimonial is Inactive',
+            'message' => 'blog is Inactive',
             'alert-type' => 'success',
         );
 
@@ -199,7 +199,7 @@ class BlogController extends SystemController
     {
         Blog::findOrFail($id)->update(['is_publish' => 'active']);
         $notification = array(
-            'message' => 'Testimonial is Active',
+            'message' => 'blog is Active',
             'alert-type' => 'success',
         );
 
