@@ -105,7 +105,7 @@
             <div class="row">
 
                 {{-- clock at dashboard --}}
-                <div class="body col-6">
+                <div class="body col-12">
                     <div class="clock">
                         <div class="clock-face">
                             <div class="hand hour-hand"></div>
@@ -115,34 +115,7 @@
                     </div>
                 </div>
             
-                <section class="ftco-section col-6">
-                    <div class="container">
 
-                        <div class="row justify-content-center">
-                            <div class="col-md-6">
-                                <div class="box">
-                                    <div class="calendar">
-                                        <div class="year">
-                                            <div class="previous"><p id="prevYear"></p></div>
-                                            <div class="current"><p id="currentYear"></p><span>Year</span></div>
-                                            <div class="next"><p id="nextYear"></p></div>
-                                        </div>
-                                  <div class="month">
-                                    <div class="previous"><p id="prevMonth"></p></div>
-                                    <div class="current"><p id="currentMonth"></p><span>Month</span></div>
-                                    <div class="next"><p id="nextMonth"></p></div>
-                                  </div>
-                                  <div class="day">
-                                      <div class="previous"><p id="prevDay"></p></div>
-                                    <div class="current"><p id="currentDay"></p><span>Day</span></div>
-                                    <div class="next"><p id="nextDay"></p></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
         </div>
     </div>

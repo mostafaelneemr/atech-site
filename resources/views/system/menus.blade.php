@@ -8,7 +8,7 @@
 
     $menu['Home']= [
         'permission'=>[ 'home-slider.index' ,'brands.index','our-activities.index','projects.index','certificates.index','testimonials.index','blogs.index','clients.index', ],
-        'icon'=>'<i class="fa fa-users"></i>',
+        'icon'=>'<i class="fas fa-home"></i>',
         'text'=> __('Home'),
           'sub'=>[
                 [
@@ -82,7 +82,7 @@
 
     $menu['permission group']= [
         'permission'=>[ 'system.permission-group.index' , 'system.permission-group.show', 'system.permission-group.create'],
-        'icon'=>'<i class="fa fa-users"></i>',
+        'icon'=>'<i class="fas fa-lock"></i>',
         'text'=> __('Permission Group'),
             'sub'=>[
                 [
