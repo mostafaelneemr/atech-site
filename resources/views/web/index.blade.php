@@ -197,6 +197,43 @@
         </div>
     </div>
     <!-- END REVOLUTION SLIDER -->
+
+    {{-- <div class="brook-hero-nav-slider-area christmas-snow">
+        <div class="brook-element-carousel slick-arrow-center slick-arrow-rounded lr-0"
+        data-slick-options='{ 
+        "slidesToShow": 1, 
+        "slidesToScroll": 1, 
+        "arrows": true, 
+        "infinite": true,
+        "dots": false,
+        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "ion ion-ios-arrow-back" },
+        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "ion ion-ios-arrow-forward" }
+    }'
+    >
+
+        <!--Hero Item start-->
+        <div class="hero-item bg-image" data-bg="img/slider/christmas/christmas1.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+
+                        <!--Hero Content start-->
+                        <div class="hero-content-3 center">
+                            <h3>Xmas Discount  <br>  up to 70% off</h3>
+                            <h6> Christmas Discount All Product</h6>
+                            <a class="brook-btn btn-sd-size space-between btn-essential btn red-border" href="#">Learn More</a>
+                        </div>
+                        <!--Hero Content end-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Hero Item end-->
+
+    </div>
+    </div> --}}
+
 @endsection
 
 
@@ -237,7 +274,6 @@
     @endif
     <!-- End Brand Area -->
 
-
     <!-- Start Video Popup Area -->
     @if (App\Models\admin\Active_section::where('name', 'video_section')->first()->value == '1')
         <div class="brook-video-area videobg bg_color--1 pb--30 pt--30 pb_md--80 pb_sm--60 mt-2">
@@ -270,7 +306,6 @@
         </div>
     @endif
     <!-- End Video Popup Area -->
-
 
     <!-- Start Activities Boxes -->
     @if (App\Models\admin\Active_section::where('name', 'activies_section')->first()->value == '1')
@@ -327,7 +362,6 @@
         </div>
     @endif
     <!-- End Icon Boxes -->
-    
 
     <!-- Start projects Caption  our works-->
     @if (App\Models\admin\Active_section::where('name', 'project_section')->first()->value == '1')
@@ -392,7 +426,6 @@
     @endif
     <!-- End projects Caption -->
 
-
     <!-- Start Certificates Area -->
     @if (App\Models\admin\Active_section::where('name', 'certificate_section')->first()->value == '1')
         <div class="brook-portfolio-area ptb--40 ptb-md--80 ptb-sm--60 bg_color--1 basic-thine-line">
@@ -424,7 +457,6 @@
         </div>
     @endif
     <!-- End Certificates Area -->
-
 
     <!-- Start Testimonial Area -->
     @if (App\Models\admin\Active_section::where('name', 'testimonial_section')->first()->value == '1')
@@ -489,7 +521,6 @@
     @endif
     <!-- End Testimonial Area -->
 
-
     <!-- Start Blog Grid Area -->
     @if (App\Models\admin\Active_section::where('name', 'blog_section')->first()->value == '1')
         <div class="bk-blog-grid-area ptb--80 ptb-md--80 ptb-sm--60 blogbg">
@@ -536,52 +567,6 @@
         </div>
     @endif
     <!-- End Blog Grid Area -->
-
-    
-    {{-- <section class="height-auto pb_sm--0 mt-4" data-skin="black">
-        <div class="presentation-slider-wrapper">
-            <div class="presentation-inner">
-                <div class="inner brand-inner w-100">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="bk-title--default text-start brook-section-title-business">
-                                    <h5>Trusted Clients</h5>
-                                    <h3 class="fw-200">We are pleased to have many <br> trusted partners.</h3>
-                                    <div class="separator"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt--60 mt_md--50 mt_sm--30">
-                            <div class="col-lg-12">
-                                <div class="brand-wrapper">
-                                    <div class="brand__list brand-default brand-style--2 brand-business">
-                                        <div class="brand"><a href="#"><img src="img/business-2/brand/client-logo-01.png"
-                                                    alt="logo image"></a> </div>
-                                        <div class="brand" data-wow-delay=".13s"><a href="#"><img src="img/business-2/brand/client-logo-02.png"
-                                                    alt="logo image"></a> </div>
-                                        <div class="brand" data-wow-delay="0.16s"><a href="#"><img src="img/business-2/brand/client-logo-03.png"
-                                                    alt="logo image"></a> </div>
-                                        <div class="brand" data-wow-delay="0.19s"><a href="#"><img src="img/business-2/brand/client-logo-04.png"
-                                                    alt="logo image"></a> </div>
-                                        <div class="brand" data-wow-delay="0.22s"><a href="#"><img src="img/business-2/brand/client-logo-05.png"
-                                                    alt="logo image"></a> </div>
-                                        <div class="brand" data-wow-delay="0.25s"><a href="#"><img src="img/business-2/brand/client-logo-06.png"
-                                                    alt="logo image"></a> </div>
-                                        <div class="brand" data-wow-delay="0.25s"><a href="#"><img src="img/business-2/brand/client-logo-07.png"
-                                                    alt="logo image"></a> </div>
-                                        <div class="brand" data-wow-delay="0.25s"><a href="#"><img src="img/business-2/brand/client-logo-08.png"
-                                                    alt="logo image"></a> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
 
     <!-- Start Counterup Area -->
     @if (App\Models\admin\Active_section::where('name', 'client_section')->first()->value == '1')
