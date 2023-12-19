@@ -8,6 +8,7 @@ use App\Models\admin\Slider;
 use App\Models\admin\Testimonial;
 use App\Models\admin\Blog;
 use App\Models\admin\Brand;
+use App\Models\admin\Career;
 use App\Models\admin\Certificate;
 use App\Models\admin\Client;
 use App\Models\admin\Project;
@@ -83,6 +84,16 @@ class WebController extends Controller{
         $this->viewData['items'] = Project::all();
 
         return $this->view('projects', $this->viewData);
+    }
+
+    public function career()
+    {
+        // if (Active_section::where('name' , 'career_page')->first()->value == 0 ) {
+        //     abort(404);
+        // }
+        $this->viewData['careers'] = Career::get();
+
+        return $this->view('career', $this->viewData);
     }
 
     public function ProjectSlug($slug)

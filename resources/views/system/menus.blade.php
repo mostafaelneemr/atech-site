@@ -56,6 +56,11 @@
                     'url'=> route('clients.index'),
                     'text'=> __('Clients')
                 ],
+                [
+                    'permission'=> 'careers.index',
+                    'url'=> route('careers.index'),
+                    'text'=> __('Career')
+                ],
 
             ]
     ];

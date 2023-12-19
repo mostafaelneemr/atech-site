@@ -68,6 +68,8 @@ Route::get('/blog/{slug}', [WebController::class, 'blogSlug'])->name('blog.slug'
 Route::get('/project/{slug}', [WebController::class, 'projectSlug'])->name('project.slug');
 Route::get('/projects', [WebController::class, 'project'])->name('projects');
 
+Route::get('/careers', [WebController::class, 'career'])->name('career');
+
 Route::get('/contact', [WebController::class, 'contact'])->name('contact');
 
 Route::post('send-email', [SendEmailController::class, 'index'])->name('sendmail');

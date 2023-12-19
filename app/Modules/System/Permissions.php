@@ -55,6 +55,11 @@ return [
             'create-clients' =>['clients.create', 'clients.store'],
             'Update-and-Delete-clients' =>['clients.edit','clients.update', 'clients.destroy'],
 
+            'view-all-careers' =>['careers.index'],
+            'create-careers' =>['careers.create', 'careers.store'],
+            'Update-and-Delete-careers' =>['careers.edit','careers.update', 'careers.destroy'],
+
+
         ]
     ],
 

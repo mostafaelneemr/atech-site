@@ -33,8 +33,10 @@ Route::resource('/certificates', CertificateController::class);
 Route::resource('/blogs', BlogController::class);
 Route::resource('/clients', ClientController::class);
 Route::resource('/projects', ProjectsController::class);
+Route::resource('/careers', CareerController::class);
 Route::resource('/our-activities', OurActivitieController::class);
 
+    
 Route::resource('/seosetting', SEOController::class);
 // Route::get('/seosetting', [SEOController::class, 'index'])->name('system.seosetting.index'); //
 // Route::patch('/seosetting', [SEOController::class, 'update'])->name('system.seosetting.update'); //
