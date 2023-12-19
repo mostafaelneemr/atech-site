@@ -16,13 +16,13 @@
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
-                                    <label>Title </label>
+                                    <label>Title<span class="text-danger">*</span></label>
                                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" required>
                                     @error('title') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>location </label>
+                                    <label>location<span class="text-danger">*</span></label>
                                     <input type="text" name="location" class="form-control @error('location') is-invalid @enderror" value="{{ old('location') }}" required>
                                     @error('location') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
@@ -32,16 +32,16 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label>Description</label>
-                                    <textarea name="desc" class="form-control" id="desc" rows="5"></textarea>
+                                    <label>Description<span class="text-danger">*</span></label>
+                                    <textarea name="desc" class="form-control @error('location') is-invalid @enderror" id="desc" rows="5" required></textarea>
                                     @error('desc') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label>Requirements</label>
-                                    <textarea name="req" class="form-control" id="req" rows="5"></textarea>
+                                    <label>Requirements<span class="text-danger">*</span></label>
+                                    <textarea name="req" class="form-control @error('location') is-invalid @enderror" id="req" rows="5"></textarea>
                                     @error('req') <div class="alert alert-danger">{{ $message }}</div> @enderror
                                 </div>
                             </div>

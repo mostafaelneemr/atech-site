@@ -65,6 +65,10 @@
                                         @if (\App\Models\admin\Active_section::where('name', 'project_page')->first()->value == 1)
                                         <li class="lavel-1"><a href="{{ route('projects') }}"><span>Projects</span></a></li>
                                         @endif
+
+                                        @if (\App\Models\admin\Active_section::where('name', 'career_page')->first()->value == 1)
+                                        <li class="lavel-1"><a href="{{ route('career') }}"><span>Career</span></a></li>
+                                        @endif
                                         {{-- <li class="lavel-1 with--drop slide-dropdown"><a href="#"><span>Pages</span></a> --}}
                                             <!-- Start Dropdown Menu -->
                                             {{-- <ul class="dropdown__menu">
@@ -148,6 +152,10 @@
 
                         @if (\App\Models\admin\Active_section::where('name', 'project_page')->first()->value == 1)
                         <li><a href="{{ route('projects') }}"><span>Projects</span></a></li>
+                        @endif
+
+                        @if (\App\Models\admin\Active_section::where('name', 'career_page')->first()->value == 1)
+                        <li><a href="{{ route('career') }}"><span>Career</span></a></li>
                         @endif
 
                         {{-- <li class="has-mega-menu"><a href="#"><span>Pages</span></a>

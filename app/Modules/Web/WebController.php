@@ -3,21 +3,22 @@
 namespace App\Modules\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\Active_section;
-use App\Models\admin\Slider;
-use App\Models\admin\Testimonial;
-use App\Models\admin\Blog;
-use App\Models\admin\Brand;
-use App\Models\admin\Career;
-use App\Models\admin\Certificate;
-use App\Models\admin\Client;
-use App\Models\admin\Project;
-use App\Models\admin\Team;
+use App\Models\admin\{Active_section, Slider, Testimonial, Blog, Brand, Career, Certificate, Client, Project, Team};
+// use App\Models\admin\;
+// use App\Models\admin\;
+// use App\Models\admin\;
+// use App\Models\admin\;
+// use App\Models\admin\;
+// use App\Models\admin\;
+// use App\Models\admin\;
+// use App\Models\admin\;
+// use App\Models\admin\;
 use App\Models\OurActive;
 
 class WebController extends Controller{
 
-    public function index(){
+    public function index()
+    {
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get(); 
         $this->viewData['testimonials'] = Testimonial::orderBy('id', 'ASC')->get(); 
         $this->viewData['brands'] = Brand::get(); 
@@ -88,24 +89,22 @@ class WebController extends Controller{
 
     public function career()
     {
-        // if (Active_section::where('name' , 'career_page')->first()->value == 0 ) {
-        //     abort(404);
-        // }
+        if (Active_section::where('name' , 'career_page')->first()->value == 0 ) {
+            abort(404);
+        }
         $this->viewData['careers'] = Career::get();
-
         return $this->view('career', $this->viewData);
     }
 
     public function ProjectSlug($slug)
     {
         $this->viewData['project'] = Project::where('slug', $slug)->first();
-
         return $this->view('project_slug', $this->viewData);
     }
 
-    public function contact(){
+    public function contact()
+    {
         $this->viewData['sliders'] = Slider::where('slider_type', 'home')->get();
-
         return $this->view('contact', $this->viewData);
     }
 

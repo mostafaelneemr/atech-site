@@ -39,6 +39,7 @@ class Permission
                 'system.notifications.index',
                 'get.messages',
                 'deletemessage',
+                'careers.show',
             ];
 
             $canAccess = array_merge($ignoredRoutes,Staff::StaffPerms(Auth::guard('staff')->user()->id)->toArray());

@@ -14,6 +14,8 @@ class CareerController extends SystemController
     {
         $this->viewData['pageTitle'] = __('Careers');
         $this->viewData['breadcrumb'][] = [ 'text'=> __('Career') ];
+        $this->viewData['add_new'] = [ 'text'=> __('Add Career'), 'route'=> 'careers.create'];
+
         $this->viewData['careers'] = Career::get();
         return $this->view('career.index', $this->viewData);
     }
@@ -28,6 +30,13 @@ class CareerController extends SystemController
     public function store(Request $request)
     {
         try {
+            $this->validate($request, [
+                'title' => 'required|string',
+                'location' => 'required|string',
+                'desc' => 'required|string',
+                'req' => 'required|string'
+            ]);
+
             Career::create([
                 'title' => $request->title,
                 'location' => $request->location,
@@ -35,24 +44,46 @@ class CareerController extends SystemController
                 'req' => $request->req,
             ]);
             $notification = array(
-                'message' => 'career Inserted Successfully',
+                'message' => 'Career Inserted Successfully',
                 'alert-type' => 'success',
             );
             return redirect::route('careers.index')->with($notification);
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['errors' => $e->getMessage()]);
         }
-
     }
 
     public function edit($id)
     {
-        //
+        $this->viewData['career'] = Career::findOrFail($id);
+        $this->viewData['pageTitle'] = __('Careers');
+        $this->viewData['breadcrumb'][] = [ 'text'=> __('Career') ];
+        return $this->view('career.edit', $this->viewData);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $this->validate($request, [
+                'title' => 'required|string',
+                'location' => 'required|string',
+                'desc' => 'required|string',
+                'req' => 'required|string'
+            ]);
+            Career::where('id', $id)->update([
+                'title' => $request->title,
+                'location' => $request->location,
+                'desc' => $request->desc,
+                'req' => $request->req,
+            ]);
+            $notification = array(
+                'message' => 'Career Updated Successfully',
+                'alert-type' => 'info',
+            );
+            return redirect::route('careers.index')->with($notification);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['errors' => $e->getMessage()]);
+        }
     }
 
     public function destroy($id)

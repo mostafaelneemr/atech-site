@@ -205,6 +205,21 @@
             </div>
         </div>
 
+        <div class="col-lg-6 mb-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0 h6 text-center">{{__('Career Page')}}</h3>
+                </div>
+
+                <div class="form-group row switch switch-outline switch-icon switch-success text-center">
+                    <label class="col-form-label text-right col-lg-3 col-sm-12">
+                        <input data-switch="1" type="checkbox" onchange="updateSettings(this, 'career_page')" <?php if (\App\Models\admin\Active_section::where('name', 'career_page')->first()->value == 1) echo "checked"; ?>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 @endsection

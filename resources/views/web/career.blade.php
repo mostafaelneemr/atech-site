@@ -22,17 +22,16 @@
     <meta property="og:description" content="{{ $meta_description }}" />
 @endsection
 
-
 @section('content')
 
     <!-- Start Breadcaump Area -->
-    <div class="breadcaump-area pt--250 pb--340 pt_md--150 pb_md--150 pt_sm--150 pb_sm--150  bg_image--56 breadcaump-title-bar breadcaump-title-white"
-        data-black-overlay="2">
+    <div class="breadcaump-area pt--250 pb--340 pt_md--150 pb_md--150 pt_sm--150 pb_sm--150 breadcaump-title-bar breadcaump-title-white"
+        data-black-overlay="2" style="background: url('{{ asset(setting('career_image')) }}')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcaump-inner text-center">
-                        <h1 class="heading heading-h1">Join our team!</h1>
+                        <h1 class="heading heading-h1">{{ setting('career_text') }}</h1>
                     </div>
                 </div>
             </div>
@@ -46,13 +45,12 @@
 
                 <!-- Start Single Career -->
                 @foreach ($careers as $career)
-                    
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="career mb--30">
                         <div class="inner">
 
                             <div class="title">
-                                <h3 class="heading heading-h3 text-color-1">{{ $career->title }}</h3>
+                                <h3 class="heading heading-h3 text-color-3">{{ $career->title }}</h3>
                             </div>
 
                             <div class="content mt--35">
@@ -73,12 +71,10 @@
                                             <h6 class="heading heading-h5">{!! $career->req !!}</h6>
                                         </div>
                                     {{-- </div> --}}
-                                    
-                                    
                                 </div>
                                 <!-- End Single List -->
                                 <div class="career-btn mt--60">
-                                    <a class="brook-btn bk-btn-dark btn-sd-size btn-rounded space-between" href="#">Apply
+                                    <a class="brook-btn bk-btn-dark btn-sd-size btn-rounded space-between" href="mailto:{{ setting('email') }}">Apply
                                         now</a>
                                     </div>
                                 </div>

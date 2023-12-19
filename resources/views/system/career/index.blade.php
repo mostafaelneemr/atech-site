@@ -1,3 +1,7 @@
+@php
+    $careerCount = app\Models\admin\Career::count();
+    // dd($careerCount);
+@endphp
 @extends('system.layout')
 
 @section('style')
@@ -6,68 +10,51 @@
 
 @section('content')
 
+    @if ($careerCount != 0)
+        
     <div class="row">
-        <div class="col-md-12 ">
+        <div class="col-md-12">
             @include('system.message')
+            
+            @foreach ($careers as $career)
+            <div class="card card-custom">
+                <div class="card-header">
+                    <div class="card-title">
+						<span class="card-icon">
+                            <i class="flaticon2-chat-1 text-primary"></i>
+						</span>
+						<h3 class="card-label">{{ $career->title }}
+                            <small>{{ $career->location }}</small>
+                        </h3>
 
-            <div class="card">
-
-                <div class="card-body ">
-                    <div class="table-responsive">
-                        <table id="datatable" class="table table-striped table-hover fixTableHead">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Category</th>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-                        </tbody>
-
-                    </table>
+                    </div>
+                    <div class="card-toolbar">
+                        <a href="{{ route('careers.edit', $career->id) }}" class="btn btn-sm btn-icon btn-light-info mr-2">
+                            <i class="flaticon2-drop"></i>
+                        </a>
+                        <a class="btn btn-sm btn-icon btn-light-danger" href="javascript:void(0);" onclick="deleteCareer('{{ route('careers.destroy', $career->id) }}')"><i class="text-danger la la-trash"></i></a>
                     </div>
                 </div>
-            </div>
+				<div class="card-body"> {{ $career->desc }}</div>
+			</div>
+                <hr>
+            @endforeach
         </div>
     </div>
+    @else
+    <div class="card card-custom">
+        <div class="card-body text-center"> Career Position not found</div>
+    </div>
+    @endif
+    
 @endsection
 
 @section('script')
-<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-<script src="{{asset('assets/js/pages/crud/datatables/basic/paginations.js')}}"></script>
 
 <script type="text/javascript">
-    $(function () {
+    function deleteCareer($routeName,$reload){
 
-        $datatable = $('#datatable').DataTable({
-            processing: true,
-            serverSide: true,
-            order: [
-                [0, "DESC"],
-            ],
-            "pageLength": 10,
-            ajax: "{{ Route('projects.index', ['datatable' => true]) }}",
-            columns: [
-                {data: 'image',},
-                {data: 'category',},
-                {data: 'title',},
-                {data: 'type',},
-                {data: 'action',},
-            ],
-        });
-
-    });
-</script>
-
-<script type="text/javascript">
-    function deleteProject($routeName,$reload){
-
-        if(!confirm("Do you want to delete this Project?")){ return false; }
+        if(!confirm("Do you want to delete this Career?")){ return false; }
 
         if($reload == undefined){ $reload = 3000; }
         addLoading();
@@ -84,7 +71,8 @@
                     $data = response;
                     if($data.status == true){
                         toastr.success($data.message, 'Success !', {"closeButton": true});
-                        $('#datatable').DataTable().ajax.reload();
+                        // $('#datatable').DataTable().ajax.reload();
+                        location.reload();
                     }else{
                         toastr.error($data.message, 'Error !', {"closeButton": true});
                     }
@@ -93,6 +81,7 @@
         )
     }
 </script>
+
 @endsection
 
 @push('js')

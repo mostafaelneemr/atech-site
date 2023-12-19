@@ -84,6 +84,12 @@ class SettingController extends SystemController
                             Image::make($path)->resize(960, 765)->save('upload/setting/' . $name_gen);
                             $save_url = 'upload/setting/' . $name_gen;
                             if($path){ Setting::where(['name'=>$value->name])->where('is_visible','yes')->update(['value'=>$save_url]); }
+                        }elseif($request->file('career_image')){
+                            $path = $request->file('career_image');
+                            $name_gen = hexdec(uniqid()) . '.' . $path->getClientOriginalExtension();
+                            Image::make($path)->resize(1920, 700)->save('upload/setting/' . $name_gen);
+                            $save_url = 'upload/setting/' . $name_gen;
+                            if($path){ Setting::where(['name'=>$value->name])->where('is_visible','yes')->update(['value'=>$save_url]); }
                         }
                     }
                     break;
